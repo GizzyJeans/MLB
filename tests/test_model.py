@@ -161,6 +161,65 @@ def test_kelly_scales_with_edge():
     approx(large, 0.05, tol=1e-9)
 
 
+def test_one_run_game_rate_bias_is_pinned():
+    """Pin the known miss on the margin distribution.
+
+    The engine produces more one-run games than MLB actually plays, which
+    drags every favourite's -1.5 down. The bias is documented in `rundist`;
+    this test fails if it silently drifts, in either direction, because the
+    run-line edge threshold is set from its size.
+    """
+    sim = simulate_game(4.5, 4.5, n_sims=250_000, seed=7)
+    one_run = float(np.mean(np.abs(sim.margin) == 1))
+    # Real MLB sits near 0.285. Anything outside this window means the
+    # documented ~2.8pp favourite bias no longer describes the model.
+    assert 0.300 < one_run < 0.322, one_run
+
+
+def test_run_line_stays_inside_the_documented_uncertainty_band():
+    """P(home -1.5) at pick-em across the plausible parameter range."""
+    values = [
+        simulate_game(4.5, 4.5, n_sims=120_000, seed=7,
+                      dispersion=d).prob_cover(-1.5, home=True)
+        for d in (0.35, 0.43, 0.55)
+    ]
+    assert max(values) - min(values) > 0.01, "band collapsed unexpectedly"
+    assert max(values) - min(values) < 0.05, "band wider than documented"
+
+
+def test_implied_solver_recovers_known_expected_runs():
+    """Round-trip guard on the derivative pricer.
+
+    Known expected runs are turned into a moneyline and a total, then solved
+    back. Catches sign errors in the bisection, which otherwise fail silently
+    by parking on a bracket rail and still printing a plausible table.
+    """
+    from mlbline.implied import solve
+
+    lam_home, lam_away, line = 4.9, 4.1, 8.5
+    truth = simulate_game(lam_home, lam_away, n_sims=200_000, seed=99)
+
+    got = solve("roundtrip",
+                market_home_win=truth.prob_home_win(),
+                market_over=truth.prob_over(line),
+                total_line=line, n_sims=40_000, price_sims=120_000)
+
+    assert got.fit_error < 0.01, f"residual {got.fit_error}"
+    assert abs(got.lam_home - lam_home) < 0.25, got.lam_home
+    assert abs(got.lam_away - lam_away) < 0.25, got.lam_away
+    # The point of the exercise: the derived run line must match the truth.
+    assert abs(got.p_home_cover - truth.prob_cover(-1.5, home=True)) < 0.02
+
+
+def test_implied_solver_reports_a_bad_fit_rather_than_hiding_it():
+    """An unreachable target must surface as residual, not a silent answer."""
+    from mlbline.implied import solve
+
+    got = solve("impossible", market_home_win=0.99, market_over=0.50,
+                total_line=8.5, n_sims=20_000, price_sims=40_000)
+    assert got.fit_error > 0.01
+
+
 def test_gate_refuses_when_handicapping_inputs_are_missing():
     """The exact situation this environment is in: prices but no baseball."""
     result = evaluate(

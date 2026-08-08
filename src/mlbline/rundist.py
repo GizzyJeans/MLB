@@ -45,6 +45,30 @@ WALKOFF_OVERSHOOT_RATE = 0.20
 
 MAX_EXTRA_INNINGS = 12
 
+# KNOWN CALIBRATION TENSION -- read before trusting a run-line edge.
+#
+# Two league-wide anchors cannot both be hit by this model structure:
+#
+#   dispersion 0.43 -> variance/mean 2.14 (real 2.15 ✓) but 31.0% one-run
+#                      games (real ~28.5% ✗)
+#   dispersion 0.35 -> 29.9% one-run games (closer ✓) but variance/mean 2.41 ✗
+#
+# The cause is structural: innings are drawn independently, and the two
+# teams' scores are uncorrelated. Real games have neither property -- the
+# same pitcher works several innings, lineups turn over, and bullpen usage
+# responds to the score. So the margin distribution comes out too tight even
+# when the score distribution is right.
+#
+# Consequence: with the current settings the model produces about 2.5pp too
+# many one-run games, which biases every favourite's -1.5 downward by
+# roughly 2.8pp and every underdog's +1.5 upward by the same amount. Across
+# the plausible parameter range P(home -1.5) at pick-em moves over a ~3pp
+# band (29.8%-32.8%).
+#
+# Any run-line edge under roughly 3pp is therefore inside this model's own
+# specification uncertainty and must not be staked. Fixing it properly needs
+# a base-out state Markov chain rather than independent half-innings.
+
 
 @dataclass
 class GameSimulation:

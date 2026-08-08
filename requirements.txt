@@ -1,0 +1,2 @@
+# Only the simulation needs a third-party package; everything else is stdlib.
+numpy>=1.24

@@ -161,6 +161,49 @@ def test_kelly_scales_with_edge():
     approx(large, 0.05, tol=1e-9)
 
 
+def test_real_game_history_is_intact():
+    """Guard the Retrosheet extract the validation is measured against."""
+    import csv
+
+    path = Path(__file__).resolve().parents[1] / "data" / "history" / "games.csv"
+    rows = list(csv.DictReader(open(path, encoding="utf-8")))
+    assert len(rows) == 7289, len(rows)
+
+    home = np.array([int(r["home_runs"]) for r in rows])
+    away = np.array([int(r["away_runs"]) for r in rows])
+    margin = home - away
+
+    # Three complete seasons of real baseball. If these move, the file
+    # changed, and every calibration claim built on it needs rechecking.
+    approx(float(np.mean(np.abs(margin) == 1)), 0.2832, tol=0.002)
+    approx(float(np.mean(margin > 0)), 0.5285, tol=0.002)
+    approx(float(np.mean(margin >= 2) / np.mean(margin > 0)), 0.6734, tol=0.003)
+    approx(float(np.mean(margin <= -2) / np.mean(margin < 0)), 0.7655, tol=0.003)
+
+
+def test_markov_reproduces_the_share_of_wins_by_two_or_more():
+    """The quantity that sets run-line prices, checked against real games.
+
+    A home team's share of wins that clear two runs is what a -1.5 line is,
+    arithmetically. Real 2023-2025 baseball puts it at 67.3%. The old engine
+    said 64.6%, and that 2.7pp shortfall is almost exactly the systematic
+    disagreement it showed against the market -- the bias was the model, not
+    the market.
+    """
+    from mlbline.markov import simulate_game as markov_game
+
+    rng = np.random.default_rng(4)
+    lam_home = np.clip(rng.normal(4.59, 1.30, 40), 2.2, 8.0).round(1)
+    lam_away = np.clip(rng.normal(4.37, 1.30, 40), 2.2, 8.0).round(1)
+
+    margins = np.concatenate([
+        markov_game(float(h), float(a), n_sims=4000, seed=int(i)).margin
+        for i, (h, a) in enumerate(zip(lam_home, lam_away))
+    ])
+    share = float(np.mean(margins >= 2) / np.mean(margins > 0))
+    assert abs(share - 0.6734) < 0.02, share
+
+
 def test_markov_half_inning_distribution_matches_league():
     """The chain must reproduce how often a half-inning scores 0, 1, 2 ..."""
     from mlbline.markov import _run_pmf, scale_rates

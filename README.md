@@ -9,8 +9,12 @@ whole design:
 |---|---|
 | `devig` | What probability is a bookmaker's price actually implying, once margin is removed? |
 | `market` | Is any book out of step with the rest of the market? |
-| `rundist` | What does an independent estimate of the game say the probability is? |
+| `markov` | What does an independent estimate of the game say the probability is? |
+| `implied` | What should this run line be, given its own moneyline and total? |
 | `policy` | Is the resulting edge large enough, and complete enough, to bet? |
+
+`rundist` is the earlier engine, kept for comparison in the tests. `markov`
+supersedes it — see below.
 
 `market` and `rundist` produce numbers that look identical on a screen and
 mean completely different things. Beating the consensus is a line-shopping
@@ -50,7 +54,45 @@ sim.prob_cover(-1.5, home=True)   # home run line
 sim.prob_over(8.5)                # total
 ```
 
-## Why the simulation is half-inning based
+## Why the simulation is plate-appearance based
+
+`markov` advances eight base states crossed with three out counts, one plate
+appearance at a time. The reason is narrow and worth stating, because the
+half-inning engine it replaced looked fine:
+
+A model that draws a whole half-inning's runs at once cannot represent a
+walk-off, because the inning is over before it knows the score. `rundist` had
+to *impose* one — truncate the home team's rally to a one-run win, then bolt
+on a fixed 20% chance of scoring more. That hard-coded rule piled probability
+mass at exactly one run: 31.0% one-run games against MLB's ~28.5%, with the
+excess sitting almost entirely in that single bucket while every other margin
+matched. The consequence was not cosmetic. It biased every favourite's -1.5
+downward by roughly 2.8pp, which is the same size as the edges the thresholds
+are meant to detect, and it showed up as the model disagreeing with the
+market in the same direction on nine games out of nine.
+
+Simulating plate appearances removes the rule entirely. Play stops when the
+winning run crosses, so a walk-off single scores one and a grand slam scores
+four, in whatever proportion the batting events themselves produce. The
+margin distribution becomes an output.
+
+Measured against the league margin distribution over a realistic spread of
+matchup strengths, total absolute error falls from **5.05pp to 3.42pp**.
+
+Calibration notes:
+
+- Half-inning scoring matches the league to within 0.6pp in every bucket
+  (0 runs 72.2% against 72.7%).
+- The scaled rate vector is not a literal scouting line. Its on-base figure
+  runs high because the chain has no productive outs, steals or errors, and
+  the scaling compensates so the *run distribution* lands correctly. Runs are
+  what get priced.
+- Regulation innings are sampled from a run distribution built by this same
+  chain, which is exact for that purpose and far faster. Only the bottom of
+  the ninth and extra innings need plate-by-plate detail, because only they
+  can end mid-inning.
+
+## Why the older engine was half-inning based
 
 Three rules move run line and total prices by more than most handicapping
 edges are worth, and a model that draws two game totals from a pair of

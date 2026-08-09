@@ -161,6 +161,77 @@ def test_kelly_scales_with_edge():
     approx(large, 0.05, tol=1e-9)
 
 
+def test_markov_half_inning_distribution_matches_league():
+    """The chain must reproduce how often a half-inning scores 0, 1, 2 ..."""
+    from mlbline.markov import _run_pmf, scale_rates
+
+    pmf = _run_pmf(scale_rates(4.5), seed=7)
+    for runs, actual in ((0, 0.727), (1, 0.150), (2, 0.064), (3, 0.031)):
+        assert abs(pmf[runs] - actual) < 0.015, (runs, pmf[runs])
+
+
+def test_markov_scale_rates_hits_its_target():
+    from mlbline.markov import runs_per_nine, scale_rates
+
+    for target in (3.5, 4.5, 5.5):
+        assert abs(runs_per_nine(scale_rates(target)) - target) < 0.1
+
+
+def test_walkoff_margins_are_not_all_one_run():
+    """The reason the chain exists.
+
+    The old engine truncated a home team's winning rally to a one-run margin
+    and bolted on a fixed overshoot rate. Here play simply stops on the
+    go-ahead run, so a walk-off single scores one and a grand slam scores
+    four, in whatever mix the batting events produce.
+    """
+    from mlbline.markov import simulate_game as markov_game
+
+    sim = markov_game(4.5, 4.5, n_sims=150_000, seed=21)
+    # Home wins are the only ones that can end mid-inning.
+    home_wins = sim.margin[sim.margin > 0]
+    by_one = float(np.mean(home_wins == 1))
+    assert 0.30 < by_one < 0.45, by_one
+    # Multi-run walk-offs must appear without being hard-coded.
+    assert float(np.mean(home_wins >= 3)) > 0.20
+
+
+def test_markov_beats_old_engine_on_margin_distribution():
+    """Head to head against the league margin distribution."""
+    from mlbline.markov import simulate_game as markov_game
+
+    real = {1: 0.285, 2: 0.190, 3: 0.150, 4: 0.115, 5: 0.080}
+    rng = np.random.default_rng(5)
+    matchups = np.clip(rng.normal(4.5, 0.75, size=(60, 2)), 2.6, 7.0).round(1)
+
+    def league_error(fn):
+        margins = np.concatenate([
+            np.abs(fn(float(h), float(a), n_sims=2000,
+                      seed=int(h * 100 + a * 7)).margin)
+            for h, a in matchups
+        ])
+        return sum(abs(float(np.mean(margins == k)) - v)
+                   for k, v in real.items())
+
+    assert league_error(markov_game) < league_error(simulate_game)
+
+
+def test_markov_leaves_no_unresolved_ties():
+    from mlbline.markov import simulate_game as markov_game
+
+    sim = markov_game(4.5, 4.5, n_sims=60_000, seed=23)
+    assert float(np.mean(sim.margin == 0)) < 0.001
+
+
+def test_markov_run_line_stays_consistent_with_moneyline():
+    from mlbline.markov import simulate_game as markov_game
+
+    sim = markov_game(5.2, 4.0, n_sims=120_000, seed=25)
+    assert sim.prob_cover(-1.5, home=True) < sim.prob_home_win()
+    approx(sim.prob_cover(-1.5, home=True) + sim.prob_cover(1.5, home=False),
+           1.0, tol=1e-6)
+
+
 def test_one_run_game_rate_bias_is_pinned():
     """Pin the known miss on the margin distribution.
 

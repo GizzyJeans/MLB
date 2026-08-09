@@ -24,7 +24,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from .rundist import simulate_game
+from .markov import simulate_game
 
 SOLVE_SIMS = 60_000
 PRICE_SIMS = 400_000
@@ -47,6 +47,9 @@ class ImpliedPricing:
     p_away_cover: float      # away +1.5
     mean_total: float
     mean_margin: float
+    # Kept so callers can price whichever run line the market actually hangs,
+    # not just the home -1.5 case.
+    simulation: object = None
 
     @property
     def fit_error(self) -> float:
@@ -118,4 +121,5 @@ def solve(matchup: str, *, market_home_win: float, market_over: float,
         p_away_cover=sim.prob_cover(1.5, home=False),
         mean_total=summary["mean_total"],
         mean_margin=summary["mean_margin"],
+        simulation=sim,
     )

@@ -50,9 +50,15 @@ def main() -> int:
     rows = []
     for game in games:
         line = game.modal_point("totals")
+        # The run line must be taken at whichever side the market actually
+        # hangs it from. Assuming the home team lays the runs silently drops
+        # every game with a road favourite, which is a biased sample rather
+        # than a smaller one.
+        run_line = game.modal_point("spreads")
         h2h = summarise_line(game, "h2h", None)
         totals = summarise_line(game, "totals", line)
-        spreads = summarise_line(game, "spreads", -1.5)
+        spreads = (summarise_line(game, "spreads", run_line)
+                   if run_line is not None else None)
         if not (h2h and totals and spreads):
             print(f"{game.matchup[:37]:38s} — 市場不完整，跳過")
             continue
@@ -70,9 +76,12 @@ def main() -> int:
                   f"(殘差 {implied.fit_error * 100:.2f}pp)，跳過")
             continue
 
+        sim = implied.simulation
         for label, model_p in (
-            (f"{game.home_team} -1.5", implied.p_home_cover),
-            (f"{game.away_team} +1.5", implied.p_away_cover),
+            (f"{game.home_team} {run_line:+g}",
+             sim.prob_cover(run_line, home=True)),
+            (f"{game.away_team} {-run_line:+g}",
+             sim.prob_cover(-run_line, home=False)),
         ):
             side = next((s for s in spreads.sides if s.side == label), None)
             if side is None:

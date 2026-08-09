@@ -161,6 +161,74 @@ def test_kelly_scales_with_edge():
     approx(large, 0.05, tol=1e-9)
 
 
+def test_asian_line_sign_convention():
+    """A minus reaches up toward the half above, a plus reaches down.
+
+    Getting this backwards puts a line most of a run from the market and
+    manufactures huge fake edges -- a total read as 8.45 when the board said
+    7.55 priced the under at +17%.
+    """
+    from mlbline.asian import parse_line
+
+    approx(parse_line("9-50").effective, 9.25)
+    approx(parse_line("9+30").effective, 8.85)
+    approx(parse_line("8+90").effective, 7.55)
+    approx(parse_line("8平").effective, 8.0)
+    approx(parse_line("9.5").effective, 9.5)
+    approx(parse_line("0").effective, 0.0)
+    # A one-digit weight is hundredths, not tenths.
+    approx(parse_line("1+5").effective, 0.975)
+
+
+def test_integer_lines_push_and_half_lines_do_not():
+    from mlbline.asian import AsianLine, total_ev
+
+    runs = np.array([7, 8, 8, 9, 10])
+    whole = AsianLine(8.0, 8.0, 0.0, "8平")
+    half = AsianLine(8.5, 8.5, 0.0, "8.5")
+
+    # At 8 the two eights push, so only 9 and 10 win and only 7 loses.
+    approx(total_ev(runs, whole, hk_price=1.0, over=True), (2 - 1) / 5)
+    # At 8.5 nothing pushes: 9 and 10 win, 7 and both 8s lose.
+    approx(total_ev(runs, half, hk_price=1.0, over=True), (2 - 3) / 5)
+
+
+def test_asian_split_ticket_interpolates_between_its_legs():
+    from mlbline.asian import AsianLine, total_ev
+
+    runs = np.array([7, 8, 8, 9, 10])
+    low = total_ev(runs, AsianLine(8.0, 8.0, 0.0, ""), hk_price=1.0, over=True)
+    high = total_ev(runs, AsianLine(8.5, 8.5, 0.0, ""), hk_price=1.0, over=True)
+    mixed = total_ev(runs, AsianLine(8.0, 8.5, 0.4, ""), hk_price=1.0, over=True)
+    approx(mixed, 0.6 * low + 0.4 * high, tol=1e-9)
+
+
+def test_fair_total_is_not_pinned_to_an_integer():
+    """Regression on a solver that could only ever return whole numbers.
+
+    Bisecting on the line itself cannot work, because `runs > line` only
+    changes at integers. The earlier version returned 8.00 or 9.00 for every
+    game and so could not detect a decoding error at all.
+    """
+    from mlbline.asian import fair_total
+
+    rng = np.random.default_rng(1)
+    runs = rng.poisson(8.5, 120_000)
+    fair = fair_total(runs)
+    assert abs(fair - round(fair)) > 0.05, f"snapped to integer: {fair}"
+    # Over 8.5 wins under half the time here, so a fair line sits below it.
+    assert 7.8 < fair < 8.5, fair
+
+
+def test_fair_total_tracks_the_scoring_level():
+    from mlbline.asian import fair_total
+
+    rng = np.random.default_rng(2)
+    low = fair_total(rng.poisson(7.0, 80_000))
+    high = fair_total(rng.poisson(10.0, 80_000))
+    assert high > low + 2.0, (low, high)
+
+
 def test_real_game_history_is_intact():
     """Guard the Retrosheet extract the validation is measured against."""
     import csv

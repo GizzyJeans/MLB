@@ -1,0 +1,39 @@
+=== 解碼驗證：板面線 vs 本場自身隱含的公平線 ===
+比賽                                   讓球           公平     差      大小           公平     差      美盤   
+Cincinnati Reds @ Washington Nation  0(0)           0.51  -0.51 9-50(9.25)     9.25  -0.00   9.5
+New York Mets @ Pittsburgh Pirates   1+20(0.9)      0.89  +0.01 8平(8)          7.96  +0.04   8.0
+Athletics @ Boston Red Sox           2+45(1.775)    1.59  +0.18 9.5(9.5)       9.37  +0.13   9.5
+Toronto Blue Jays @ Philadelphia Ph  1-95(1.475)    1.30  +0.18 8-50(8.25)     8.49  -0.24   8.5
+Atlanta Braves @ New York Yankees    1+25(0.875)    0.86  +0.01 8-80(8.4)      8.42  -0.02   8.5
+Los Angeles Angels @ Miami Marlins   1+5(0.975)     0.91  +0.07 8-70(8.35)     8.42  -0.07   8.5
+Cleveland Guardians @ Chicago White  1+85(0.575)    0.66  -0.09 8-80(8.4)      8.31  +0.09   8.5
+Minnesota Twins @ Milwaukee Brewers  2+60(1.7)      1.49  +0.21 7-50(7.25)     7.22  +0.03   7.5
+Chicago Cubs @ Kansas City Royals    1-85(1.425)    1.33  +0.09 10-90(10.45)  10.17  +0.28  10.5
+Colorado Rockies @ St. Louis Cardin  1-40(1.2)      1.08  +0.12 9-50(9.25)     9.15  +0.10   9.0
+Baltimore Orioles @ Texas Rangers    1+45(0.775)    0.79  -0.02 8-90(8.45)     8.17  +0.28   8.0
+Detroit Tigers @ San Francisco Gian  1+40(0.8)      0.67  +0.13 7-50(7.25)     7.29  -0.04   7.5
+Los Angeles Dodgers @ Arizona Diamo  1-35(1.175)    1.07  +0.11 9+30(8.85)     8.77  +0.08   8.5
+Tampa Bay Rays @ Seattle Mariners    0(0)           0.54  -0.54 8+90(7.55)     7.28  +0.27   7.5
+Houston Astros @ San Diego Padres    1+70(0.65)     0.70  -0.05 9+70(8.65)     8.56  +0.09   8.5
+
+平均絕對誤差  讓球 0.153 分   大小 0.118 分
+
+健全性檢查：去偏後 EV 的分布
+  中位數 -2.55%  (公平掛盤應落在 -2.5% ~ -3.0%)
+  範圍 -9.17% ~ +3.22%
+
+=== 前 10 候選（板面實際賠率，去偏後）===
+#   比賽                               市場    選擇                             板面線           賠率     原始       去偏      
+1   Tampa Bay Rays @ Seattle Marine  大小    小 7.55                         8+90(7.55)    0.940   +3.22%   +3.22%
+2   Cleveland Guardians @ Chicago W  讓球    Cleveland Guardians -0.575     1+85(0.575)   0.950   -0.23%   +2.27%
+3   Houston Astros @ San Diego Padr  讓球    San Diego Padres -0.65         1+70(0.65)    0.950   -0.61%   +1.89%
+4   Toronto Blue Jays @ Philadelphi  讓球    Toronto Blue Jays +1.475       1-95(1.475)   0.950   +4.14%   +1.64%
+5   Baltimore Orioles @ Texas Range  大小    小 8.45                         8-90(8.45)    0.940   +1.42%   +1.42%
+6   Tampa Bay Rays @ Seattle Marine  讓球    Seattle Mariners -0            0(0)          0.950   -1.19%   +1.30%
+7   Chicago Cubs @ Kansas City Roya  大小    小 10.45                        10-90(10.45)  0.940   +0.94%   +0.94%
+8   Toronto Blue Jays @ Philadelphi  大小    大 8.25                         8-50(8.25)    0.940   +0.92%   +0.92%
+9   Baltimore Orioles @ Texas Range  讓球    Texas Rangers -0.775           1+45(0.775)   0.950   -1.61%   +0.88%
+10  Minnesota Twins @ Milwaukee Bre  讓球    Minnesota Twins +1.7           2+60(1.7)     0.950   +3.04%   +0.54%
+
+達 +4% 門檻: 0 / 60
+不下注 — NO BET

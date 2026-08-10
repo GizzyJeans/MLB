@@ -1,0 +1,27 @@
+{
+  "_comment": "Asian board for the 2026-08-10 slate (Taipei 08-11), ten games. Favourite for each game was cross-checked against the US moneyline rather than read off the row position alone; all ten agreed.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Boston Red Sox", "home": "Toronto Blue Jays",
+     "favourite": "Boston Red Sox", "handicap": "1-90", "total": "8-50"},
+    {"away": "New York Mets", "home": "Atlanta Braves",
+     "favourite": "Atlanta Braves", "handicap": "1-5", "total": "8-70"},
+    {"away": "Baltimore Orioles", "home": "Minnesota Twins",
+     "favourite": "Baltimore Orioles", "handicap": "1+60", "total": "8-70"},
+    {"away": "Philadelphia Phillies", "home": "St. Louis Cardinals",
+     "favourite": "St. Louis Cardinals", "handicap": "1+90", "total": "9平"},
+    {"away": "Texas Rangers", "home": "Los Angeles Angels",
+     "favourite": "Texas Rangers", "handicap": "1+55", "total": "8平"},
+    {"away": "Colorado Rockies", "home": "Arizona Diamondbacks",
+     "favourite": "Arizona Diamondbacks", "handicap": "1-40", "total": "9+70"},
+    {"away": "Milwaukee Brewers", "home": "San Diego Padres",
+     "favourite": "Milwaukee Brewers", "handicap": "1+75", "total": "7-30"},
+    {"away": "Tampa Bay Rays", "home": "Athletics",
+     "favourite": "Tampa Bay Rays", "handicap": "1-95", "total": "10+40"},
+    {"away": "Houston Astros", "home": "San Francisco Giants",
+     "favourite": "Houston Astros", "handicap": "1-30", "total": "8平"},
+    {"away": "Kansas City Royals", "home": "Los Angeles Dodgers",
+     "favourite": "Los Angeles Dodgers", "handicap": "2-5", "total": "8+70"}
+  ]
+}

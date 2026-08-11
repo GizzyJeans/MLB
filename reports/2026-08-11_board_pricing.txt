@@ -1,0 +1,39 @@
+=== 解碼驗證：板面線 vs 本場自身隱含的公平線 ===
+比賽                                   讓球           公平     差      大小           公平     差      美盤   
+Pittsburgh Pirates @ Miami Marlins   1+90(0.55)     0.59  -0.04 7+30(6.85)     6.83  +0.02   7.0
+Cleveland Guardians @ Detroit Tiger  1+50(0.75)     0.70  +0.05 8-10(8.05)     8.08  -0.03   8.0
+Chicago Cubs @ Washington Nationals  1-75(1.375)    1.31  +0.06 9+30(8.85)     8.91  -0.06   9.0
+Seattle Mariners @ New York Yankees  1+30(0.85)     0.75  +0.10 8+20(7.9)      7.90  +0.00   8.0
+Boston Red Sox @ Toronto Blue Jays   1+35(0.825)    0.88  -0.06 7+30(6.85)     6.97  -0.12   7.0
+New York Mets @ Atlanta Braves       1+35(0.825)    0.75  +0.07 8.5(8.5)       8.45  +0.05   8.5
+Baltimore Orioles @ Minnesota Twins  1+80(0.6)      0.61  -0.01 9-80(9.4)      9.36  +0.04   9.5
+Cincinnati Reds @ Chicago White Sox  1-10(1.05)     0.96  +0.09 7.5(7.5)       7.60  -0.10   7.5
+Philadelphia Phillies @ St. Louis C  1-70(1.35)     1.25  +0.10 8-20(8.1)      8.09  +0.01   8.0
+Texas Rangers @ Los Angeles Angels   1-20(1.1)      1.03  +0.07 9-20(9.1)      9.08  +0.02   9.0
+Colorado Rockies @ Arizona Diamondb  1-55(1.275)    1.17  +0.11 9-70(9.35)     9.31  +0.04   9.5
+Milwaukee Brewers @ San Diego Padre  1-5(1.025)     0.93  +0.09 7-70(7.35)     7.44  -0.09   7.5
+Tampa Bay Rays @ Athletics           2+90(1.55)     1.43  +0.12 10-50(10.25)  10.27  -0.02  10.5
+Houston Astros @ San Francisco Gian  2+90(1.55)     1.48  +0.07 8平(8)          8.06  -0.06   8.0
+Kansas City Royals @ Los Angeles Do  2+40(1.8)      1.58  +0.22 9+80(8.6)      8.34  +0.26   8.5
+
+平均絕對誤差  讓球 0.084 分   大小 0.061 分
+
+健全性檢查：去偏後 EV 的分布
+  中位數 -2.52%  (公平掛盤應落在 -2.5% ~ -3.0%)
+  範圍 -7.58% ~ +2.70%
+
+=== 前 10 候選（板面實際賠率，去偏後）===
+#   比賽                               市場    選擇                             板面線           賠率     原始       去偏      
+1   Boston Red Sox @ Toronto Blue J  讓球    Toronto Blue Jays -0.825       1+35(0.825)   0.950   +0.21%   +2.70%
+2   Kansas City Royals @ Los Angele  大小    小 8.6                          9+80(8.6)     0.940   +1.70%   +1.70%
+3   Pittsburgh Pirates @ Miami Marl  讓球    Pittsburgh Pirates -0.55       1+90(0.55)    0.950   -1.28%   +1.22%
+4   Baltimore Orioles @ Minnesota T  讓球    Minnesota Twins -0.6           1+80(0.6)     0.950   -2.13%   +0.37%
+5   Boston Red Sox @ Toronto Blue J  大小    大 6.85                         7+30(6.85)    0.940   +0.13%   +0.13%
+6   Kansas City Royals @ Los Angele  讓球    Kansas City Royals +1.8        2+40(1.8)     0.950   +2.62%   +0.12%
+7   Milwaukee Brewers @ San Diego P  大小    大 7.35                         7-70(7.35)    0.940   -0.65%   -0.65%
+8   Colorado Rockies @ Arizona Diam  讓球    Colorado Rockies +1.275        1-55(1.275)   0.950   +1.52%   -0.98%
+9   Cincinnati Reds @ Chicago White  大小    大 7.5                          7.5(7.5)      0.950   -0.98%   -0.98%
+10  Seattle Mariners @ New York Yan  讓球    Seattle Mariners +0.85         1+30(0.85)    0.950   +1.39%   -1.10%
+
+達 +4% 門檻: 0 / 60
+不下注 — NO BET

@@ -103,12 +103,20 @@ def main() -> int:
                 "adj": handicap_ev(margin, hcap, hk_price=hk_h, laying=laying,
                                    shift=COVER_BIAS if laying else -COVER_BIAS),
             })
+        # A board does not always quote both sides of a total at the same
+        # price. When it splits them the margin sits on one side only, and
+        # assuming the common price silently misprices that side.
+        prices = {
+            True: entry.get("total_price_over", hk_t),
+            False: entry.get("total_price_under", hk_t),
+        }
         for is_over, label in ((True, "大"), (False, "小")):
-            ev = total_ev(sim.total, tline, hk_price=hk_t, over=is_over)
+            price = prices[is_over]
+            ev = total_ev(sim.total, tline, hk_price=price, over=is_over)
             candidates.append({
                 "matchup": matchup, "market": "大小",
                 "side": f"{label} {tline.effective:g}", "line": str(tline),
-                "price": hk_t, "raw": ev, "adj": ev,
+                "price": price, "raw": ev, "adj": ev,
             })
 
     print("=== 解碼驗證：板面線 vs 本場自身隱含的公平線 ===")

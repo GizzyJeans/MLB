@@ -34,6 +34,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from mlbline.asian import handicap_ev, parse_line, total_ev  # noqa: E402
 
 
+def abbrev(team: str) -> str:
+    """Short tag that stays distinct across same-city clubs."""
+    words = team.split()
+    if len(words) >= 2:
+        return (words[0][:2] + words[-1][:2]).upper()
+    return team[:4].upper()
+
+
 def load_scores(path: str) -> dict[tuple[str, str], tuple[int, int]]:
     """Map (away, home) -> (away runs, home runs) for completed games."""
     out = {}
@@ -74,7 +82,9 @@ def main() -> int:
         underdog = entry["away"] if fav_home else entry["home"]
 
         hcap, tline = parse_line(entry["handicap"]), parse_line(entry["total"])
-        label = f"{entry['away'][:3].upper()}@{entry['home'][:3].upper()}"
+        # Three letters collide: San Diego and San Francisco both give
+        # "SAN", which reads as the same game on two different rows.
+        label = f"{abbrev(entry['away'])}@{abbrev(entry['home'])}"
         result = f"{away_runs}-{home_runs}"
 
         matchup = f"{entry['away']} @ {entry['home']}"

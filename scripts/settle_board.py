@@ -25,7 +25,9 @@ import json
 import re
 import statistics
 import sys
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import numpy as np
 
@@ -42,16 +44,42 @@ def abbrev(team: str) -> str:
     return team[:4].upper()
 
 
-def load_scores(path: str) -> dict[tuple[str, str], tuple[int, int]]:
-    """Map (away, home) -> (away runs, home runs) for completed games."""
-    out = {}
+def eastern_date(iso: str) -> str:
+    """Calendar date of a game in US Eastern time.
+
+    A slate spans two UTC dates -- a 10pm Eastern first pitch is already
+    tomorrow in UTC -- so the UTC date splits one night's games in two.
+    Eastern is what a schedule means by "the 11th".
+    """
+    stamp = datetime.fromisoformat(iso.replace("Z", "+00:00"))
+    return stamp.astimezone(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+
+
+def load_scores(path: str, date: str | None = None
+                ) -> dict[tuple[str, str], tuple[int, int]]:
+    """Map (away, home) -> (away runs, home runs) for completed games.
+
+    `date` is not optional in practice. Teams play series, so the same
+    pairing is completed on consecutive days, and keying on the pairing alone
+    lets the second night silently overwrite the first. Without the filter a
+    settlement quietly grades yesterday's picks against tonight's scores.
+    """
+    out: dict[tuple[str, str], tuple[int, int]] = {}
     for game in json.loads(Path(path).read_text(encoding="utf-8")):
         if not game.get("completed") or not game.get("scores"):
             continue
+        if date and eastern_date(game["commence_time"]) != date:
+            continue
         runs = {s["name"]: int(s["score"]) for s in game["scores"]}
         away, home = game["away_team"], game["home_team"]
-        if away in runs and home in runs:
-            out[(away, home)] = (runs[away], runs[home])
+        if away not in runs or home not in runs:
+            continue
+        key = (away, home)
+        if key in out:
+            raise SystemExit(
+                f"same pairing completed twice on {date}: {away} @ {home}. "
+                "A doubleheader needs game numbers to settle unambiguously.")
+        out[key] = (runs[away], runs[home])
     return out
 
 
@@ -61,11 +89,13 @@ def main() -> int:
     parser.add_argument("--scores", required=True)
     parser.add_argument("--expected", default=None,
                         help="saved pricing report, to compare against")
+    parser.add_argument("--date", required=True,
+                        help="slate date in US Eastern, e.g. 2026-08-11")
     args = parser.parse_args()
 
     board = json.loads(Path(args.board).read_text(encoding="utf-8"))
     hk_h, hk_t = board["handicap_price_hk"], board["total_price_hk"]
-    scores = load_scores(args.scores)
+    scores = load_scores(args.scores, args.date)
 
     rows = []
     for entry in board["games"]:
@@ -94,11 +124,19 @@ def main() -> int:
                 "market": "讓球", "side": f"{who} {sign}{hcap.effective:g}",
                 "pnl": handicap_ev(margin, hcap, hk_price=hk_h, laying=laying),
             })
+        # Honour the same per-side price overrides the pricing step reads.
+        # Settling a split-priced total at the common price grades a bet at
+        # odds it was never offered at, and the two scripts must not drift.
+        prices = {
+            True: entry.get("total_price_over", hk_t),
+            False: entry.get("total_price_under", hk_t),
+        }
         for is_over, name in ((True, "大"), (False, "小")):
             rows.append({
                 "game": label, "matchup": matchup, "result": result,
                 "market": "大小", "side": f"{name} {tline.effective:g}",
-                "pnl": total_ev(total, tline, hk_price=hk_t, over=is_over),
+                "pnl": total_ev(total, tline, hk_price=prices[is_over],
+                                over=is_over),
             })
 
     if args.expected:

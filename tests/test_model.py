@@ -161,6 +161,70 @@ def test_kelly_scales_with_edge():
     approx(large, 0.05, tol=1e-9)
 
 
+def test_bias_correction_does_not_touch_moneyline_equivalent_handicaps():
+    """A handicap under one run is a moneyline bet, and carries no error.
+
+    The engine's win probability is fitted to the market moneyline, so laying
+    a handicap of zero — or of 0.5, which still only asks whether the
+    favourite won — has nothing for a margin-distribution correction to fix.
+    Applying one anyway manufactured +2.5% of edge from nothing, and put a
+    pick-em third on a slate.
+    """
+    from mlbline.asian import AsianLine, handicap_ev
+
+    rng = np.random.default_rng(3)
+    margin = rng.integers(-6, 7, 40_000)
+
+    for line in (AsianLine(0.0, 0.0, 0.0, "0"),
+                 AsianLine(0.5, 0.5, 0.0, "0.5")):
+        for laying in (True, False):
+            plain = handicap_ev(margin, line, hk_price=0.95, laying=laying)
+            shifted = handicap_ev(margin, line, hk_price=0.95,
+                                  laying=laying, bias=0.0128)
+            approx(plain, shifted, tol=1e-12)
+
+
+def test_bias_correction_applies_where_the_margin_actually_matters():
+    """At a 1.5 line the correction moves both sides by the full amount."""
+    from mlbline.asian import AsianLine, handicap_ev
+
+    rng = np.random.default_rng(3)
+    margin = rng.integers(-6, 7, 40_000)
+    line = AsianLine(1.5, 1.5, 0.0, "1.5")
+    delta = 0.0128
+
+    lay = handicap_ev(margin, line, hk_price=0.95, laying=True)
+    lay_adj = handicap_ev(margin, line, hk_price=0.95, laying=True, bias=delta)
+    approx(lay_adj - lay, delta * 1.95, tol=1e-12)
+
+    get = handicap_ev(margin, line, hk_price=0.95, laying=False)
+    get_adj = handicap_ev(margin, line, hk_price=0.95, laying=False, bias=delta)
+    approx(get_adj - get, -delta * 1.95, tol=1e-12)
+
+
+def test_bias_correction_is_asymmetric_at_an_integer_line():
+    """A push returns stake, so the two sides do not move together.
+
+    At a line of exactly one the misallocated probability sits between
+    "wins by two" and the push, not the loss, so laying gains delta*price
+    while receiving loses only delta.
+    """
+    from mlbline.asian import AsianLine, handicap_ev
+
+    rng = np.random.default_rng(3)
+    margin = rng.integers(-6, 7, 40_000)
+    line = AsianLine(1.0, 1.0, 0.0, "1")
+    delta = 0.0128
+
+    lay_gap = (handicap_ev(margin, line, hk_price=0.95, laying=True, bias=delta)
+               - handicap_ev(margin, line, hk_price=0.95, laying=True))
+    get_gap = (handicap_ev(margin, line, hk_price=0.95, laying=False, bias=delta)
+               - handicap_ev(margin, line, hk_price=0.95, laying=False))
+    approx(lay_gap, delta * 0.95, tol=1e-12)
+    approx(get_gap, -delta, tol=1e-12)
+    assert abs(lay_gap) != abs(get_gap)
+
+
 def test_asian_line_sign_convention():
     """A minus reaches up toward the half above, a plus reaches down.
 

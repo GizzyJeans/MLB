@@ -70,30 +70,58 @@ def parse_line(text: str) -> AsianLine:
     return AsianLine(base - 0.5, base, 1.0 - weight, text)
 
 
-def _leg_ev(wins: np.ndarray, pushes: np.ndarray, hk_price: float,
-            shift: float) -> float:
+def _leg_ev(wins: np.ndarray, pushes: np.ndarray, hk_price: float) -> float:
     """EV per unit staked on one leg.
 
     A push returns the stake and contributes nothing, but it also removes the
     outcome from the losing side, which is exactly why integer lines price
     differently from half lines.
-
-    `shift` moves probability from losing to winning, used to correct the
-    engine's measured bias rather than pretending it is not there.
     """
     n = len(wins)
-    p_win = float(np.sum(wins)) / n + shift
+    p_win = float(np.sum(wins)) / n
     p_push = float(np.sum(pushes)) / n
-    p_win = min(max(p_win, 0.0), 1.0 - p_push)
-    p_lose = 1.0 - p_win - p_push
-    return p_win * hk_price - p_lose
+    return p_win * hk_price - (1.0 - p_win - p_push)
+
+
+def _leg_bias_adjustment(level: float, laying: bool, hk_price: float,
+                         delta: float) -> float:
+    """EV correction for one leg of a handicap.
+
+    `delta` is how much the engine understates the favourite's chance of
+    winning by two or more, holding its chance of winning at all fixed -- the
+    latter is fitted to the market moneyline, so it carries no error.
+
+    That fixed anchor is the whole point, and it makes the correction depend
+    on where the leg sits:
+
+      level < 1   Laying wins on any margin of 1 or more, which is simply
+                  the favourite winning. Anchored, so no error and no
+                  correction. Applying one here invents edge from nothing --
+                  a handicap of zero is a moneyline bet.
+      1 <= level < 2
+                  Laying needs a margin of two, which is exactly the quantity
+                  measured. At an integer line the misallocated probability
+                  lands in the push, which returns stake, so the two sides do
+                  not move by the same amount.
+      level >= 2  Needs a margin of three or more. No calibration was
+                  measured there, so nothing is applied and the number should
+                  be read as uncorrected.
+    """
+    if delta == 0.0 or level < 1.0 or level >= 2.0:
+        return 0.0
+    if float(level).is_integer():
+        # Probability shifts between "wins by two" and the push, not the loss.
+        return delta * hk_price if laying else -delta
+    return delta * (hk_price + 1.0) if laying else -delta * (hk_price + 1.0)
 
 
 def handicap_ev(margin: np.ndarray, line: AsianLine, *, hk_price: float,
-                laying: bool, shift: float = 0.0) -> float:
+                laying: bool, bias: float = 0.0) -> float:
     """EV of one unit on an Asian handicap.
 
     `margin` is the favourite's margin; `laying` is the side giving the runs.
+    `bias` is the engine's measured understatement of the favourite winning
+    by two or more, applied only to the legs it actually affects.
     """
     total = 0.0
     for level, weight in ((line.low, 1.0 - line.weight),
@@ -103,16 +131,17 @@ def handicap_ev(margin: np.ndarray, line: AsianLine, *, hk_price: float,
         integral = float(level).is_integer()
         if laying:
             wins = margin > level
-            pushes = (margin == level) if integral else np.zeros_like(wins)
         else:
             wins = margin < level
-            pushes = (margin == level) if integral else np.zeros_like(wins)
-        total += weight * _leg_ev(wins, pushes, hk_price, shift)
+        pushes = (margin == level) if integral else np.zeros_like(wins)
+        total += weight * (_leg_ev(wins, pushes, hk_price)
+                           + _leg_bias_adjustment(level, laying, hk_price,
+                                                  bias))
     return total
 
 
 def total_ev(runs: np.ndarray, line: AsianLine, *, hk_price: float,
-             over: bool, shift: float = 0.0) -> float:
+             over: bool) -> float:
     """EV of one unit on an Asian total."""
     total = 0.0
     for level, weight in ((line.low, 1.0 - line.weight),
@@ -122,7 +151,7 @@ def total_ev(runs: np.ndarray, line: AsianLine, *, hk_price: float,
         integral = float(level).is_integer()
         wins = runs > level if over else runs < level
         pushes = (runs == level) if integral else np.zeros_like(wins)
-        total += weight * _leg_ev(wins, pushes, hk_price, shift)
+        total += weight * _leg_ev(wins, pushes, hk_price)
     return total
 
 

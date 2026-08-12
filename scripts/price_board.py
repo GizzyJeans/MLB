@@ -100,8 +100,8 @@ def main() -> int:
                 "side": f"{who} {sign}{hcap.effective:g}", "line": str(hcap),
                 "price": hk_h,
                 "raw": handicap_ev(margin, hcap, hk_price=hk_h, laying=laying),
-                "adj": handicap_ev(margin, hcap, hk_price=hk_h, laying=laying,
-                                   shift=COVER_BIAS if laying else -COVER_BIAS),
+                "adj": handicap_ev(margin, hcap, hk_price=hk_h,
+                                   laying=laying, bias=COVER_BIAS),
             })
         # A board does not always quote both sides of a total at the same
         # price. When it splits them the margin sits on one side only, and

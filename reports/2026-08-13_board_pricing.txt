@@ -1,0 +1,33 @@
+=== 解碼驗證：板面線 vs 本場自身隱含的公平線 ===
+比賽                                   讓球           公平     差      大小           公平     差      美盤   
+Pittsburgh Pirates @ Miami Marlins   1+50(0.75)     0.74  +0.01 8-20(8.1)      7.97  +0.13   8.0
+Cleveland Guardians @ Detroit Tiger  1+55(0.725)    0.74  -0.02 8-10(8.05)     8.02  +0.03   8.0
+Seattle Mariners @ New York Yankees  1+5(0.975)     0.86  +0.11 8+80(7.6)      7.63  -0.03   7.5
+Cincinnati Reds @ Chicago White Sox  1+40(0.8)      0.80  +0.00 8-80(8.4)      8.34  +0.06   8.5
+Boston Red Sox @ Toronto Blue Jays   1-45(1.225)    1.16  +0.06 8平(8)          7.90  +0.10   8.0
+Chicago Cubs @ Washington Nationals  1-10(1.05)     1.08  -0.03 9+40(8.8)      8.66  +0.14   8.5
+Philadelphia Phillies @ Minnesota T  1+95(0.525)    0.51  +0.01 8.5(8.5)       8.46  +0.04   8.5
+Texas Rangers @ Los Angeles Angels   1-25(1.125)    1.09  +0.03 7-70(7.35)     7.37  -0.02   7.5
+Milwaukee Brewers @ Los Angeles Dod  1+25(0.875)    0.88  -0.01 8-60(8.3)      8.32  -0.02   8.5
+
+平均絕對誤差  讓球 0.032 分   大小 0.061 分
+
+健全性檢查：去偏後 EV 的分布
+  中位數 -2.52%  (公平掛盤應落在 -2.5% ~ -3.0%)
+  範圍 -5.71% ~ +1.10%
+
+=== 前 10 候選（板面實際賠率，去偏後）===
+#   比賽                               市場    選擇                             板面線           賠率     原始       去偏      
+1   Seattle Mariners @ New York Yan  讓球    Seattle Mariners +0.975        1+5(0.975)    0.950   +2.32%   +1.10%
+2   Pittsburgh Pirates @ Miami Marl  大小    小 8.1                          8-20(8.1)     0.960   +0.15%   +0.15%
+3   Chicago Cubs @ Washington Natio  大小    小 8.8                          9+40(8.8)     0.940   +0.06%   +0.06%
+4   Chicago Cubs @ Washington Natio  讓球    Chicago Cubs -1.05             1-10(1.05)    0.950   -1.47%   -0.12%
+5   Milwaukee Brewers @ Los Angeles  讓球    Los Angeles Dodgers -0.875     1+25(0.875)   0.950   -1.88%   -0.97%
+6   Boston Red Sox @ Toronto Blue J  大小    小 8                            8平(8)         0.940   -1.17%   -1.17%
+7   Cleveland Guardians @ Detroit T  讓球    Cleveland Guardians -0.725     1+55(0.725)   0.950   -1.96%   -1.42%
+8   Philadelphia Phillies @ Minneso  大小    小 8.5                          8.5(8.5)      0.960   -1.43%   -1.43%
+9   Texas Rangers @ Los Angeles Ang  大小    大 7.35                         7-70(7.35)    0.960   -1.49%   -1.49%
+10  Texas Rangers @ Los Angeles Ang  讓球    Texas Rangers -1.125           1-25(1.125)   0.950   -3.10%   -1.56%
+
+達 +4% 門檻: 0 / 36
+不下注 — NO BET

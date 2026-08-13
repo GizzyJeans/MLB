@@ -1,0 +1,30 @@
+{
+  "_comment": "Asian board for the 2026-08-13 slate (Taipei 08-14), nine games. Favourites cross-checked against the US moneyline; eight matched outright. Phillies at Twins is a true pick-em in the US market (home exactly 50.0%) and the board has not opened its moneyline, so the favourite here follows the board's own row placement. Five of nine totals are quoted asymmetrically today, in both directions.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Pittsburgh Pirates", "home": "Miami Marlins",
+     "favourite": "Pittsburgh Pirates", "handicap": "1+50", "total": "8-20",
+     "total_price_over": 0.920, "total_price_under": 0.960},
+    {"away": "Cleveland Guardians", "home": "Detroit Tigers",
+     "favourite": "Cleveland Guardians", "handicap": "1+55", "total": "8-10",
+     "total_price_over": 0.960, "total_price_under": 0.920},
+    {"away": "Seattle Mariners", "home": "New York Yankees",
+     "favourite": "New York Yankees", "handicap": "1+5", "total": "8+80",
+     "total_price_over": 0.960, "total_price_under": 0.920},
+    {"away": "Cincinnati Reds", "home": "Chicago White Sox",
+     "favourite": "Chicago White Sox", "handicap": "1+40", "total": "8-80"},
+    {"away": "Boston Red Sox", "home": "Toronto Blue Jays",
+     "favourite": "Boston Red Sox", "handicap": "1-45", "total": "8平"},
+    {"away": "Chicago Cubs", "home": "Washington Nationals",
+     "favourite": "Chicago Cubs", "handicap": "1-10", "total": "9+40"},
+    {"away": "Philadelphia Phillies", "home": "Minnesota Twins",
+     "favourite": "Minnesota Twins", "handicap": "1+95", "total": "8.5",
+     "total_price_over": 0.920, "total_price_under": 0.960},
+    {"away": "Texas Rangers", "home": "Los Angeles Angels",
+     "favourite": "Texas Rangers", "handicap": "1-25", "total": "7-70",
+     "total_price_over": 0.960, "total_price_under": 0.920},
+    {"away": "Milwaukee Brewers", "home": "Los Angeles Dodgers",
+     "favourite": "Los Angeles Dodgers", "handicap": "1+25", "total": "8-60"}
+  ]
+}

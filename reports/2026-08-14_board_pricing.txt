@@ -1,0 +1,34 @@
+=== 解碼驗證：板面線 vs 本場自身隱含的公平線 ===
+比賽                                   讓球           公平     差      大小           公平     差      美盤   
+Miami Marlins @ Cincinnati Reds      1+85(0.575)    0.59  -0.01 8+30(7.85)     7.85  +0.00   7.5
+Chicago White Sox @ Detroit Tigers   1+10(0.95)     0.94  +0.01 9+60(8.7)      8.68  +0.02   8.5
+Boston Red Sox @ Pittsburgh Pirates  1+25(0.875)    0.80  +0.07 8+40(7.8)      7.71  +0.09   7.5
+Washington Nationals @ New York Met  1+85(0.575)    0.64  -0.06 9+80(8.6)      8.56  +0.04   8.5
+San Diego Padres @ Cleveland Guardi  1+60(0.7)      0.74  -0.04 7-60(7.3)      7.34  -0.04   7.5
+New York Yankees @ Toronto Blue Jay  1-40(1.2)      1.09  +0.11 8+40(7.8)      7.77  +0.03   8.0
+Seattle Mariners @ Houston Astros    1+55(0.725)    0.75  -0.03 8-40(8.2)      8.08  +0.12   8.0
+Kansas City Royals @ Los Angeles An  0(0)           0.51  -0.51 9+40(8.8)      8.81  -0.01   9.0
+Milwaukee Brewers @ Los Angeles Dod  1-40(1.2)      1.16  +0.04 8+60(7.7)      7.74  -0.04   7.5
+Colorado Rockies @ San Francisco Gi  1+45(0.775)    0.75  +0.03 7.5(7.5)       7.56  -0.06   7.5
+
+平均絕對誤差  讓球 0.092 分   大小 0.045 分
+
+健全性檢查：去偏後 EV 的分布
+  中位數 -2.64%  (公平掛盤應落在 -2.5% ~ -3.0%)
+  範圍 -4.88% ~ +0.01%
+
+=== 前 10 候選（板面實際賠率，去偏後）===
+#   比賽                               市場    選擇                             板面線           賠率     原始       去偏      
+1   Washington Nationals @ New York  讓球    New York Mets -0.575           1+85(0.575)   0.950   -0.18%   +0.01%
+2   San Diego Padres @ Cleveland Gu  讓球    Cleveland Guardians -0.7       1+60(0.7)     0.950   -0.88%   -0.39%
+3   Seattle Mariners @ Houston Astr  讓球    Houston Astros -0.725          1+55(0.725)   0.950   -1.34%   -0.79%
+4   Seattle Mariners @ Houston Astr  大小    小 8.2                          8-40(8.2)     0.940   -0.97%   -0.97%
+5   New York Yankees @ Toronto Blue  讓球    Toronto Blue Jays +1.2         1-40(1.2)     0.950   +0.72%   -1.04%
+6   Boston Red Sox @ Pittsburgh Pir  讓球    Pittsburgh Pirates +0.875      1+25(0.875)   0.950   -0.34%   -1.30%
+7   Boston Red Sox @ Pittsburgh Pir  大小    小 7.8                          8+40(7.8)     0.940   -1.40%   -1.40%
+8   Chicago White Sox @ Detroit Tig  讓球    Detroit Tigers -0.95           1+10(0.95)    0.950   -2.59%   -1.49%
+9   Miami Marlins @ Cincinnati Reds  讓球    Cincinnati Reds -0.575         1+85(0.575)   0.950   -1.99%   -1.81%
+10  San Diego Padres @ Cleveland Gu  大小    大 7.3                          7-60(7.3)     0.940   -1.83%   -1.83%
+
+達 +4% 門檻: 0 / 40
+不下注 — NO BET

@@ -1,0 +1,28 @@
+{
+  "_comment": "Asian board for the 2026-08-14 slate (Taipei 08-15). The board shows ten of the day's fourteen games; the Cardinals at Cubs, Orioles at Rays, Diamondbacks at Braves and Rangers at Athletics are not on it and are not priced. Favourites cross-checked against the US moneyline; all ten agreed. Royals at Angels is a true pick-em (home exactly 50.0%) hung at a zero handicap, so the favourite label follows the home side and carries no meaning.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Miami Marlins", "home": "Cincinnati Reds",
+     "favourite": "Cincinnati Reds", "handicap": "1+85", "total": "8+30"},
+    {"away": "Chicago White Sox", "home": "Detroit Tigers",
+     "favourite": "Detroit Tigers", "handicap": "1+10", "total": "9+60"},
+    {"away": "Boston Red Sox", "home": "Pittsburgh Pirates",
+     "favourite": "Boston Red Sox", "handicap": "1+25", "total": "8+40"},
+    {"away": "Washington Nationals", "home": "New York Mets",
+     "favourite": "New York Mets", "handicap": "1+85", "total": "9+80"},
+    {"away": "San Diego Padres", "home": "Cleveland Guardians",
+     "favourite": "Cleveland Guardians", "handicap": "1+60", "total": "7-60"},
+    {"away": "New York Yankees", "home": "Toronto Blue Jays",
+     "favourite": "New York Yankees", "handicap": "1-40", "total": "8+40",
+     "total_price_over": 0.960, "total_price_under": 0.920},
+    {"away": "Seattle Mariners", "home": "Houston Astros",
+     "favourite": "Houston Astros", "handicap": "1+55", "total": "8-40"},
+    {"away": "Kansas City Royals", "home": "Los Angeles Angels",
+     "favourite": "Los Angeles Angels", "handicap": "0", "total": "9+40"},
+    {"away": "Milwaukee Brewers", "home": "Los Angeles Dodgers",
+     "favourite": "Los Angeles Dodgers", "handicap": "1-40", "total": "8+60"},
+    {"away": "Colorado Rockies", "home": "San Francisco Giants",
+     "favourite": "San Francisco Giants", "handicap": "1+45", "total": "7.5"}
+  ]
+}

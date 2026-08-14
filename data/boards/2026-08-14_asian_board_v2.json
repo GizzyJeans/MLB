@@ -1,0 +1,30 @@
+{
+  "_comment": "Refreshed Asian board for the 2026-08-14 slate (Taipei 08-15), now eleven games with the Cardinals at Cubs added. Lines moved across nearly every game since the earlier capture, and the Royals at Angels handicap flipped from a flat zero to Kansas City laying 0.575 — the US market moved the same way, home from 50.0% to 49.4%. Favourites cross-checked against the refreshed moneyline; all eleven agreed.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "St. Louis Cardinals", "home": "Chicago Cubs",
+     "favourite": "Chicago Cubs", "handicap": "1-55", "total": "8+20"},
+    {"away": "Miami Marlins", "home": "Cincinnati Reds",
+     "favourite": "Cincinnati Reds", "handicap": "1+85", "total": "8+60"},
+    {"away": "Chicago White Sox", "home": "Detroit Tigers",
+     "favourite": "Detroit Tigers", "handicap": "1+35", "total": "9+70"},
+    {"away": "Boston Red Sox", "home": "Pittsburgh Pirates",
+     "favourite": "Boston Red Sox", "handicap": "1+30", "total": "8-20"},
+    {"away": "Washington Nationals", "home": "New York Mets",
+     "favourite": "New York Mets", "handicap": "1+90", "total": "9+60"},
+    {"away": "San Diego Padres", "home": "Cleveland Guardians",
+     "favourite": "Cleveland Guardians", "handicap": "1+50", "total": "7-40"},
+    {"away": "New York Yankees", "home": "Toronto Blue Jays",
+     "favourite": "New York Yankees", "handicap": "1-40", "total": "8+40",
+     "total_price_over": 0.960, "total_price_under": 0.920},
+    {"away": "Seattle Mariners", "home": "Houston Astros",
+     "favourite": "Houston Astros", "handicap": "1+60", "total": "8-30"},
+    {"away": "Kansas City Royals", "home": "Los Angeles Angels",
+     "favourite": "Kansas City Royals", "handicap": "1+85", "total": "8.5"},
+    {"away": "Milwaukee Brewers", "home": "Los Angeles Dodgers",
+     "favourite": "Los Angeles Dodgers", "handicap": "1-45", "total": "8+70"},
+    {"away": "Colorado Rockies", "home": "San Francisco Giants",
+     "favourite": "San Francisco Giants", "handicap": "1+50", "total": "8+80"}
+  ]
+}

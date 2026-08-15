@@ -43,7 +43,7 @@ from mlbline.asian import (  # noqa: E402
 )
 from mlbline.implied import solve  # noqa: E402
 from mlbline.market import summarise_line  # noqa: E402
-from mlbline.odds import load_snapshot, normalise  # noqa: E402
+from mlbline.odds import load_snapshot, normalise, select_slate  # noqa: E402
 
 # Measured shortfall in the favourite's cover probability, from the slate's
 # mean disagreement with the market and consistent with the out-of-sample
@@ -56,11 +56,14 @@ def main() -> int:
     parser.add_argument("--board", required=True)
     parser.add_argument("--snapshot", required=True)
     parser.add_argument("--top", type=int, default=10)
+    parser.add_argument("--date", default=None,
+                        help="slate date in US Eastern, e.g. 2026-08-14. "
+                             "Required once the next day's lines are open.")
     args = parser.parse_args()
 
     board = json.loads(Path(args.board).read_text(encoding="utf-8"))
     hk_h, hk_t = board["handicap_price_hk"], board["total_price_hk"]
-    games = {g.matchup: g for g in normalise(load_snapshot(args.snapshot))}
+    games = select_slate(normalise(load_snapshot(args.snapshot)), args.date)
 
     candidates, checks = [], []
 

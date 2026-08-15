@@ -161,6 +161,39 @@ def test_kelly_scales_with_edge():
     approx(large, 0.05, tol=1e-9)
 
 
+def test_slate_selection_refuses_a_repeated_pairing():
+    """Series mean the same pairing appears on consecutive days.
+
+    An odds feed pulled late in the evening carries tomorrow's lines beside
+    tonight's. Indexing by matchup alone let the later game overwrite the
+    earlier one, which priced tomorrow's pitchers against tonight's board and
+    produced a +32% handicap. Better to refuse than to guess.
+    """
+    from datetime import datetime, timezone
+
+    from mlbline.odds import Game, eastern_date, select_slate
+
+    tonight = Game("a", datetime(2026, 8, 15, 2, 11, tzinfo=timezone.utc),
+                   "Los Angeles Dodgers", "Milwaukee Brewers")
+    tomorrow = Game("b", datetime(2026, 8, 15, 23, 15, tzinfo=timezone.utc),
+                    "Los Angeles Dodgers", "Milwaukee Brewers")
+
+    # A 10pm Eastern first pitch is already tomorrow in UTC.
+    assert eastern_date(tonight.commence_time) == "2026-08-14"
+    assert eastern_date(tomorrow.commence_time) == "2026-08-15"
+
+    try:
+        select_slate([tonight, tomorrow])
+    except ValueError as exc:
+        assert "twice" in str(exc)
+    else:
+        raise AssertionError("duplicate pairing was silently resolved")
+
+    chosen = select_slate([tonight, tomorrow], "2026-08-14")
+    assert len(chosen) == 1
+    assert chosen[tonight.matchup].game_id == "a"
+
+
 def test_bias_correction_does_not_touch_moneyline_equivalent_handicaps():
     """A handicap under one run is a moneyline bet, and carries no error.
 

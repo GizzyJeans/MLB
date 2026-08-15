@@ -14,6 +14,7 @@ import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from typing import Iterable, Iterator, Sequence
 
 from .devig import american_to_decimal
@@ -104,6 +105,39 @@ class Game:
 
 def _parse_ts(raw: str) -> datetime:
     return datetime.fromisoformat(raw.replace("Z", "+00:00"))
+
+
+def eastern_date(moment: datetime) -> str:
+    """Calendar date of a game in US Eastern time.
+
+    A slate spans two UTC dates -- a 10pm Eastern first pitch is already
+    tomorrow in UTC -- so the UTC date splits one night's games in two.
+    Eastern is what a schedule means by "the 14th".
+    """
+    return moment.astimezone(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+
+
+def select_slate(games: list[Game], date: str | None = None) -> dict[str, Game]:
+    """Index games by matchup for one slate, refusing ambiguity.
+
+    Teams play series, so the same pairing appears on consecutive days. An
+    odds feed pulled late in the evening carries tomorrow's lines alongside
+    tonight's, and indexing by matchup alone lets the later game overwrite
+    the earlier one -- silently pricing tomorrow's pitchers against tonight's
+    board. Filtering to the slate's own date is what prevents that, and a
+    pairing still appearing twice is raised rather than resolved by guessing.
+    """
+    chosen: dict[str, Game] = {}
+    for game in games:
+        if date and eastern_date(game.commence_time) != date:
+            continue
+        if game.matchup in chosen:
+            raise ValueError(
+                f"{game.matchup} appears twice on {date}. Pass --date, or "
+                "add game numbers if this is a doubleheader."
+            )
+        chosen[game.matchup] = game
+    return chosen
 
 
 def _line_key(market: str, point: float | None, side: str,

@@ -44,6 +44,7 @@ from mlbline.asian import (  # noqa: E402
 from mlbline.implied import solve  # noqa: E402
 from mlbline.market import summarise_line  # noqa: E402
 from mlbline.odds import load_snapshot, normalise, select_slate  # noqa: E402
+from mlbline.teams import pad, zh, zh_matchup  # noqa: E402
 
 # Measured shortfall in the favourite's cover probability, from the slate's
 # mean disagreement with the market and consistent with the out-of-sample
@@ -92,15 +93,16 @@ def main() -> int:
         underdog = game.away_team if fav_home else game.home_team
 
         hcap, tline = parse_line(entry["handicap"]), parse_line(entry["total"])
+        shown = zh_matchup(entry["away"], entry["home"])
         checks.append((
-            matchup, hcap, fair_handicap(margin),
+            shown, hcap, fair_handicap(margin),
             tline, fair_total(sim.total), us_total,
         ))
 
         for laying, who, sign in ((True, favourite, "-"), (False, underdog, "+")):
             candidates.append({
-                "matchup": matchup, "market": "讓球",
-                "side": f"{who} {sign}{hcap.effective:g}", "line": str(hcap),
+                "matchup": shown, "market": "讓球",
+                "side": f"{zh(who)} {sign}{hcap.effective:g}", "line": str(hcap),
                 "price": hk_h,
                 "raw": handicap_ev(margin, hcap, hk_price=hk_h, laying=laying),
                 "adj": handicap_ev(margin, hcap, hk_price=hk_h,
@@ -117,21 +119,21 @@ def main() -> int:
             price = prices[is_over]
             ev = total_ev(sim.total, tline, hk_price=price, over=is_over)
             candidates.append({
-                "matchup": matchup, "market": "大小",
+                "matchup": shown, "market": "大小",
                 "side": f"{label} {tline.effective:g}", "line": str(tline),
                 "price": price, "raw": ev, "adj": ev,
             })
 
     print("=== 解碼驗證：板面線 vs 本場自身隱含的公平線 ===")
-    print(f"{'比賽':36s} {'讓球':12s} {'公平':6s} {'差':6s} "
-          f"{'大小':12s} {'公平':6s} {'差':6s} {'美盤':5s}")
+    print(f"{pad('比賽', 24)} {pad('讓球', 14)} {'公平':>6s} {'差':>7s} "
+          f"{pad('大小', 14)} {'公平':>6s} {'差':>7s} {'美盤':>5s}")
     h_err, t_err = [], []
     for matchup, hcap, fair_h, tline, fair_t, us_total in checks:
         dh, dt = hcap.effective - fair_h, tline.effective - fair_t
         h_err.append(abs(dh))
         t_err.append(abs(dt))
-        print(f"{matchup[:35]:36s} {str(hcap):12s} {fair_h:6.2f} {dh:+6.2f} "
-              f"{str(tline):12s} {fair_t:6.2f} {dt:+6.2f} {us_total:5.1f}")
+        print(f"{pad(matchup, 24)} {pad(str(hcap), 14)} {fair_h:6.2f} {dh:+7.2f} "
+              f"{pad(str(tline), 14)} {fair_t:6.2f} {dt:+7.2f} {us_total:5.1f}")
     print(f"\n平均絕對誤差  讓球 {statistics.mean(h_err):.3f} 分   "
           f"大小 {statistics.mean(t_err):.3f} 分")
 
@@ -143,11 +145,11 @@ def main() -> int:
 
     candidates.sort(key=lambda c: -c["adj"])
     print(f"\n=== 前 {args.top} 候選（板面實際賠率，去偏後）===")
-    print(f"{'#':3s} {'比賽':32s} {'市場':5s} {'選擇':30s} "
-          f"{'板面線':13s} {'賠率':6s} {'原始':8s} {'去偏':8s}")
+    print(f"{'#':3s} {pad('比賽', 22)} {pad('市場', 6)} {pad('選擇', 22)} "
+          f"{pad('板面線', 14)} {'賠率':>6s} {'原始':>8s} {'去偏':>8s}")
     for i, c in enumerate(candidates[:args.top], 1):
-        print(f"{i:<3d} {c['matchup'][:31]:32s} {c['market']:5s} "
-              f"{c['side'][:29]:30s} {c['line']:13s} {c['price']:.3f} "
+        print(f"{i:<3d} {pad(c['matchup'], 22)} {pad(c['market'], 6)} "
+              f"{pad(c['side'], 22)} {pad(c['line'], 14)} {c['price']:.3f} "
               f"{c['raw'] * 100:+7.2f}% {c['adj'] * 100:+7.2f}%")
 
     passing = [c for c in candidates if c["adj"] >= 0.04]

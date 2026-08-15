@@ -34,6 +34,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from mlbline.asian import handicap_ev, parse_line, total_ev  # noqa: E402
+from mlbline.teams import pad, zh, zh_matchup  # noqa: E402
 
 
 def abbrev(team: str) -> str:
@@ -114,14 +115,17 @@ def main() -> int:
         hcap, tline = parse_line(entry["handicap"]), parse_line(entry["total"])
         # Three letters collide: San Diego and San Francisco both give
         # "SAN", which reads as the same game on two different rows.
-        label = f"{abbrev(entry['away'])}@{abbrev(entry['home'])}"
+        label = f"{zh(entry['away'])}@{zh(entry['home'])}"
         result = f"{away_runs}-{home_runs}"
 
-        matchup = f"{entry['away']} @ {entry['home']}"
+        matchup = zh_matchup(entry["away"], entry["home"])
+        matchup_en = f"{entry['away']} @ {entry['home']}"
         for laying, who, sign in ((True, favourite, "-"), (False, underdog, "+")):
             rows.append({
-                "game": label, "matchup": matchup, "result": result,
-                "market": "讓球", "side": f"{who} {sign}{hcap.effective:g}",
+                "game": label, "matchup": matchup, "matchup_en": matchup_en,
+                "result": result, "market": "讓球",
+                "side": f"{zh(who)} {sign}{hcap.effective:g}",
+                "side_en": f"{who} {sign}{hcap.effective:g}",
                 "pnl": handicap_ev(margin, hcap, hk_price=hk_h, laying=laying),
             })
         # Honour the same per-side price overrides the pricing step reads.
@@ -133,8 +137,10 @@ def main() -> int:
         }
         for is_over, name in ((True, "大"), (False, "小")):
             rows.append({
-                "game": label, "matchup": matchup, "result": result,
-                "market": "大小", "side": f"{name} {tline.effective:g}",
+                "game": label, "matchup": matchup, "matchup_en": matchup_en,
+                "result": result, "market": "大小",
+                "side": f"{name} {tline.effective:g}",
+                "side_en": f"{name} {tline.effective:g}",
                 "pnl": total_ev(total, tline, hk_price=prices[is_over],
                                 over=is_over),
             })
@@ -149,8 +155,8 @@ def main() -> int:
             if seen and line and line[0].isdigit():
                 picks.append(line)
         print("=== 前 10 候選結算 ===")
-        print(f"{'#':3s} {'比賽':12s} {'比分':7s} {'選擇':30s} "
-              f"{'預期EV':9s} {'實際':9s} {'結果':6s}")
+        print(f"{'#':3s} {pad('比賽', 18)} {'比分':>7s} {pad('選擇', 22)} "
+              f"{'預期EV':>9s} {'實際':>9s} {'結果':>6s}")
         realised = []
         # Match on the game as well as the selection. Matching on the
         # selection alone silently picks whichever row sorts first, and two
@@ -166,11 +172,16 @@ def main() -> int:
                 continue
             rank, matchup_prefix, market, side_text, adj_text = match.groups()
             adj = float(adj_text)
+            # Reports written before teams were displayed in Chinese carry
+            # English names, so match either form rather than stranding them.
+            want_game, want_side = matchup_prefix.strip(), side_text.strip()[:12]
             side = next(
                 (r for r in rows
-                 if r["matchup"].startswith(matchup_prefix.strip())
-                 and r["market"] == market
-                 and r["side"].startswith(side_text.strip()[:12])),
+                 if r["market"] == market
+                 and (r["matchup"].startswith(want_game)
+                      or r["matchup_en"].startswith(want_game))
+                 and (r["side"].startswith(want_side)
+                      or r["side_en"].startswith(want_side))),
                 None)
             if side is None:
                 print(f"{rank:3s} (無法對應) {matchup_prefix} / {side_text}")
@@ -178,9 +189,9 @@ def main() -> int:
             pnl = side["pnl"]
             realised.append(pnl)
             verdict = "贏" if pnl > 0.01 else ("輸" if pnl < -0.01 else "和")
-            print(f"{rank:3s} {side['game']:12s} {side['result']:7s} "
-                  f"{side['side'][:29]:30s} {adj:+8.2f}% {pnl * 100:+8.2f}% "
-                  f"{verdict:6s}")
+            print(f"{rank:3s} {pad(side['game'], 18)} {side['result']:>7s} "
+                  f"{pad(side['side'], 22)} {adj:+8.2f}% {pnl * 100:+8.2f}% "
+                  f"   {verdict}")
         if realised:
             print(f"\n前 10 合計損益: {sum(realised) * 100:+.2f}%  "
                   f"平均 {statistics.mean(realised) * 100:+.2f}% 每注")

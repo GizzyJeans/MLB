@@ -185,13 +185,38 @@ def test_slate_selection_refuses_a_repeated_pairing():
     try:
         select_slate([tonight, tomorrow])
     except ValueError as exc:
-        assert "twice" in str(exc)
+        assert "Pass a date" in str(exc)
     else:
         raise AssertionError("duplicate pairing was silently resolved")
 
     chosen = select_slate([tonight, tomorrow], "2026-08-14")
     assert len(chosen) == 1
     assert chosen[tonight.matchup].game_id == "a"
+
+
+def test_a_same_day_doubleheader_is_numbered_not_refused():
+    """Two dates is a series; two on one date is a doubleheader.
+
+    The first must raise, because pairing tomorrow's lines with tonight's
+    board is a real failure. The second must resolve, because both games are
+    genuinely on the slate and each needs its own price.
+    """
+    from datetime import datetime, timezone
+
+    from mlbline.odds import Game, select_slate
+
+    early = Game("g1", datetime(2026, 8, 17, 17, 41, tzinfo=timezone.utc),
+                 "Cincinnati Reds", "St. Louis Cardinals")
+    late = Game("g2", datetime(2026, 8, 17, 22, 41, tzinfo=timezone.utc),
+                "Cincinnati Reds", "St. Louis Cardinals")
+
+    chosen = select_slate([late, early], "2026-08-17")
+    assert set(chosen) == {f"{early.matchup} G1", f"{early.matchup} G2"}
+    # Numbered by start time, not by feed order.
+    assert chosen[f"{early.matchup} G1"].game_id == "g1"
+    assert chosen[f"{early.matchup} G2"].game_id == "g2"
+    # The bare matchup must not resolve to an arbitrary half.
+    assert early.matchup not in chosen
 
 
 def test_bias_correction_does_not_touch_moneyline_equivalent_handicaps():

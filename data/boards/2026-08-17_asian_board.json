@@ -1,0 +1,27 @@
+{
+  "_comment": "Asian board for the 2026-08-17 slate (Taipei 08-18), eleven rows of which ten are priceable — Athletics at Royals is locked on the board with no lines. Cardinals at Reds is a doubleheader, carried as separate entries with game numbers. Favourites cross-checked against the US moneyline; all ten agreed.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "St. Louis Cardinals", "home": "Cincinnati Reds", "game": 1,
+     "favourite": "St. Louis Cardinals", "handicap": "1+70", "total": "9-80"},
+    {"away": "Baltimore Orioles", "home": "Tampa Bay Rays",
+     "favourite": "Tampa Bay Rays", "handicap": "1-15", "total": "8+60"},
+    {"away": "St. Louis Cardinals", "home": "Cincinnati Reds", "game": 2,
+     "favourite": "St. Louis Cardinals", "handicap": "1+40", "total": "9-50"},
+    {"away": "Miami Marlins", "home": "Philadelphia Phillies",
+     "favourite": "Philadelphia Phillies", "handicap": "2+55", "total": "8平"},
+    {"away": "Detroit Tigers", "home": "Pittsburgh Pirates",
+     "favourite": "Detroit Tigers", "handicap": "1+90", "total": "8平"},
+    {"away": "San Diego Padres", "home": "New York Mets",
+     "favourite": "New York Mets", "handicap": "1+75", "total": "8平"},
+    {"away": "Arizona Diamondbacks", "home": "Boston Red Sox",
+     "favourite": "Boston Red Sox", "handicap": "1+20", "total": "9+40"},
+    {"away": "Atlanta Braves", "home": "Minnesota Twins",
+     "favourite": "Atlanta Braves", "handicap": "1+10", "total": "9-50"},
+    {"away": "Chicago White Sox", "home": "Chicago Cubs",
+     "favourite": "Chicago Cubs", "handicap": "1-10", "total": "8-20"},
+    {"away": "Los Angeles Dodgers", "home": "Colorado Rockies",
+     "favourite": "Los Angeles Dodgers", "handicap": "2-85", "total": "11+50"}
+  ]
+}

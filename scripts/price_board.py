@@ -70,8 +70,15 @@ def main() -> int:
 
     for entry in board["games"]:
         matchup = f"{entry['away']} @ {entry['home']}"
-        game = games.get(matchup)
+        # A doubleheader is keyed with its game number; a board entry that
+        # omits one for such a pairing would otherwise silently price nothing.
+        key = f"{matchup} G{entry['game']}" if entry.get("game") else matchup
+        game = games.get(key)
         if game is None:
+            if any(k.startswith(matchup + " G") for k in games):
+                raise SystemExit(
+                    f"{matchup} is a doubleheader on this slate; the board "
+                    "entry needs a \"game\": 1 or 2.")
             continue
         us_total = game.modal_point("totals")
         h2h = summarise_line(game, "h2h", None)
@@ -94,6 +101,8 @@ def main() -> int:
 
         hcap, tline = parse_line(entry["handicap"]), parse_line(entry["total"])
         shown = zh_matchup(entry["away"], entry["home"])
+        if entry.get("game"):
+            shown += f" G{entry['game']}"
         checks.append((
             shown, hcap, fair_handicap(margin),
             tline, fair_total(sim.total), us_total,

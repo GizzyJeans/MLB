@@ -118,25 +118,45 @@ def eastern_date(moment: datetime) -> str:
 
 
 def select_slate(games: list[Game], date: str | None = None) -> dict[str, Game]:
-    """Index games by matchup for one slate, refusing ambiguity.
+    """Index games by matchup for one slate.
 
     Teams play series, so the same pairing appears on consecutive days. An
     odds feed pulled late in the evening carries tomorrow's lines alongside
     tonight's, and indexing by matchup alone lets the later game overwrite
     the earlier one -- silently pricing tomorrow's pitchers against tonight's
-    board. Filtering to the slate's own date is what prevents that, and a
-    pairing still appearing twice is raised rather than resolved by guessing.
+    board. Filtering to the slate's own date prevents that.
+
+    A pairing can also legitimately repeat within one date, as a
+    doubleheader. Those are keyed "<matchup> G1" and "<matchup> G2" in start
+    order, so both remain reachable and neither can stand in for the other.
+    A caller asking for the bare matchup of a doubleheader gets nothing back
+    rather than an arbitrary half of it.
     """
-    chosen: dict[str, Game] = {}
+    grouped: dict[str, list[tuple[str, Game]]] = {}
     for game in games:
-        if date and eastern_date(game.commence_time) != date:
+        day = eastern_date(game.commence_time)
+        if date and day != date:
             continue
-        if game.matchup in chosen:
+        grouped.setdefault(game.matchup, []).append((day, game))
+
+    chosen: dict[str, Game] = {}
+    for matchup, entries in grouped.items():
+        days = {day for day, _ in entries}
+        if len(days) > 1:
+            # Two dates is a series, not a doubleheader. Numbering them G1
+            # and G2 would quietly pair tomorrow's lines with tonight's
+            # board, which is the failure this guard exists to catch.
             raise ValueError(
-                f"{game.matchup} appears twice on {date}. Pass --date, or "
-                "add game numbers if this is a doubleheader."
+                f"{matchup} appears on {sorted(days)}. Pass a date to choose "
+                "a slate."
             )
-        chosen[game.matchup] = game
+        group = [game for _, game in entries]
+        if len(group) == 1:
+            chosen[matchup] = group[0]
+            continue
+        for number, game in enumerate(
+                sorted(group, key=lambda g: g.commence_time), start=1):
+            chosen[f"{matchup} G{number}"] = game
     return chosen
 
 

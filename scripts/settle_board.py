@@ -57,15 +57,20 @@ def eastern_date(iso: str) -> str:
 
 
 def load_scores(path: str, date: str | None = None
-                ) -> dict[tuple[str, str], tuple[int, int]]:
-    """Map (away, home) -> (away runs, home runs) for completed games.
+                ) -> dict[str, tuple[int, int]]:
+    """Map a slate key to (away runs, home runs) for completed games.
+
+    Keyed the same way `odds.select_slate` keys lines: "<away> @ <home>" for a
+    single game, with " G1" / " G2" appended in start order when a pairing is
+    played twice on one date. Both sides of the pipeline therefore name a
+    doubleheader identically, and a settlement cannot quietly grade one game
+    against the other's score.
 
     `date` is not optional in practice. Teams play series, so the same
-    pairing is completed on consecutive days, and keying on the pairing alone
-    lets the second night silently overwrite the first. Without the filter a
-    settlement quietly grades yesterday's picks against tonight's scores.
+    pairing also completes on consecutive days; without the filter a
+    settlement grades yesterday's picks against tonight's scores.
     """
-    out: dict[tuple[str, str], tuple[int, int]] = {}
+    grouped: dict[str, list[tuple[str, tuple[int, int]]]] = {}
     for game in json.loads(Path(path).read_text(encoding="utf-8")):
         if not game.get("completed") or not game.get("scores"):
             continue
@@ -75,12 +80,17 @@ def load_scores(path: str, date: str | None = None
         away, home = game["away_team"], game["home_team"]
         if away not in runs or home not in runs:
             continue
-        key = (away, home)
-        if key in out:
-            raise SystemExit(
-                f"same pairing completed twice on {date}: {away} @ {home}. "
-                "A doubleheader needs game numbers to settle unambiguously.")
-        out[key] = (runs[away], runs[home])
+        grouped.setdefault(f"{away} @ {home}", []).append(
+            (game["commence_time"], (runs[away], runs[home])))
+
+    out: dict[str, tuple[int, int]] = {}
+    for matchup, entries in grouped.items():
+        entries.sort()
+        if len(entries) == 1:
+            out[matchup] = entries[0][1]
+            continue
+        for number, (_, score) in enumerate(entries, start=1):
+            out[f"{matchup} G{number}"] = score
     return out
 
 
@@ -100,7 +110,8 @@ def main() -> int:
 
     rows = []
     for entry in board["games"]:
-        key = (entry["away"], entry["home"])
+        matchup_en = f"{entry['away']} @ {entry['home']}"
+        key = f"{matchup_en} G{entry['game']}" if entry.get("game") else matchup_en
         if key not in scores:
             continue
         away_runs, home_runs = scores[key]
@@ -119,7 +130,9 @@ def main() -> int:
         result = f"{away_runs}-{home_runs}"
 
         matchup = zh_matchup(entry["away"], entry["home"])
-        matchup_en = f"{entry['away']} @ {entry['home']}"
+        if entry.get("game"):
+            matchup += f" G{entry['game']}"
+            label += f" G{entry['game']}"
         for laying, who, sign in ((True, favourite, "-"), (False, underdog, "+")):
             rows.append({
                 "game": label, "matchup": matchup, "matchup_en": matchup_en,

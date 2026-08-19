@@ -1,0 +1,101 @@
+date,rank,matchup_en,market,side_en,expected,pnl
+2026-08-09,1,Tampa Bay Rays @ Seattle Mariners,大小,小 7.55,0.0322,0.94
+2026-08-09,2,Cleveland Guardians @ Chicago White Sox,讓球,Cleveland Guardians -0.575,0.0227,-1.0
+2026-08-09,3,Houston Astros @ San Diego Padres,讓球,San Diego Padres -0.65,0.0189,0.95
+2026-08-09,4,Toronto Blue Jays @ Philadelphia Phillies,讓球,Toronto Blue Jays +1.475,0.016399999999999998,0.9025
+2026-08-09,5,Baltimore Orioles @ Texas Rangers,大小,小 8.45,0.014199999999999999,-1.0
+2026-08-09,6,Tampa Bay Rays @ Seattle Mariners,讓球,Seattle Mariners -0,0.013000000000000001,-1.0
+2026-08-09,7,Chicago Cubs @ Kansas City Royals,大小,小 10.45,0.009399999999999999,-1.0
+2026-08-09,8,Toronto Blue Jays @ Philadelphia Phillies,大小,大 8.25,0.0092,0.94
+2026-08-09,9,Baltimore Orioles @ Texas Rangers,讓球,Texas Rangers -0.775,0.0088,-1.0
+2026-08-09,10,Minnesota Twins @ Milwaukee Brewers,讓球,Minnesota Twins +1.7,0.0054,0.95
+2026-08-10,1,Kansas City Royals @ Los Angeles Dodgers,讓球,Kansas City Royals +2.025,0.0084,0.95
+2026-08-10,2,Milwaukee Brewers @ San Diego Padres,大小,大 7.15,0.0059,-1.0
+2026-08-10,3,Tampa Bay Rays @ Athletics,讓球,Athletics +1.475,-0.0029,-1.0
+2026-08-10,4,Philadelphia Phillies @ St. Louis Cardinals,讓球,St. Louis Cardinals -0.55,-0.0040999999999999995,-1.0
+2026-08-10,5,Houston Astros @ San Francisco Giants,讓球,Houston Astros -1.15,-0.009899999999999999,0.95
+2026-08-10,6,New York Mets @ Atlanta Braves,讓球,New York Mets +1.025,-0.0108,0.95
+2026-08-10,7,Boston Red Sox @ Toronto Blue Jays,讓球,Toronto Blue Jays +1.45,-0.0118,0.95
+2026-08-10,8,Colorado Rockies @ Arizona Diamondbacks,讓球,Colorado Rockies +1.2,-0.0137,-1.0
+2026-08-10,9,Colorado Rockies @ Arizona Diamondbacks,大小,小 8.65,-0.0138,-0.7
+2026-08-10,10,Houston Astros @ San Francisco Giants,大小,大 8,-0.016200000000000003,0.94
+2026-08-11,1,Boston Red Sox @ Toronto Blue Jays,讓球,Toronto Blue Jays -0.825,0.027000000000000003,0.95
+2026-08-11,2,Kansas City Royals @ Los Angeles Dodgers,大小,小 8.6,0.017,-0.8
+2026-08-11,3,Pittsburgh Pirates @ Miami Marlins,讓球,Pittsburgh Pirates -0.55,0.012199999999999999,-1.0
+2026-08-11,4,Baltimore Orioles @ Minnesota Twins,讓球,Minnesota Twins -0.6,0.0037,-1.0
+2026-08-11,5,Boston Red Sox @ Toronto Blue Jays,大小,大 6.85,0.0013,0.94
+2026-08-11,6,Kansas City Royals @ Los Angeles Dodgers,讓球,Kansas City Royals +1.8,0.0012,0.95
+2026-08-11,7,Milwaukee Brewers @ San Diego Padres,大小,大 7.35,-0.006500000000000001,0.94
+2026-08-11,8,Colorado Rockies @ Arizona Diamondbacks,讓球,Colorado Rockies +1.275,-0.0098,0.95
+2026-08-11,9,Cincinnati Reds @ Chicago White Sox,大小,大 7.5,-0.0098,0.95
+2026-08-11,10,Seattle Mariners @ New York Yankees,讓球,Seattle Mariners +0.85,-0.011000000000000001,-1.0
+2026-08-12,1,Kansas City Royals @ Los Angeles Dodgers,大小,小 9.25,0.0297,0.94
+2026-08-12,2,New York Mets @ Atlanta Braves,讓球,Atlanta Braves -1.05,0.0215,0.95
+2026-08-12,3,Tampa Bay Rays @ Athletics,讓球,Athletics +2.05,0.0159,-1.0
+2026-08-12,4,Seattle Mariners @ New York Yankees,大小,小 8.8,0.0029,-1.0
+2026-08-12,5,Colorado Rockies @ Arizona Diamondbacks,大小,小 9.45,-0.0006,-1.0
+2026-08-12,6,Baltimore Orioles @ Minnesota Twins,讓球,Minnesota Twins -0,-0.0023,0.95
+2026-08-12,7,Boston Red Sox @ Toronto Blue Jays,讓球,Toronto Blue Jays +0.8,-0.0033,0.95
+2026-08-12,8,Colorado Rockies @ Arizona Diamondbacks,讓球,Colorado Rockies +1.275,-0.0043,0.95
+2026-08-12,9,New York Mets @ Atlanta Braves,大小,大 8.5,-0.006500000000000001,0.94
+2026-08-12,10,Baltimore Orioles @ Minnesota Twins,大小,小 8.85,-0.009399999999999999,-1.0
+2026-08-13,1,Seattle Mariners @ New York Yankees,讓球,Seattle Mariners +0.975,0.011000000000000001,0.95
+2026-08-13,2,Pittsburgh Pirates @ Miami Marlins,大小,小 8.1,0.0015,-1.0
+2026-08-13,3,Chicago Cubs @ Washington Nationals,大小,小 8.8,0.0006,0.94
+2026-08-13,4,Chicago Cubs @ Washington Nationals,讓球,Chicago Cubs -1.05,-0.0012,-1.0
+2026-08-13,5,Milwaukee Brewers @ Los Angeles Dodgers,讓球,Los Angeles Dodgers -0.875,-0.0097,-1.0
+2026-08-13,6,Boston Red Sox @ Toronto Blue Jays,大小,小 8,-0.011699999999999999,0.94
+2026-08-13,7,Cleveland Guardians @ Detroit Tigers,讓球,Cleveland Guardians -0.725,-0.014199999999999999,-1.0
+2026-08-13,8,Philadelphia Phillies @ Minnesota Twins,大小,小 8.5,-0.0143,0.96
+2026-08-13,9,Texas Rangers @ Los Angeles Angels,大小,大 7.35,-0.0149,-0.7
+2026-08-13,10,Texas Rangers @ Los Angeles Angels,讓球,Texas Rangers -1.125,-0.015600000000000001,-1.0
+2026-08-14,1,Washington Nationals @ New York Mets,讓球,New York Mets -0.55,0.008,0.95
+2026-08-14,2,St. Louis Cardinals @ Chicago Cubs,讓球,St. Louis Cardinals +1.275,0.0078000000000000005,-1.0
+2026-08-14,3,San Diego Padres @ Cleveland Guardians,大小,大 7.2,0.0051,0.94
+2026-08-14,4,Washington Nationals @ New York Mets,大小,小 8.7,-0.0,0.94
+2026-08-14,5,Boston Red Sox @ Pittsburgh Pirates,大小,小 8.1,-0.0046,-1.0
+2026-08-14,6,Seattle Mariners @ Houston Astros,讓球,Houston Astros -0.7,-0.0063,0.95
+2026-08-14,7,Boston Red Sox @ Pittsburgh Pirates,讓球,Pittsburgh Pirates +0.85,-0.006999999999999999,0.95
+2026-08-14,8,Milwaukee Brewers @ Los Angeles Dodgers,讓球,Milwaukee Brewers +1.225,-0.0079,-1.0
+2026-08-14,9,New York Yankees @ Toronto Blue Jays,讓球,Toronto Blue Jays +1.2,-0.0104,0.95
+2026-08-14,10,Kansas City Royals @ Los Angeles Angels,讓球,Los Angeles Angels +0.575,-0.0109,-0.85
+2026-08-15,1,Baltimore Orioles @ Tampa Bay Rays,讓球,Baltimore Orioles +0.975,0.0125,0.95
+2026-08-15,2,Seattle Mariners @ Houston Astros,大小,小 8.65,0.0113,-1.0
+2026-08-15,3,Washington Nationals @ New York Mets,讓球,New York Mets -0.8,0.0075,0.38
+2026-08-15,4,St. Louis Cardinals @ Chicago Cubs,讓球,Chicago Cubs -1.15,0.0014000000000000002,-1.0
+2026-08-15,5,Miami Marlins @ Cincinnati Reds,讓球,Cincinnati Reds -0.525,-0.0024,-1.0
+2026-08-15,6,Chicago White Sox @ Detroit Tigers,讓球,Chicago White Sox +0.925,-0.0026,0.95
+2026-08-15,7,Boston Red Sox @ Pittsburgh Pirates,大小,小 7.75,-0.0036,0.94
+2026-08-15,8,St. Louis Cardinals @ Chicago Cubs,大小,大 9.15,-0.0078000000000000005,0.94
+2026-08-15,9,Kansas City Royals @ Los Angeles Angels,大小,大 8,-0.008,-1.0
+2026-08-15,10,Milwaukee Brewers @ Los Angeles Dodgers,大小,大 7.3,-0.008,-1.0
+2026-08-16,1,New York Yankees @ Toronto Blue Jays,讓球,Toronto Blue Jays -0.625,0.003,-1.0
+2026-08-16,2,Kansas City Royals @ Los Angeles Angels,讓球,Los Angeles Angels +0.7,0.0009,-1.0
+2026-08-16,3,Arizona Diamondbacks @ Atlanta Braves,讓球,Atlanta Braves -0.675,-0.0006,0.95
+2026-08-16,4,Chicago White Sox @ Detroit Tigers,讓球,Detroit Tigers -0.525,-0.0048,-1.0
+2026-08-16,5,Kansas City Royals @ Los Angeles Angels,大小,小 8.85,-0.0054,0.94
+2026-08-16,6,Miami Marlins @ Cincinnati Reds,讓球,Miami Marlins -0.675,-0.0074,0.95
+2026-08-16,7,Boston Red Sox @ Pittsburgh Pirates,大小,小 8.3,-0.0078000000000000005,-1.0
+2026-08-16,8,Philadelphia Phillies @ Minnesota Twins,大小,小 9.35,-0.0089,-1.0
+2026-08-16,9,St. Louis Cardinals @ Chicago Cubs,讓球,St. Louis Cardinals +1.225,-0.0105,0.95
+2026-08-16,10,Colorado Rockies @ San Francisco Giants,大小,大 7.85,-0.010700000000000001,0.94
+2026-08-17,1,Miami Marlins @ Philadelphia Phillies,讓球,Miami Marlins +1.725,0.021400000000000002,0.95
+2026-08-17,2,Baltimore Orioles @ Tampa Bay Rays,讓球,Baltimore Orioles +1.075,-0.0038,0.1425
+2026-08-17,3,Atlanta Braves @ Minnesota Twins,讓球,Minnesota Twins +0.95,-0.005,0.95
+2026-08-17,4,Atlanta Braves @ Minnesota Twins,大小,小 9.25,-0.0052,0.94
+2026-08-17,5,Chicago White Sox @ Chicago Cubs,讓球,Chicago Cubs -1.05,-0.0096,0.95
+2026-08-17,6,San Diego Padres @ New York Mets,讓球,New York Mets -0.625,-0.0097,0.7124999999999999
+2026-08-17,7,St. Louis Cardinals @ Cincinnati Reds,大小,小 9.4,-0.01,0.94
+2026-08-17,8,St. Louis Cardinals @ Cincinnati Reds,大小,小 9.25,-0.011399999999999999,-1.0
+2026-08-17,9,Miami Marlins @ Philadelphia Phillies,大小,大 8,-0.0118,0.94
+2026-08-17,10,Detroit Tigers @ Pittsburgh Pirates,大小,大 8,-0.0152,0.94
+2026-08-18,1,Arizona Diamondbacks @ Boston Red Sox,大小,小 8.5,0.0362,-1.0
+2026-08-18,2,Toronto Blue Jays @ Tampa Bay Rays,讓球,Toronto Blue Jays +0.9,0.0043,0.95
+2026-08-18,3,Detroit Tigers @ Pittsburgh Pirates,讓球,Pittsburgh Pirates -0.85,0.0022,0.95
+2026-08-18,4,Seattle Mariners @ Milwaukee Brewers,讓球,Seattle Mariners +1.025,-0.0024,-1.0
+2026-08-18,5,San Francisco Giants @ Cleveland Guardians,讓球,San Francisco Giants +1.325,-0.005600000000000001,-1.0
+2026-08-18,6,St. Louis Cardinals @ Cincinnati Reds,大小,大 8.45,-0.0070999999999999995,-1.0
+2026-08-18,7,Los Angeles Dodgers @ Colorado Rockies,讓球,Colorado Rockies +1.925,-0.0072,0.95
+2026-08-18,8,San Diego Padres @ New York Mets,大小,小 8.6,-0.008100000000000001,0.94
+2026-08-18,9,New York Yankees @ Baltimore Orioles,讓球,Baltimore Orioles +0.7,-0.008100000000000001,-1.0
+2026-08-18,10,Los Angeles Angels @ Houston Astros,讓球,Houston Astros -1.1,-0.0127,-1.0

@@ -302,6 +302,42 @@ def test_asian_line_sign_convention():
     approx(parse_line("1+5").effective, 0.975)
 
 
+def test_fit_does_not_move_when_only_the_modal_line_changes():
+    """Books migrating between lines must not move the fitted total.
+
+    The Rays' totals read 0.5217 at 7.0 in two snapshots ten hours apart --
+    an unchanged market -- but books drifted from 7.5 to 7.0 and flipped
+    which line was modal. Anchoring on the modal line alone shifted the
+    fitted total 0.176 runs and moved a candidate's EV by 3.6 points on
+    nothing at all. Fitting every quoted line, weighted by book count, has
+    to be far more stable than that.
+    """
+    from mlbline.implied import solve
+
+    same = dict(market_home_win=0.602, n_sims=20_000, price_sims=20_000)
+    # One market, described from either line's point of view.
+    high = solve("t", market_over=0.4767, total_line=7.5, **same)
+    low = solve("t", market_over=0.5217, total_line=7.0, **same)
+    single_gap = abs(high.mean_total - low.mean_total)
+
+    anchors = [(7.0, 0.5217, 11.0), (7.5, 0.4767, 4.0)]
+    both_high = solve("t", market_over=0.4767, total_line=7.5,
+                      over_anchors=anchors, **same)
+    both_low = solve("t", market_over=0.5217, total_line=7.0,
+                     over_anchors=anchors, **same)
+
+    # Identical anchors and identical weights must give an identical fit,
+    # whatever the caller happens to name as the modal line.
+    approx(both_high.mean_total, both_low.mean_total, tol=1e-9)
+    assert single_gap > 0.1, f"expected the single-anchor fit to drift, got {single_gap}"
+
+    # And the residual has to actually report disagreement between lines
+    # rather than the zero a single self-consistent anchor always gives.
+    assert both_high.anchor_spread > 0.0
+    assert solve("t", market_over=0.5217, total_line=7.0,
+                 **same).anchor_spread < 0.01
+
+
 def test_pickem_and_half_run_handicaps_are_the_same_bet():
     """Laying 0 and laying 0.5 are one wager, so they cannot differ.
 

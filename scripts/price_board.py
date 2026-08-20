@@ -104,8 +104,19 @@ def main() -> int:
                         if s.side == game.home_team).loo_consensus_prob
         over = next(s for s in totals.sides
                     if s.side.startswith("Over")).loo_consensus_prob
-        sim = solve(matchup, market_home_win=home_win, market_over=over,
-                    total_line=us_total).simulation
+        # Fit against every total the market quotes, weighted by how many
+        # books stand behind each. Anchoring on the modal line alone lets the
+        # fit jump when books migrate between lines without the market moving.
+        anchors = []
+        for point in game.offered_points("totals"):
+            summary = summarise_line(game, "totals", point)
+            if not summary:
+                continue
+            side = next(s for s in summary.sides if s.side.startswith("Over"))
+            anchors.append((point, side.loo_consensus_prob, float(side.n_books)))
+        priced = solve(matchup, market_home_win=home_win, market_over=over,
+                       total_line=us_total, over_anchors=anchors)
+        sim = priced.simulation
 
         favourite = entry["favourite"] or game.home_team
         fav_home = favourite == game.home_team
@@ -119,7 +130,7 @@ def main() -> int:
         checks.append((
             shown, hcap, fair_handicap(margin),
             tline, fair_total(sim.total), us_total,
-            entry.get("half_total"),
+            entry.get("half_total"), priced.anchor_spread,
         ))
 
         for laying, who, sign in ((True, favourite, "-"), (False, underdog, "+")):
@@ -149,17 +160,20 @@ def main() -> int:
 
     print("=== 解碼驗證：板面線 vs 本場自身隱含的公平線 ===")
     print(f"{pad('比賽', 24)} {pad('讓球', 14)} {'公平':>6s} {'差':>7s} "
-          f"{pad('大小', 14)} {'公平':>6s} {'差':>7s} {'美盤':>5s}")
+          f"{pad('大小', 14)} {'公平':>6s} {'差':>7s} {'美盤':>5s} {'殘差':>6s}")
     h_err, t_err = [], []
-    for matchup, hcap, fair_h, tline, fair_t, us_total, _ in checks:
+    for matchup, hcap, fair_h, tline, fair_t, us_total, _, spread in checks:
         dh = comparable_handicap(hcap.effective) - comparable_handicap(fair_h)
         dt = tline.effective - fair_t
         h_err.append(abs(dh))
         t_err.append(abs(dt))
         print(f"{pad(matchup, 24)} {pad(str(hcap), 14)} {fair_h:6.2f} {dh:+7.2f} "
-              f"{pad(str(tline), 14)} {fair_t:6.2f} {dt:+7.2f} {us_total:5.1f}")
+              f"{pad(str(tline), 14)} {fair_t:6.2f} {dt:+7.2f} {us_total:5.1f} "
+              f"{spread * 100:6.2f}")
     print(f"\n平均絕對誤差  讓球 {statistics.mean(h_err):.3f} 分   "
           f"大小 {statistics.mean(t_err):.3f} 分")
+    print("末欄為擬合殘差（百分點）：市場自己報的各條大小線彼此是否一致。"
+          "數字大代表這場的線互相矛盾，任何外推價都比它的 EV 看起來更不可靠。")
 
     # Independent check on the transcription, using only the board's own two
     # numbers. Five of nine innings score a fairly stable share of a game's
@@ -169,7 +183,7 @@ def main() -> int:
     # true share is -- it only asks whether one game was read differently
     # from the rest, which is exactly what a misread digit looks like.
     halves = [(m, t.effective, parse_line(h).effective)
-              for m, _, _, t, _, _, h in checks if h]
+              for m, _, _, t, _, _, h, _ in checks if h]
     if len(halves) >= 4:
         ratios = [half / full for _, full, half in halves]
         mid = statistics.median(ratios)

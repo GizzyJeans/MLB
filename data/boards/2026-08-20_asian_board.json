@@ -1,0 +1,79 @@
+{
+  "_comment": "Asian board for the 2026-08-20 slate (Taipei 08-21), a light nine-game card. Favourites read off the row the handicap sits on and cross-checked against both the board's own moneyline column and the US moneyline; all nine agreed. Braves at White Sox is hung at a flat 0 handicap -- a pure moneyline, which the bias correction correctly leaves alone. All prices flat: handicaps 0.950, totals 0.940 both sides. Note the board sits above the US total in six of nine games and below in one, so any run of unders in the ranking is one board-level shade rather than nine independent edges. Half-game totals are transcribed too, purely as a transcription check: the first-half share of a slate's totals is tight, so a misread digit shows up as one game leaving the cluster.",
+  "handicap_price_hk": 0.95,
+  "total_price_hk": 0.94,
+  "games": [
+    {
+      "away": "St. Louis Cardinals",
+      "home": "Cincinnati Reds",
+      "favourite": "St. Louis Cardinals",
+      "handicap": "1+65",
+      "total": "9平",
+      "half_total": "5+80"
+    },
+    {
+      "away": "Toronto Blue Jays",
+      "home": "Tampa Bay Rays",
+      "favourite": "Tampa Bay Rays",
+      "handicap": "1-15",
+      "total": "7.5",
+      "half_total": "4-60"
+    },
+    {
+      "away": "San Francisco Giants",
+      "home": "Cleveland Guardians",
+      "favourite": "Cleveland Guardians",
+      "handicap": "1-60",
+      "total": "7-80",
+      "half_total": "4平"
+    },
+    {
+      "away": "Athletics",
+      "home": "Kansas City Royals",
+      "favourite": "Kansas City Royals",
+      "handicap": "1+35",
+      "total": "9+60",
+      "half_total": "5+70"
+    },
+    {
+      "away": "Atlanta Braves",
+      "home": "Chicago White Sox",
+      "favourite": "Atlanta Braves",
+      "handicap": "0",
+      "total": "9+70",
+      "half_total": "5+60"
+    },
+    {
+      "away": "Seattle Mariners",
+      "home": "Milwaukee Brewers",
+      "favourite": "Milwaukee Brewers",
+      "handicap": "1+45",
+      "total": "8-20",
+      "half_total": "4-70"
+    },
+    {
+      "away": "New York Yankees",
+      "home": "Baltimore Orioles",
+      "favourite": "New York Yankees",
+      "handicap": "1+30",
+      "total": "8+40",
+      "half_total": "4-40"
+    },
+    {
+      "away": "Washington Nationals",
+      "home": "Texas Rangers",
+      "favourite": "Texas Rangers",
+      "handicap": "1-10",
+      "total": "8+40",
+      "half_total": "4-40"
+    },
+    {
+      "away": "Los Angeles Angels",
+      "home": "Houston Astros",
+      "favourite": "Houston Astros",
+      "handicap": "1-55",
+      "total": "8-60",
+      "half_total": "4.5"
+    }
+  ]
+}

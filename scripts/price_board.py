@@ -52,6 +52,19 @@ from mlbline.teams import pad, zh, zh_matchup  # noqa: E402
 COVER_BIAS = 0.0128
 
 
+def comparable_handicap(level: float) -> float:
+    """A handicap level as a bet rather than as a number.
+
+    Baseball has no ties, so laying 0 and laying 0.5 are the same wager --
+    both need an outright win, and both price identically. A board hanging
+    a pick'em at a flat 0 is therefore exactly on a fair line of 0.5, not
+    half a run away from it. Differencing the literal numbers reports a
+    0.5-run decode error that does not exist, and one pick'em is enough to
+    double the slate's mean handicap error.
+    """
+    return max(level, 0.5)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--board", required=True)
@@ -106,6 +119,7 @@ def main() -> int:
         checks.append((
             shown, hcap, fair_handicap(margin),
             tline, fair_total(sim.total), us_total,
+            entry.get("half_total"),
         ))
 
         for laying, who, sign in ((True, favourite, "-"), (False, underdog, "+")):
@@ -137,14 +151,41 @@ def main() -> int:
     print(f"{pad('比賽', 24)} {pad('讓球', 14)} {'公平':>6s} {'差':>7s} "
           f"{pad('大小', 14)} {'公平':>6s} {'差':>7s} {'美盤':>5s}")
     h_err, t_err = [], []
-    for matchup, hcap, fair_h, tline, fair_t, us_total in checks:
-        dh, dt = hcap.effective - fair_h, tline.effective - fair_t
+    for matchup, hcap, fair_h, tline, fair_t, us_total, _ in checks:
+        dh = comparable_handicap(hcap.effective) - comparable_handicap(fair_h)
+        dt = tline.effective - fair_t
         h_err.append(abs(dh))
         t_err.append(abs(dt))
         print(f"{pad(matchup, 24)} {pad(str(hcap), 14)} {fair_h:6.2f} {dh:+7.2f} "
               f"{pad(str(tline), 14)} {fair_t:6.2f} {dt:+7.2f} {us_total:5.1f}")
     print(f"\n平均絕對誤差  讓球 {statistics.mean(h_err):.3f} 分   "
           f"大小 {statistics.mean(t_err):.3f} 分")
+
+    # Independent check on the transcription, using only the board's own two
+    # numbers. Five of nine innings score a fairly stable share of a game's
+    # runs, so the first-half total divided by the full-game total should sit
+    # in a tight band across a slate. Comparing each game against the slate's
+    # own median needs no outside reference and no assumption about what the
+    # true share is -- it only asks whether one game was read differently
+    # from the rest, which is exactly what a misread digit looks like.
+    halves = [(m, t.effective, parse_line(h).effective)
+              for m, _, _, t, _, _, h in checks if h]
+    if len(halves) >= 4:
+        ratios = [half / full for _, full, half in halves]
+        mid = statistics.median(ratios)
+        print(f"\n上半場一致性檢查（板面自身，不用外部資料）   "
+              f"中位比值 {mid:.3f}")
+        flagged = [(m, r) for (m, _, _), r in zip(halves, ratios)
+                   if abs(r - mid) > 0.05]
+        for matchup, full, half in halves:
+            r = half / full
+            mark = "  ←偏離" if abs(r - mid) > 0.05 else ""
+            print(f"  {pad(matchup, 24)} 全場 {full:5.2f}  上半 {half:4.2f}  "
+                  f"比值 {r:.3f}{mark}")
+        if flagged:
+            print(f"  {len(flagged)} 場偏離中位數 0.05 以上 — 先確認抄錄無誤")
+        else:
+            print("  全部落在中位數 ±0.05 內，抄錄與解碼互相印證")
 
     evs = [c["adj"] for c in candidates]
     print(f"\n健全性檢查：去偏後 EV 的分布")

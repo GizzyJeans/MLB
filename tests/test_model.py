@@ -302,6 +302,39 @@ def test_asian_line_sign_convention():
     approx(parse_line("1+5").effective, 0.975)
 
 
+def test_pickem_and_half_run_handicaps_are_the_same_bet():
+    """Laying 0 and laying 0.5 are one wager, so they cannot differ.
+
+    Baseball has no ties: winning by at least half a run and winning
+    outright are the same event. The prices already agree, but the decode
+    report differenced the literal numbers and charged a board hanging a
+    flat 0 with a 0.5-run error against a fair line of 0.5. One pick'em on
+    a nine-game slate was enough to double the reported handicap error,
+    which is the number used to decide whether a board was read correctly.
+    """
+    from mlbline.asian import parse_line, handicap_ev
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from price_board import comparable_handicap
+
+    rng = np.random.default_rng(11)
+    margin = rng.integers(-8, 9, 50_000)
+    margin = margin[margin != 0]
+
+    for laying in (True, False):
+        approx(handicap_ev(margin, parse_line("0"), hk_price=0.95,
+                           laying=laying),
+               handicap_ev(margin, parse_line("0.5"), hk_price=0.95,
+                           laying=laying),
+               tol=1e-12)
+
+    # And the decode check must see them as the same line, not half a run
+    # apart, while leaving every real handicap alone.
+    approx(comparable_handicap(0.0), comparable_handicap(0.5))
+    approx(comparable_handicap(1.325), 1.325)
+    approx(comparable_handicap(0.675), 0.675)
+
+
 def test_integer_lines_push_and_half_lines_do_not():
     from mlbline.asian import AsianLine, total_ev
 

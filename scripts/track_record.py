@@ -58,6 +58,7 @@ SLATES = [
     ("2026-08-16", "2026-08-16_asian_board", "2026-08-16_board_pricing"),
     ("2026-08-17", "2026-08-17_asian_board", "2026-08-17_board_pricing"),
     ("2026-08-18", "2026-08-18_asian_board", "2026-08-18_board_pricing"),
+    ("2026-08-19", "2026-08-19_asian_board", "2026-08-19_board_pricing"),
 ]
 
 PICK = re.compile(

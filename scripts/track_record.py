@@ -59,6 +59,18 @@ SLATES = [
     ("2026-08-17", "2026-08-17_asian_board", "2026-08-17_board_pricing"),
     ("2026-08-18", "2026-08-18_asian_board", "2026-08-18_board_pricing"),
     ("2026-08-19", "2026-08-19_asian_board", "2026-08-19_board_pricing"),
+    ("2026-08-20", "2026-08-20_asian_board_v2", "2026-08-20_board_pricing_v3"),
+]
+
+# Boards that were priced once, then moved before first pitch and re-priced.
+# The later reading is the day's record above, because it is the board that
+# was actually standing when the slate started. These earlier readings are
+# settled separately: they are the only place the policy's +4% gate has ever
+# fired, so burying them in a superseded report would hide the only evidence
+# that exists about it.
+EARLY_BOARDS = [
+    ("2026-08-14", "2026-08-14_asian_board", "2026-08-14_board_pricing"),
+    ("2026-08-20", "2026-08-20_asian_board", "2026-08-20_board_pricing_v2"),
 ]
 
 PICK = re.compile(
@@ -207,6 +219,38 @@ def main() -> int:
     print(f"\n  健全性：全部 {len(allp)} 個板面選擇（兩面全下）"
           f"{statistics.mean(allp) * 100:+.2f}% 每注")
     print("  （應等於 -抽水 ≈ -2.6% 讓球 / -3.1% 大小）")
+
+    # The gate is the whole policy. Everything above is what the ranking did
+    # on selections the policy declined, which answers a different question.
+    gated = [c for c in picks if c["expected"] >= 0.04]
+    for date, board_stem, report_stem in EARLY_BOARDS:
+        rows = settle_slate(date, board_stem)
+        if rows:
+            gated.extend(c for c in top_picks(report_stem, rows)
+                         if c["expected"] >= 0.04)
+    print(f"\n=== 通過 +4% 門檻的選擇（含移動前的早盤）: {len(gated)} 筆 ===")
+    if not gated:
+        print("  無")
+        return 0
+    for c in sorted(gated, key=lambda c: -c["expected"]):
+        verdict = ("贏" if c["pnl"] > 0.01
+                   else ("輸" if c["pnl"] < -0.01 else "和"))
+        print(f"  {c['date']} {pad(c['matchup'], 20)} {pad(c['side'], 16)} "
+              f"{c['expected'] * 100:+6.2f}% → {c['pnl'] * 100:+7.2f}%  {verdict}")
+    got = [c["pnl"] for c in gated]
+    n = len(got)
+    print(f"\n  合計 {sum(got) * 100:+.2f}%   平均 {statistics.mean(got) * 100:+.2f}% 每注")
+    print(f"  平均預期 {statistics.mean(c['expected'] for c in gated) * 100:+.2f}%")
+    if n >= 2:
+        sem = statistics.stdev(got) / (n ** 0.5)
+        print(f"  標準誤 {sem * 100:.1f}%  →  95% 區間 "
+              f"{(statistics.mean(got) - 1.96 * sem) * 100:+.1f}% ~ "
+              f"{(statistics.mean(got) + 1.96 * sem) * 100:+.1f}%")
+    wins = sum(1 for p in got if p > 0.01)
+    print(f"  {wins} 勝 {sum(1 for p in got if p < -0.01)} 敗 "
+          f"{n - wins - sum(1 for p in got if p < -0.01)} 和")
+    print(f"  在真實勝率 53% 的假設下，{n} 戰全勝的機率約 "
+          f"{0.53 ** n * 100:.0f}% — 樣本量還不足以說明任何事")
     return 0
 
 

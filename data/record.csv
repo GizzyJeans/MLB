@@ -119,3 +119,13 @@ date,rank,matchup_en,market,side_en,expected,pnl
 2026-08-20,8,Washington Nationals @ Texas Rangers,讓球,Texas Rangers -1,-0.0101,0.95
 2026-08-20,9,Los Angeles Angels @ Houston Astros,讓球,Houston Astros -1.2,-0.012,-1.0
 2026-08-20,10,San Francisco Giants @ Cleveland Guardians,大小,小 7,-0.0125,0.0
+2026-08-21,1,Toronto Blue Jays @ New York Yankees,大小,大 7.25,0.0353,-1.0
+2026-08-21,2,Pittsburgh Pirates @ Los Angeles Dodgers,讓球,Pittsburgh Pirates +1.6,0.012199999999999999,0.95
+2026-08-21,3,Tampa Bay Rays @ Baltimore Orioles,讓球,Baltimore Orioles -0.675,0.0033,0.95
+2026-08-21,4,St. Louis Cardinals @ Philadelphia Phillies,讓球,St. Louis Cardinals +1.45,0.0031,0.855
+2026-08-21,5,Detroit Tigers @ Kansas City Royals,讓球,Kansas City Royals +0.75,0.003,0.95
+2026-08-21,6,San Francisco Giants @ Boston Red Sox,大小,大 7.2,0.0011,0.94
+2026-08-21,7,San Francisco Giants @ Boston Red Sox,讓球,San Francisco Giants +1.225,-0.0002,-1.0
+2026-08-21,8,Los Angeles Angels @ Texas Rangers,讓球,Texas Rangers -0.825,-0.0005,0.33249999999999996
+2026-08-21,9,New York Mets @ Chicago White Sox,讓球,New York Mets +0.95,-0.0048,-1.0
+2026-08-21,10,Cincinnati Reds @ Arizona Diamondbacks,讓球,Cincinnati Reds +0.975,-0.0058,-1.0

@@ -116,6 +116,8 @@ def settle_slate(date: str, board_stem: str):
                 "market": "讓球",
                 "side": f"{zh(who)} {sign}{hcap.effective:g}",
                 "side_en": f"{who} {sign}{hcap.effective:g}",
+                "price": hk_h,
+                "kind": "讓分" if laying else "受讓",
                 "pnl": handicap_ev(margin, hcap, hk_price=hk_h, laying=laying),
             })
         prices = {True: entry.get("total_price_over", hk_t),
@@ -126,6 +128,8 @@ def settle_slate(date: str, board_stem: str):
                 "market": "大小",
                 "side": f"{name} {tline.effective:g}",
                 "side_en": f"{name} {tline.effective:g}",
+                "price": prices[is_over],
+                "kind": "大分" if is_over else "小分",
                 "pnl": total_ev(total, tline, hk_price=prices[is_over],
                                 over=is_over),
             })
@@ -188,7 +192,8 @@ def main() -> int:
                                              encoding="utf-8") as fh:
         writer = csv.DictWriter(
             fh, fieldnames=["date", "rank", "matchup_en", "market", "side_en",
-                            "expected", "pnl"], extrasaction="ignore")
+                            "kind", "price", "expected", "pnl"],
+            extrasaction="ignore")
         writer.writeheader()
         writer.writerows(picks)
 

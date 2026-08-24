@@ -139,3 +139,13 @@ date,rank,matchup_en,market,side_en,kind,price,expected,pnl
 2026-08-22,8,Cincinnati Reds @ Arizona Diamondbacks,讓球,Cincinnati Reds +1.175,受讓,0.95,-0.0021,0.95
 2026-08-22,9,Tampa Bay Rays @ Baltimore Orioles,大小,小 8,小分,0.94,-0.0022,0.94
 2026-08-22,10,Atlanta Braves @ Milwaukee Brewers,讓球,Milwaukee Brewers -1,讓分,0.95,-0.0042,0.95
+2026-08-23,1,Chicago Cubs @ Seattle Mariners,讓球,Seattle Mariners +0.675,受讓,0.95,0.0179,-1.0
+2026-08-23,2,Minnesota Twins @ San Diego Padres,讓球,San Diego Padres -0.825,讓分,0.95,0.0014000000000000002,0.95
+2026-08-23,3,Tampa Bay Rays @ Baltimore Orioles,讓球,Baltimore Orioles +0.625,受讓,0.95,-0.0008,-1.0
+2026-08-23,4,Toronto Blue Jays @ New York Yankees,讓球,Toronto Blue Jays +0.9,受讓,0.95,-0.0023,-1.0
+2026-08-23,5,Atlanta Braves @ Milwaukee Brewers,大小,小 7.5,小分,0.94,-0.0040999999999999995,0.94
+2026-08-23,6,San Francisco Giants @ Boston Red Sox,大小,小 8.4,小分,0.94,-0.0063,-1.0
+2026-08-23,7,New York Mets @ Chicago White Sox,大小,小 8.2,小分,0.94,-0.009300000000000001,0.94
+2026-08-23,8,Minnesota Twins @ San Diego Padres,大小,小 8.8,小分,0.94,-0.009899999999999999,-0.4
+2026-08-23,9,Chicago Cubs @ Seattle Mariners,大小,小 7.5,小分,0.94,-0.0104,-1.0
+2026-08-23,10,St. Louis Cardinals @ Philadelphia Phillies,大小,小 8,小分,0.96,-0.0116,-1.0

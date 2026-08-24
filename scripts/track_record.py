@@ -62,6 +62,7 @@ SLATES = [
     ("2026-08-20", "2026-08-20_asian_board_v2", "2026-08-20_board_pricing_v3"),
     ("2026-08-21", "2026-08-21_asian_board", "2026-08-21_board_pricing"),
     ("2026-08-22", "2026-08-22_asian_board", "2026-08-22_board_pricing"),
+    ("2026-08-23", "2026-08-23_asian_board", "2026-08-23_board_pricing"),
 ]
 
 # Boards that were priced once, then moved before first pitch and re-priced.

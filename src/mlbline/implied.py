@@ -29,6 +29,10 @@ from .markov import simulate_game
 SOLVE_SIMS = 60_000
 PRICE_SIMS = 400_000
 SOLVE_SEED = 20260808
+# A totals line quoted by fewer books than this is not consensus, so it is
+# excluded from the residual diagnostic. It still enters the fit, weighted
+# by its book count, where it belongs.
+MIN_BOOKS_FOR_RESIDUAL = 5
 
 
 @dataclass
@@ -52,6 +56,9 @@ class ImpliedPricing:
     simulation: object = None
     # (line, fitted - market) for every total the market quotes.
     over_residuals: tuple[tuple[float, float], ...] = ()
+    # The (line, market P(over), book count) anchors the fit was given, kept
+    # so the residual can tell a thin quote from a real disagreement.
+    anchors: tuple[tuple[float, float, float], ...] = ()
 
     @property
     def fit_error(self) -> float:
@@ -61,17 +68,31 @@ class ImpliedPricing:
 
     @property
     def anchor_spread(self) -> float:
-        """Worst residual across every quoted total, in probability.
+        """Worst residual across the totals enough books actually quote.
 
         With one anchor the fit is exact by construction and says nothing.
         Across several it reports whether the market's own lines agree with
         each other under a single scoring level -- a wide spread means the
         quoted lines are mutually inconsistent, so any price extrapolated
         between them is less trustworthy than its EV suggests.
+
+        Lines carried by only a book or two are excluded. They are not
+        consensus and they are the usual cause of a large residual: the
+        Twins at Athletics on 2026-08-24 read 3.02pp, the worst recorded,
+        entirely because one book hung 10.0 barely below its own 10.5. The
+        fit itself was untouched -- book-count weighting had already reduced
+        that quote to a fifteenth of the total -- and dropping it moved the
+        fair total by 0.000 runs while the residual fell to 0.35pp. So the
+        residual was reporting a thin quote, not a market disagreement, and
+        a diagnostic that cannot tell those apart is worse than none.
         """
-        if not self.over_residuals:
+        thick = [(line, r) for (line, r), (_, _, w)
+                 in zip(self.over_residuals, self.anchors or ())
+                 if w >= MIN_BOOKS_FOR_RESIDUAL]
+        usable = thick or list(self.over_residuals)
+        if not usable:
             return 0.0
-        return max(abs(r) for _, r in self.over_residuals)
+        return max(abs(r) for _, r in usable)
 
     @property
     def predicted_score(self) -> str:
@@ -167,4 +188,5 @@ def solve(matchup: str, *, market_home_win: float, market_over: float,
         simulation=sim,
         over_residuals=tuple((line, sim.prob_over(line) - market)
                              for line, market, _ in anchors),
+        anchors=tuple(anchors),
     )

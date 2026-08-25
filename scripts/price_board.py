@@ -55,12 +55,22 @@ COVER_BIAS = 0.0128
 def comparable_handicap(level: float) -> float:
     """A handicap level as a bet rather than as a number.
 
-    Baseball has no ties, so laying 0 and laying 0.5 are the same wager --
-    both need an outright win, and both price identically. A board hanging
-    a pick'em at a flat 0 is therefore exactly on a fair line of 0.5, not
-    half a run away from it. Differencing the literal numbers reports a
-    0.5-run decode error that does not exist, and one pick'em is enough to
-    double the slate's mean handicap error.
+    Baseball has no ties, so every line from -0.5 to +0.5 is the same wager
+    -- all of them need an outright win, and all of them price identically.
+    A board hanging a pick'em at a flat 0 is therefore exactly on a fair
+    line of 0.5, not half a run away from it. Differencing the literal
+    numbers reports a 0.5-run decode error that does not exist, and one
+    pick'em is enough to double the slate's mean handicap error.
+
+    This also has to be applied to the fair line before it is displayed,
+    not only before it is differenced. `fair_handicap` solves for a 50%
+    cover, and in a near-coin-flip game no real line delivers that: cover
+    sits at 0.4952 flat across the whole [-0.5, +0.5] range and then jumps
+    to 0.6046 at -1.0, so the solver interpolates across the step and
+    returns something like -0.53 -- a number no line corresponds to. On
+    2026-08-25 that put three fair handicaps at about -0.55 for teams the
+    market had at 49-50%, next to a difference column reading +0.07, and
+    the two could not be reconciled by anyone reading the row.
     """
     return max(level, 0.5)
 
@@ -163,11 +173,12 @@ def main() -> int:
           f"{pad('大小', 14)} {'公平':>6s} {'差':>7s} {'美盤':>5s} {'殘差':>6s}")
     h_err, t_err = [], []
     for matchup, hcap, fair_h, tline, fair_t, us_total, _, spread in checks:
-        dh = comparable_handicap(hcap.effective) - comparable_handicap(fair_h)
+        shown_fair = comparable_handicap(fair_h)
+        dh = comparable_handicap(hcap.effective) - shown_fair
         dt = tline.effective - fair_t
         h_err.append(abs(dh))
         t_err.append(abs(dt))
-        print(f"{pad(matchup, 24)} {pad(str(hcap), 14)} {fair_h:6.2f} {dh:+7.2f} "
+        print(f"{pad(matchup, 24)} {pad(str(hcap), 14)} {shown_fair:6.2f} {dh:+7.2f} "
               f"{pad(str(tline), 14)} {fair_t:6.2f} {dt:+7.2f} {us_total:5.1f} "
               f"{spread * 100:6.2f}")
     print(f"\n平均絕對誤差  讓球 {statistics.mean(h_err):.3f} 分   "

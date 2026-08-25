@@ -149,3 +149,13 @@ date,rank,matchup_en,market,side_en,kind,price,expected,pnl
 2026-08-23,8,Minnesota Twins @ San Diego Padres,大小,小 8.8,小分,0.94,-0.009899999999999999,-0.4
 2026-08-23,9,Chicago Cubs @ Seattle Mariners,大小,小 7.5,小分,0.94,-0.0104,-1.0
 2026-08-23,10,St. Louis Cardinals @ Philadelphia Phillies,大小,小 8,小分,0.96,-0.0116,-1.0
+2026-08-24,1,Colorado Rockies @ Washington Nationals,讓球,Colorado Rockies +1.35,受讓,0.95,0.0184,-1.0
+2026-08-24,2,Philadelphia Phillies @ Seattle Mariners,讓球,Seattle Mariners +0.725,受讓,0.95,0.0078000000000000005,0.95
+2026-08-24,3,Chicago Cubs @ Arizona Diamondbacks,大小,小 9.1,小分,0.94,0.0022,0.94
+2026-08-24,4,Tampa Bay Rays @ Detroit Tigers,讓球,Detroit Tigers +1.05,受讓,0.95,-0.0028000000000000004,-1.0
+2026-08-24,5,Minnesota Twins @ Athletics,大小,小 10.7,小分,0.94,-0.0070999999999999995,-1.0
+2026-08-24,6,Cincinnati Reds @ San Francisco Giants,讓球,San Francisco Giants +1.25,受讓,0.95,-0.0087,0.95
+2026-08-24,7,Philadelphia Phillies @ Seattle Mariners,大小,小 6.7,小分,0.94,-0.0095,-1.0
+2026-08-24,8,Texas Rangers @ Chicago White Sox,大小,大 8.2,大分,0.94,-0.0101,0.94
+2026-08-24,9,Texas Rangers @ Chicago White Sox,讓球,Chicago White Sox -0.75,讓分,0.95,-0.0101,-1.0
+2026-08-24,10,Cleveland Guardians @ Los Angeles Angels,讓球,Los Angeles Angels +1.35,受讓,0.95,-0.0104,-1.0

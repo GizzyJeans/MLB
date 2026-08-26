@@ -78,9 +78,14 @@ EARLY_BOARDS = [
     ("2026-08-20", "2026-08-20_asian_board", "2026-08-20_board_pricing_v2"),
 ]
 
+# Both EV columns are captured. The raw figure is what the simulation
+# priced; the de-biased one adds the measured cover-probability correction,
+# which only touches handicaps and only in proportion to each leg's
+# exposure. Keeping both lets the correction itself be scored, rather than
+# only the number it produced.
 PICK = re.compile(
     r"^(\d+)\s+(.+?)\s+(讓球|大小)\s+(.+?)\s+\S+\([\d.]+\)\s+"
-    r"[\d.]+\s+[+-][\d.]+%\s+([+-][\d.]+)%\s*$")
+    r"[\d.]+\s+([+-][\d.]+)%\s+([+-][\d.]+)%\s*$")
 
 
 def settle_slate(date: str, board_stem: str):
@@ -152,7 +157,7 @@ def top_picks(report_stem: str, rows: list[dict], limit: int = 10):
         match = PICK.match(line)
         if not match:
             continue
-        rank, want_game, market, side_text, adj = match.groups()
+        rank, want_game, market, side_text, raw, adj = match.groups()
         want_side = side_text.strip()[:12]
         row = next(
             (r for r in rows
@@ -164,7 +169,9 @@ def top_picks(report_stem: str, rows: list[dict], limit: int = 10):
             None)
         if row is None:
             continue
-        out.append({**row, "rank": int(rank), "expected": float(adj) / 100.0})
+        out.append({**row, "rank": int(rank),
+                    "raw_ev": float(raw) / 100.0,
+                    "expected": float(adj) / 100.0})
         if len(out) == limit:
             break
     return out
@@ -195,7 +202,7 @@ def main() -> int:
                                              encoding="utf-8") as fh:
         writer = csv.DictWriter(
             fh, fieldnames=["date", "rank", "matchup_en", "market", "side_en",
-                            "kind", "price", "expected", "pnl"],
+                            "kind", "price", "raw_ev", "expected", "pnl"],
             extrasaction="ignore")
         writer.writeheader()
         writer.writerows(picks)

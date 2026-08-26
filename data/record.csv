@@ -159,3 +159,13 @@ date,rank,matchup_en,market,side_en,kind,price,expected,pnl
 2026-08-24,8,Texas Rangers @ Chicago White Sox,大小,大 8.2,大分,0.94,-0.0101,0.94
 2026-08-24,9,Texas Rangers @ Chicago White Sox,讓球,Chicago White Sox -0.75,讓分,0.95,-0.0101,-1.0
 2026-08-24,10,Cleveland Guardians @ Los Angeles Angels,讓球,Los Angeles Angels +1.35,受讓,0.95,-0.0104,-1.0
+2026-08-25,1,Texas Rangers @ Chicago White Sox,大小,大 7.1,大分,0.95,0.0033,0.95
+2026-08-25,2,Philadelphia Phillies @ Seattle Mariners,讓球,Seattle Mariners +0.525,受讓,0.95,0.0019,0.95
+2026-08-25,3,Chicago Cubs @ Arizona Diamondbacks,讓球,Arizona Diamondbacks +0.575,受讓,0.95,0.0015,0.95
+2026-08-25,4,Pittsburgh Pirates @ San Diego Padres,讓球,Pittsburgh Pirates +0.725,受讓,0.95,-0.0009,0.95
+2026-08-25,5,Colorado Rockies @ Washington Nationals,讓球,Washington Nationals -0.925,讓分,0.95,-0.0016,-1.0
+2026-08-25,6,Cincinnati Reds @ San Francisco Giants,讓球,San Francisco Giants +0.525,受讓,0.95,-0.0017000000000000001,0.95
+2026-08-25,7,Baltimore Orioles @ St. Louis Cardinals,讓球,St. Louis Cardinals -0.725,讓分,0.95,-0.004,-1.0
+2026-08-25,8,Los Angeles Dodgers @ Atlanta Braves,大小,大 8.45,大分,0.94,-0.0104,-1.0
+2026-08-25,9,Boston Red Sox @ Miami Marlins,讓球,Boston Red Sox -1.225,讓分,0.95,-0.0108,0.95
+2026-08-25,10,Boston Red Sox @ Miami Marlins,大小,小 7.7,小分,0.94,-0.0113,-1.0

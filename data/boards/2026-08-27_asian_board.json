@@ -1,0 +1,28 @@
+{
+  "_comment": "Asian board for the 2026-08-27 slate (Taipei 08-28), a light seven-game card, read about two hours before first pitch. All seven favourites agree with the US moneyline. Dodgers at Braves is hung at 6.45, the lowest total of any slate so far, and the US market confirms it at 6.5 -- Yamamoto against Sale. Its half-total implies a first-half share of 0.473 against a slate median of 0.544, the same low reading the Sale/Misiorowski game produced on the 21st, which is the direction two elite starters should push it. All totals quoted flat at 0.940 both sides, handicaps flat at 0.950.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Colorado Rockies", "home": "Washington Nationals",
+     "favourite": "Washington Nationals", "handicap": "1+15", "total": "10+50",
+     "half_total": "5.5"},
+    {"away": "Baltimore Orioles", "home": "St. Louis Cardinals",
+     "favourite": "Baltimore Orioles", "handicap": "1+60", "total": "8平",
+     "half_total": "4-70"},
+    {"away": "Houston Astros", "home": "New York Yankees",
+     "favourite": "New York Yankees", "handicap": "1平", "total": "8-40",
+     "half_total": "4-60"},
+    {"away": "Kansas City Royals", "home": "Toronto Blue Jays",
+     "favourite": "Kansas City Royals", "handicap": "1+95", "total": "8-40",
+     "half_total": "4.5"},
+    {"away": "Milwaukee Brewers", "home": "New York Mets",
+     "favourite": "Milwaukee Brewers", "handicap": "1-85", "total": "7平",
+     "half_total": "3.5"},
+    {"away": "Los Angeles Dodgers", "home": "Atlanta Braves",
+     "favourite": "Atlanta Braves", "handicap": "1+70", "total": "6-90",
+     "half_total": "3-10"},
+    {"away": "Arizona Diamondbacks", "home": "San Francisco Giants",
+     "favourite": "Arizona Diamondbacks", "handicap": "1+95", "total": "8平",
+     "half_total": "4-70"}
+  ]
+}

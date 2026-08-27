@@ -193,6 +193,24 @@ def main() -> int:
     # own median needs no outside reference and no assumption about what the
     # true share is -- it only asks whether one game was read differently
     # from the rest, which is exactly what a misread digit looks like.
+    #
+    # The share is not quite independent of the total. Across 109 games it
+    # rises with it, r = +0.302 against a critical value of 0.189: fitted,
+    # share = 0.480 + 0.0068 x total, so 0.524 at a total of 6.5 against
+    # 0.551 at 10.5. That is the direction two aces should push it, since
+    # they cover the first half and the scoring moves to the bullpen innings.
+    #
+    # Correcting for it changes nothing. The total explains 9% of the
+    # variance, so the residual standard deviation is 0.0188 against 0.0197
+    # for the raw deviation, and a 2.5-sigma band on the regression flags
+    # exactly the same two games as the flat 0.05 band -- no game in 109
+    # differs between the rules. The threshold is therefore left alone.
+    #
+    # What the finding does change is how a flag on a low-total game should
+    # be read. Both games ever flagged are elite-pitcher matchups flagged
+    # low -- Sale/Misiorowski at 0.450 on the 21st, Yamamoto/Sale at 0.473
+    # on the 27th -- and for those the reading is the expected signature
+    # rather than evidence of a misread digit.
     halves = [(m, t.effective, parse_line(h).effective)
               for m, _, _, t, _, _, h, _ in checks if h]
     if len(halves) >= 4:

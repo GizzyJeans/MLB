@@ -169,3 +169,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-08-25,8,Los Angeles Dodgers @ Atlanta Braves,大小,大 8.45,大分,0.94,-0.0104,-0.0104,-1.0
 2026-08-25,9,Boston Red Sox @ Miami Marlins,讓球,Boston Red Sox -1.225,讓分,0.95,-0.0287,-0.0108,0.95
 2026-08-25,10,Boston Red Sox @ Miami Marlins,大小,小 7.7,小分,0.94,-0.0113,-0.0113,-1.0
+2026-08-26,1,Boston Red Sox @ Miami Marlins,讓球,Miami Marlins +1.15,受讓,0.95,0.0373,0.0209,0.95
+2026-08-26,2,Minnesota Twins @ Athletics,大小,小 10.5,小分,0.94,0.0046,0.0046,-1.0
+2026-08-26,3,Tampa Bay Rays @ Detroit Tigers,大小,小 7.6,小分,0.94,-0.001,-0.001,0.94
+2026-08-26,4,Pittsburgh Pirates @ San Diego Padres,讓球,San Diego Padres -0.75,讓分,0.95,-0.0089,-0.0028000000000000004,0.95
+2026-08-26,5,Tampa Bay Rays @ Detroit Tigers,讓球,Tampa Bay Rays +0.7,受讓,0.95,0.0012,-0.0039000000000000003,0.95
+2026-08-26,6,Minnesota Twins @ Athletics,讓球,Minnesota Twins -1,讓分,0.95,-0.0167,-0.0045000000000000005,-1.0
+2026-08-26,7,Los Angeles Dodgers @ Atlanta Braves,讓球,Atlanta Braves +0.95,受讓,0.95,0.0069,-0.0046,0.95
+2026-08-26,8,Colorado Rockies @ Washington Nationals,讓球,Washington Nationals -0.725,讓分,0.95,-0.0134,-0.0079,-1.0
+2026-08-26,9,Los Angeles Dodgers @ Atlanta Braves,大小,小 8.75,小分,0.94,-0.0092,-0.0092,-1.0
+2026-08-26,10,Philadelphia Phillies @ Seattle Mariners,讓球,Seattle Mariners +0.85,受讓,0.95,-0.0034999999999999996,-0.0124,-1.0

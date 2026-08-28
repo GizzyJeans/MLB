@@ -179,3 +179,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-08-26,8,Colorado Rockies @ Washington Nationals,讓球,Washington Nationals -0.725,讓分,0.95,-0.0134,-0.0079,-1.0
 2026-08-26,9,Los Angeles Dodgers @ Atlanta Braves,大小,小 8.75,小分,0.94,-0.0092,-0.0092,-1.0
 2026-08-26,10,Philadelphia Phillies @ Seattle Mariners,讓球,Seattle Mariners +0.85,受讓,0.95,-0.0034999999999999996,-0.0124,-1.0
+2026-08-27,1,Milwaukee Brewers @ New York Mets,讓球,Milwaukee Brewers -1.425,讓分,0.95,-0.0192,0.0039000000000000003,0.95
+2026-08-27,2,Arizona Diamondbacks @ San Francisco Giants,大小,小 8,小分,0.94,-0.0024,-0.0024,0.94
+2026-08-27,3,Los Angeles Dodgers @ Atlanta Braves,讓球,Atlanta Braves -0.65,讓分,0.95,-0.009899999999999999,-0.0063,0.6649999999999999
+2026-08-27,4,Baltimore Orioles @ St. Louis Cardinals,讓球,Baltimore Orioles -0.7,讓分,0.95,-0.013600000000000001,-0.0088,-1.0
+2026-08-27,5,Colorado Rockies @ Washington Nationals,讓球,Washington Nationals -0.925,讓分,0.95,-0.0213,-0.011000000000000001,0.95
+2026-08-27,6,Colorado Rockies @ Washington Nationals,大小,小 9.75,小分,0.94,-0.0151,-0.0151,0.94
+2026-08-27,7,Kansas City Royals @ Toronto Blue Jays,大小,大 8.2,大分,0.94,-0.0181,-0.0181,0.94
+2026-08-27,8,Milwaukee Brewers @ New York Mets,大小,大 7,大分,0.94,-0.020099999999999996,-0.020099999999999996,0.94
+2026-08-27,9,Houston Astros @ New York Yankees,讓球,New York Yankees -1,讓分,0.95,-0.0323,-0.020099999999999996,-1.0
+2026-08-27,10,Houston Astros @ New York Yankees,讓球,Houston Astros +1,受讓,0.95,-0.008100000000000001,-0.0209,0.95

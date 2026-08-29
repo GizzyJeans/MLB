@@ -189,3 +189,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-08-27,8,Milwaukee Brewers @ New York Mets,大小,大 7,大分,0.94,-0.020099999999999996,-0.020099999999999996,0.94
 2026-08-27,9,Houston Astros @ New York Yankees,讓球,New York Yankees -1,讓分,0.95,-0.0323,-0.020099999999999996,-1.0
 2026-08-27,10,Houston Astros @ New York Yankees,讓球,Houston Astros +1,受讓,0.95,-0.008100000000000001,-0.0209,0.95
+2026-08-28,1,Los Angeles Dodgers @ Detroit Tigers,讓球,Los Angeles Dodgers -1.4,讓分,0.95,-0.015600000000000001,0.0068000000000000005,-0.8
+2026-08-28,2,Philadelphia Phillies @ Los Angeles Angels,讓球,Los Angeles Angels +1,受讓,0.95,0.0148,0.002,-1.0
+2026-08-28,3,Houston Astros @ New York Mets,讓球,Houston Astros +0.55,受讓,0.95,0.0033,0.002,0.95
+2026-08-28,4,Pittsburgh Pirates @ St. Louis Cardinals,大小,小 7.5,小分,0.94,-0.0027,-0.0027,0.94
+2026-08-28,5,Cincinnati Reds @ Chicago Cubs,大小,小 8.9,小分,0.94,-0.0027,-0.0027,-1.0
+2026-08-28,6,Kansas City Royals @ Cleveland Guardians,讓球,Cleveland Guardians -0.775,讓分,0.95,-0.0123,-0.005699999999999999,-1.0
+2026-08-28,7,Texas Rangers @ Milwaukee Brewers,讓球,Texas Rangers +1.2,受讓,0.95,0.0116,-0.0060999999999999995,-1.0
+2026-08-28,8,Miami Marlins @ Washington Nationals,大小,小 8.3,小分,0.94,-0.0106,-0.0106,-1.0
+2026-08-28,9,Chicago White Sox @ Minnesota Twins,讓球,Chicago White Sox +0.8,受讓,0.95,-0.0053,-0.013000000000000001,0.95
+2026-08-28,10,Boston Red Sox @ New York Yankees,讓球,Boston Red Sox +1,受讓,0.95,-0.0004,-0.0132,0.0

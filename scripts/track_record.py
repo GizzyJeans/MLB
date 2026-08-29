@@ -81,6 +81,15 @@ EARLY_BOARDS = [
     ("2026-08-20", "2026-08-20_asian_board", "2026-08-20_board_pricing_v2"),
 ]
 
+# Prospective test declared in docs/prospective_test.md on 2026-08-29, before
+# any game in the window had started. Thirty slates, paired daily difference,
+# no significance claim before the thirtieth -- the protocol is fixed and the
+# stopping rule is not conditional on what the numbers do.
+TEST_START = "2026-08-29"
+TEST_SLATES = 30
+# Declared endpoint for the primary statistic, fixed before any data.
+TEST_PAIRS = 2000
+
 # Both EV columns are captured. The raw figure is what the simulation
 # priced; the de-biased one adds the measured cover-probability correction,
 # which only touches handicaps and only in proportion to each leg's
@@ -147,13 +156,27 @@ def settle_slate(date: str, board_stem: str):
     return rows
 
 
-def top_picks(report_stem: str, rows: list[dict], limit: int = 10):
-    """The report's ranked selections, paired with what they returned."""
+def top_picks(report_stem: str, rows: list[dict], limit: int = 10,
+              arm: str = "A"):
+    """The report's ranked selections, paired with what they returned.
+
+    Reports written before 2026-08-29 carry a single ranking under a
+    "=== 前 N 候選" heading. From the 29th they carry two, "A組" (ranked on
+    the de-biased EV, the live one) and "B組" (the same candidates ranked on
+    the raw EV), for the prospective test declared in
+    docs/prospective_test.md. Asking for arm "B" on an older report returns
+    nothing rather than silently handing back the A ranking.
+    """
     text = (ROOT / "reports" / f"{report_stem}.txt").read_text("utf-8")
     out, seen = [], False
     for line in text.splitlines():
-        if line.startswith("=== 前"):
-            seen = True
+        if line.startswith("=== "):
+            if line.startswith("=== 前"):
+                seen = arm == "A"          # legacy single-ranking report
+            elif line.startswith(f"=== {arm}組"):
+                seen = True
+            else:
+                seen = False
             continue
         if not (seen and line and line[0].isdigit()):
             continue
@@ -234,6 +257,71 @@ def main() -> int:
     print(f"  預期較高的一半 {statistics.mean(hi) * 100:+.2f}%  "
           f"較低的一半 {statistics.mean(lo) * 100:+.2f}%  "
           f"差 {(statistics.mean(hi) - statistics.mean(lo)) * 100:+.2f}pp")
+
+    # A/B arms of the prospective test. Both rankings come from one candidate
+    # pool priced once; only the sort key differs.
+    ab = []
+    for date, board_stem, report_stem in SLATES:
+        if date < TEST_START:
+            continue
+        rows = settle_slate(date, board_stem)
+        arms = {k: top_picks(report_stem, rows, arm=k) for k in ("A", "B")}
+        if not (arms["A"] and arms["B"]):
+            continue
+        means = {k: statistics.mean(c["pnl"] for c in v) for k, v in arms.items()}
+        overlap = len({(c["matchup"], c["market"], c["side"]) for c in arms["A"]}
+                      & {(c["matchup"], c["market"], c["side"]) for c in arms["B"]})
+        ab.append((date, means["A"], means["B"], means["B"] - means["A"], overlap))
+
+    print(f"\n=== 前瞻測試 A(去偏) vs B(原始)   第 {len(ab)} / {TEST_SLATES} 天 ===")
+    if not ab:
+        print(f"  尚未開始（第一個測試日為 {TEST_START} 之後的第一張盤）")
+    else:
+        print(f"{pad('日期', 12)} {'A組':>9s} {'B組':>9s} {'差(B-A)':>10s} {'重疊':>5s}")
+        for date, a, b, d, ov in ab:
+            print(f"{pad(date, 12)} {a * 100:+8.2f}% {b * 100:+8.2f}% "
+                  f"{d * 100:+9.2f}% {ov:4d}")
+        diffs = [d for _, _, _, d, _ in ab]
+        print(f"\n  A 組平均 {statistics.mean(x for _, x, _, _, _ in ab) * 100:+.2f}%"
+              f"   B 組平均 {statistics.mean(x for _, _, x, _, _ in ab) * 100:+.2f}%"
+              f"   平均配對差 {statistics.mean(diffs) * 100:+.2f}%")
+        print(f"  平均重疊 {statistics.mean(x for _, _, _, _, x in ab):.1f} / 10")
+        if len(diffs) >= 2:
+            sd = statistics.stdev(diffs)
+            print(f"  配對差標準差 {sd * 100:.1f}pp   "
+                  f"標準誤 {sd / len(diffs) ** 0.5 * 100:.1f}pp")
+        if len(ab) < TEST_SLATES:
+            print(f"  還需 {TEST_SLATES - len(ab)} 天。"
+                  "依宣告的停止規則，第 30 天之前不做任何顯著性宣稱。")
+        else:
+            t = statistics.mean(diffs) / (statistics.stdev(diffs)
+                                          / len(diffs) ** 0.5)
+            print(f"  t = {t:+.2f}   df = {len(diffs) - 1}   "
+                  "（雙尾 α=0.05，臨界值約 ±2.05）")
+
+    # Declared primary statistic: the within-line contrast. The correction
+    # adds to the laying side and subtracts from the receiving side, so the
+    # difference between the two sides of one handicap is exactly the
+    # treatment contrast, with the game itself differenced away.
+    from collections import defaultdict
+    by_line = defaultdict(dict)
+    for r in everything:
+        if r["market"] != "讓球":
+            continue
+        by_line[(r["date"], r["matchup_en"])][r["kind"]] = r["pnl"]
+    pairs = [v["讓分"] - v["受讓"] for v in by_line.values() if len(v) == 2]
+    print(f"\n=== 主要統計量：線內配對對比（讓分 − 受讓）===")
+    print(f"  累積 {len(pairs)} / {TEST_PAIRS} 組")
+    if len(pairs) >= 2:
+        mean = statistics.mean(pairs)
+        sd = statistics.stdev(pairs)
+        sem = sd / len(pairs) ** 0.5
+        print(f"  平均 {mean * 100:+.2f}pp   sd {sd * 100:.1f}pp   "
+              f"標準誤 {sem * 100:.1f}pp   t = {mean / sem:+.2f}")
+        print(f"  目前可偵測（80% 檢定力）{2.8 * sem * 100:.1f}pp")
+    if len(pairs) < TEST_PAIRS:
+        print(f"  尚未達終點，依宣告不做顯著性宣稱。"
+              f"還需 {TEST_PAIRS - len(pairs)} 組。")
 
     allp = [r["pnl"] for r in everything]
     print(f"\n  健全性：全部 {len(allp)} 個板面選擇（兩面全下）"

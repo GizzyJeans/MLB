@@ -236,14 +236,29 @@ def main() -> int:
           f"(公平掛盤應落在 -2.5% ~ -3.0%)")
     print(f"  範圍 {min(evs) * 100:+.2f}% ~ {max(evs) * 100:+.2f}%")
 
-    candidates.sort(key=lambda c: -c["adj"])
-    print(f"\n=== 前 {args.top} 候選（板面實際賠率，去偏後）===")
-    print(f"{'#':3s} {pad('比賽', 22)} {pad('市場', 6)} {pad('選擇', 22)} "
-          f"{pad('板面線', 14)} {'賠率':>6s} {'原始':>8s} {'去偏':>8s}")
-    for i, c in enumerate(candidates[:args.top], 1):
-        print(f"{i:<3d} {pad(c['matchup'], 22)} {pad(c['market'], 6)} "
-              f"{pad(c['side'], 22)} {pad(c['line'], 14)} {c['price']:.3f} "
-              f"{c['raw'] * 100:+7.2f}% {c['adj'] * 100:+7.2f}%")
+    def ranking(key: str, heading: str) -> None:
+        ordered = sorted(candidates, key=lambda c: -c[key])
+        print(f"\n=== {heading} ===")
+        print(f"{'#':3s} {pad('比賽', 22)} {pad('市場', 6)} {pad('選擇', 22)} "
+              f"{pad('板面線', 14)} {'賠率':>6s} {'原始':>8s} {'去偏':>8s}")
+        for i, c in enumerate(ordered[:args.top], 1):
+            print(f"{i:<3d} {pad(c['matchup'], 22)} {pad(c['market'], 6)} "
+                  f"{pad(c['side'], 22)} {pad(c['line'], 14)} {c['price']:.3f} "
+                  f"{c['raw'] * 100:+7.2f}% {c['adj'] * 100:+7.2f}%")
+        return ordered
+
+    a = ranking("adj", f"A組 前 {args.top} 候選（板面實際賠率，去偏後）")
+    # Same candidate pool, same simulation, same prices -- only the sort key
+    # differs. Declared in docs/prospective_test.md on 2026-08-29, before any
+    # game in the test window had started, and recorded for thirty slates
+    # whatever it shows. It produces no recommendation: the +4% gate reads
+    # the de-biased figure, as it always has.
+    b = ranking("raw", f"B組 前 {args.top} 候選（同一批候選，改用原始 EV 排序）")
+    top_a = {(c["matchup"], c["market"], c["side"]) for c in a[:args.top]}
+    top_b = {(c["matchup"], c["market"], c["side"]) for c in b[:args.top]}
+    print(f"\n兩組前 {args.top} 重疊 {len(top_a & top_b)} 筆"
+          f"（重疊越高，前瞻測試的配對檢定力越強）")
+    candidates = a
 
     passing = [c for c in candidates if c["adj"] >= 0.04]
     print(f"\n達 +4% 門檻: {len(passing)} / {len(candidates)}")

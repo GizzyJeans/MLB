@@ -160,13 +160,27 @@ def main() -> int:
 
     if args.expected:
         text = Path(args.expected).read_text(encoding="utf-8")
+        # Reports written before 2026-08-29 carry one ranking under
+        # "=== 前 N 候選"; from the 29th they carry two, "A組" and "B組", for
+        # the prospective test. Settle the A arm -- the live one -- and stop
+        # at the B heading rather than running the two together.
         picks, seen = [], False
         for line in text.splitlines():
-            if line.startswith("=== 前"):
-                seen = True
+            if line.startswith("=== "):
+                seen = (line.startswith("=== 前")
+                        or line.startswith("=== A組"))
                 continue
             if seen and line and line[0].isdigit():
                 picks.append(line)
+        # An empty parse is the failure this guard exists for. When the
+        # report's heading changed on 2026-08-29 the parser silently matched
+        # nothing and printed an empty table -- readable as "no picks today"
+        # rather than as a broken parser. A caller who asked for a
+        # comparison and got none should be told.
+        if not picks:
+            raise SystemExit(
+                f"{args.expected} 裡找不到任何可解析的候選列。"
+                "報告的區塊標題可能已更動。")
         print("=== 前 10 候選結算 ===")
         print(f"{'#':3s} {pad('比賽', 18)} {'比分':>7s} {pad('選擇', 22)} "
               f"{'預期EV':>9s} {'實際':>9s} {'結果':>6s}")

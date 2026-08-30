@@ -199,3 +199,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-08-28,8,Miami Marlins @ Washington Nationals,大小,小 8.3,小分,0.94,-0.0106,-0.0106,-1.0
 2026-08-28,9,Chicago White Sox @ Minnesota Twins,讓球,Chicago White Sox +0.8,受讓,0.95,-0.0053,-0.013000000000000001,0.95
 2026-08-28,10,Boston Red Sox @ New York Yankees,讓球,Boston Red Sox +1,受讓,0.95,-0.0004,-0.0132,0.0
+2026-08-29,1,San Diego Padres @ Tampa Bay Rays,大小,小 8.1,小分,0.95,0.0196,0.0196,-1.0
+2026-08-29,2,Texas Rangers @ Milwaukee Brewers,大小,大 8,大分,0.94,0.0179,0.0179,0.0
+2026-08-29,3,Los Angeles Dodgers @ Detroit Tigers,大小,小 7.3,小分,0.95,0.0134,0.0134,0.95
+2026-08-29,4,Cincinnati Reds @ Chicago Cubs,大小,小 9.25,小分,0.95,0.0070999999999999995,0.0070999999999999995,-1.0
+2026-08-29,5,Houston Astros @ New York Mets,讓球,New York Mets -0.775,讓分,0.95,-0.005,0.0017000000000000001,0.95
+2026-08-29,6,Philadelphia Phillies @ Los Angeles Angels,大小,小 8,小分,0.94,-0.0009,-0.0009,0.94
+2026-08-29,7,Kansas City Royals @ Cleveland Guardians,讓球,Kansas City Royals +1,受讓,0.95,0.011000000000000001,-0.0018,0.95
+2026-08-29,8,Kansas City Royals @ Cleveland Guardians,大小,小 8,小分,0.94,-0.004,-0.004,-1.0
+2026-08-29,9,Philadelphia Phillies @ Los Angeles Angels,讓球,Los Angeles Angels +1.9,受讓,0.95,-0.0003,-0.0053,-0.19999999999999996
+2026-08-29,10,Baltimore Orioles @ Athletics,大小,小 9.8,小分,0.94,-0.0073,-0.0073,0.94

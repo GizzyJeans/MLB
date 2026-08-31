@@ -209,3 +209,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-08-29,8,Kansas City Royals @ Cleveland Guardians,大小,小 8,小分,0.94,-0.004,-0.004,-1.0
 2026-08-29,9,Philadelphia Phillies @ Los Angeles Angels,讓球,Los Angeles Angels +1.9,受讓,0.95,-0.0003,-0.0053,-0.19999999999999996
 2026-08-29,10,Baltimore Orioles @ Athletics,大小,小 9.8,小分,0.94,-0.0073,-0.0073,0.94
+2026-08-30,1,Miami Marlins @ Washington Nationals,讓球,Washington Nationals +0.675,受讓,0.95,0.0374,0.0329,-1.0
+2026-08-30,2,Cincinnati Reds @ Chicago Cubs,讓球,Chicago Cubs -0.85,讓分,0.95,0.0199,0.028399999999999998,-1.0
+2026-08-30,3,San Diego Padres @ Tampa Bay Rays,大小,小 7.25,小分,0.94,0.0044,0.0044,-1.0
+2026-08-30,4,Cincinnati Reds @ Chicago Cubs,大小,小 9.3,小分,0.94,0.0003,0.0003,-1.0
+2026-08-30,5,Houston Astros @ New York Mets,大小,大 8.8,大分,0.94,-0.0012,-0.0012,0.376
+2026-08-30,6,Miami Marlins @ Washington Nationals,大小,小 9.2,小分,0.94,-0.009899999999999999,-0.009899999999999999,0.94
+2026-08-30,7,Philadelphia Phillies @ Los Angeles Angels,讓球,Los Angeles Angels +1.6,受讓,0.95,0.01,-0.01,-1.0
+2026-08-30,8,Seattle Mariners @ Toronto Blue Jays,讓球,Toronto Blue Jays +1,受讓,0.95,0.0007000000000000001,-0.0121,0.95
+2026-08-30,9,Houston Astros @ New York Mets,讓球,New York Mets -0.675,讓分,0.95,-0.0165,-0.0123,-1.0
+2026-08-30,10,Baltimore Orioles @ Athletics,大小,小 10.2,小分,0.94,-0.0127,-0.0127,-1.0

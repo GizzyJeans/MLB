@@ -219,3 +219,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-08-30,8,Seattle Mariners @ Toronto Blue Jays,讓球,Toronto Blue Jays +1,受讓,0.95,0.0007000000000000001,-0.0121,0.95
 2026-08-30,9,Houston Astros @ New York Mets,讓球,New York Mets -0.675,讓分,0.95,-0.0165,-0.0123,-1.0
 2026-08-30,10,Baltimore Orioles @ Athletics,大小,小 10.2,小分,0.94,-0.0127,-0.0127,-1.0
+2026-08-31,1,New York Mets @ Tampa Bay Rays,讓球,New York Mets +1.225,受讓,0.95,0.0336,0.015300000000000001,0.95
+2026-08-31,2,Seattle Mariners @ Boston Red Sox,大小,大 7.55,大分,0.94,0.0003,0.0003,0.94
+2026-08-31,3,San Francisco Giants @ Atlanta Braves,讓球,San Francisco Giants +1.125,受讓,0.95,0.0152,-0.0006,0.95
+2026-08-31,4,Chicago White Sox @ Houston Astros,讓球,Houston Astros -0.75,讓分,0.95,-0.0089,-0.0028000000000000004,0.95
+2026-08-31,5,Seattle Mariners @ Boston Red Sox,讓球,Seattle Mariners +1.125,受讓,0.95,0.0073,-0.0085,0.2375
+2026-08-31,6,New York Yankees @ Los Angeles Angels,讓球,Los Angeles Angels +1.05,受讓,0.95,0.0051,-0.0089,0.95
+2026-08-31,7,Chicago White Sox @ Houston Astros,大小,小 8.4,小分,0.94,-0.0092,-0.0092,-1.0
+2026-08-31,8,San Diego Padres @ Cincinnati Reds,讓球,Cincinnati Reds +1.175,受讓,0.95,0.0072,-0.009899999999999999,-1.0
+2026-08-31,9,Detroit Tigers @ Minnesota Twins,大小,小 8.4,小分,0.94,-0.0143,-0.0143,-1.0
+2026-08-31,10,Philadelphia Phillies @ Arizona Diamondbacks,讓球,Arizona Diamondbacks +0.75,受讓,0.95,-0.0084,-0.0148,-0.5

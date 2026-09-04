@@ -71,6 +71,7 @@ SLATES = [
     ("2026-08-29", "2026-08-29_asian_board", "2026-08-29_board_pricing"),
     ("2026-08-30", "2026-08-30_asian_board", "2026-08-30_board_pricing"),
     ("2026-08-31", "2026-08-31_asian_board", "2026-08-31_board_pricing"),
+    ("2026-09-01", "2026-09-01_asian_board", "2026-09-01_board_pricing"),
 ]
 
 # Boards that were priced once, then moved before first pitch and re-priced.
@@ -109,7 +110,7 @@ def settle_slate(date: str, board_stem: str):
         (ROOT / "data" / "boards" / f"{board_stem}.json").read_text("utf-8"))
     hk_h, hk_t = board["handicap_price_hk"], board["total_price_hk"]
     scores = load_scores(
-        str(ROOT / "data" / "scores" / f"aug{date[-2:]}_scores.json"), date)
+        str(ROOT / "data" / "scores" / f"{'aug' if date[5:7] == '08' else 'sep'}{date[-2:]}_scores.json"), date)
 
     rows = []
     for entry in board["games"]:

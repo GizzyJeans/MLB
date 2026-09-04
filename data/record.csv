@@ -229,3 +229,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-08-31,8,San Diego Padres @ Cincinnati Reds,讓球,Cincinnati Reds +1.175,受讓,0.95,0.0072,-0.009899999999999999,-1.0
 2026-08-31,9,Detroit Tigers @ Minnesota Twins,大小,小 8.4,小分,0.94,-0.0143,-0.0143,-1.0
 2026-08-31,10,Philadelphia Phillies @ Arizona Diamondbacks,讓球,Arizona Diamondbacks +0.75,受讓,0.95,-0.0084,-0.0148,-0.5
+2026-09-01,1,New York Yankees @ Los Angeles Angels,讓球,Los Angeles Angels +1.6,受讓,0.95,0.0377,0.0178,-1.0
+2026-09-01,2,Seattle Mariners @ Boston Red Sox,大小,大 7,大分,0.94,0.0032,0.0032,0.94
+2026-09-01,3,Chicago White Sox @ Houston Astros,大小,小 8.55,小分,0.94,-0.0,-0.0,0.94
+2026-09-01,4,San Francisco Giants @ Pittsburgh Pirates,大小,小 7.65,小分,0.94,-0.0004,-0.0004,-1.0
+2026-09-01,5,Milwaukee Brewers @ Chicago Cubs,大小,大 9.95,大分,0.94,-0.0006,-0.0006,0.94
+2026-09-01,6,Atlanta Braves @ Washington Nationals,讓球,Atlanta Braves -1.5,讓分,0.95,-0.0313,-0.0064,-1.0
+2026-09-01,7,Miami Marlins @ Kansas City Royals,讓球,Kansas City Royals -0.625,讓分,0.95,-0.0096,-0.006500000000000001,-1.0
+2026-09-01,8,San Francisco Giants @ Pittsburgh Pirates,讓球,Pittsburgh Pirates -1,讓分,0.95,-0.0222,-0.0101,0.0
+2026-09-01,9,Seattle Mariners @ Boston Red Sox,讓球,Boston Red Sox -0.675,讓分,0.95,-0.0146,-0.0103,-1.0
+2026-09-01,10,Milwaukee Brewers @ Chicago Cubs,讓球,Chicago Cubs -0.75,讓分,0.95,-0.0191,-0.0131,-1.0

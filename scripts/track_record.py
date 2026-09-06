@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 import re
 import statistics
 import sys
@@ -73,6 +74,7 @@ SLATES = [
     ("2026-08-31", "2026-08-31_asian_board", "2026-08-31_board_pricing"),
     ("2026-09-01", "2026-09-01_asian_board", "2026-09-01_board_pricing"),
     ("2026-09-04", "2026-09-04_asian_board", "2026-09-04_board_pricing"),
+    ("2026-09-05", "2026-09-05_asian_board", "2026-09-05_board_pricing"),
 ]
 
 # Boards that were priced once, then moved before first pitch and re-priced.
@@ -362,8 +364,15 @@ def main() -> int:
     wins = sum(1 for p in got if p > 0.01)
     print(f"  {wins} 勝 {sum(1 for p in got if p < -0.01)} 敗 "
           f"{n - wins - sum(1 for p in got if p < -0.01)} 和")
-    print(f"  在真實勝率 53% 的假設下，{n} 戰全勝的機率約 "
-          f"{0.53 ** n * 100:.0f}% — 樣本量還不足以說明任何事")
+    # This used to report the chance of running the table, which was written
+    # when the gated set happened to be unbeaten and quietly stayed on the
+    # page after it stopped being. A line that only describes one outcome is
+    # not a statistic; the upper tail is what the record actually is.
+    decided = wins + sum(1 for p in got if p < -0.01)
+    tail = sum(math.comb(decided, k) * 0.53 ** k * 0.47 ** (decided - k)
+               for k in range(wins, decided + 1))
+    print(f"  在真實勝率 53% 的假設下，{decided} 戰至少贏 {wins} 場的機率約 "
+          f"{tail * 100:.0f}% — 樣本量還不足以說明任何事")
     return 0
 
 

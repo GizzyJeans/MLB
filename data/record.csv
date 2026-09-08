@@ -269,3 +269,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-06,8,Athletics @ Seattle Mariners,讓球,Athletics +1.275,受讓,0.95,0.0149,-0.0046,-1.0
 2026-09-06,9,Atlanta Braves @ Philadelphia Phillies,大小,小 8.2,小分,0.94,-0.0069,-0.0069,-1.0
 2026-09-06,10,Minnesota Twins @ Chicago White Sox,讓球,Chicago White Sox -0.9,讓分,0.95,-0.0178,-0.008100000000000001,0.95
+2026-09-07,1,Cleveland Guardians @ Baltimore Orioles,大小,大 7.1,大分,0.94,0.013000000000000001,0.013000000000000001,0.94
+2026-09-07,2,Minnesota Twins @ Detroit Tigers,大小,小 8.2,小分,0.94,0.011000000000000001,0.011000000000000001,-1.0
+2026-09-07,3,Minnesota Twins @ Detroit Tigers,讓球,Minnesota Twins +0.75,受讓,0.95,0.017,0.0106,-0.5
+2026-09-07,4,Cincinnati Reds @ Los Angeles Dodgers,大小,小 8.5,小分,0.94,0.009300000000000001,0.009300000000000001,-1.0
+2026-09-07,5,Arizona Diamondbacks @ Kansas City Royals,讓球,Kansas City Royals -0.525,讓分,0.95,-0.0019,-0.0013,-1.0
+2026-09-07,6,Toronto Blue Jays @ Athletics,大小,小 8.4,小分,0.94,-0.005699999999999999,-0.005699999999999999,-1.0
+2026-09-07,7,St. Louis Cardinals @ San Francisco Giants,讓球,San Francisco Giants -0.725,讓分,0.95,-0.011699999999999999,-0.0062,0.5225
+2026-09-07,8,New York Mets @ Miami Marlins,大小,小 8.05,小分,0.94,-0.008,-0.008,-1.0
+2026-09-07,9,Chicago Cubs @ Milwaukee Brewers,讓球,Milwaukee Brewers -0.675,讓分,0.95,-0.0124,-0.008199999999999999,0.6174999999999999
+2026-09-07,10,St. Louis Cardinals @ San Francisco Giants,大小,小 7.7,小分,0.94,-0.0106,-0.0106,-1.0

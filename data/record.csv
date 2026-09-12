@@ -299,3 +299,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-09,8,Los Angeles Angels @ Boston Red Sox,大小,小 9.25,小分,0.94,-0.006500000000000001,-0.006500000000000001,-1.0
 2026-09-09,9,New York Mets @ Miami Marlins,讓球,New York Mets +0.75,受讓,0.95,-0.0018,-0.008199999999999999,0.95
 2026-09-09,10,Minnesota Twins @ Detroit Tigers,讓球,Detroit Tigers -0.75,讓分,0.95,-0.016,-0.009899999999999999,0.95
+2026-09-11,1,Baltimore Orioles @ Toronto Blue Jays,讓球,Toronto Blue Jays -0.675,讓分,0.95,0.0159,0.020099999999999996,-1.0
+2026-09-11,2,Cincinnati Reds @ Milwaukee Brewers,讓球,Milwaukee Brewers -1.175,讓分,0.95,-0.0034000000000000002,0.013300000000000001,0.95
+2026-09-11,3,Seattle Mariners @ Athletics,讓球,Seattle Mariners -1.3,讓分,0.95,-0.018799999999999997,0.001,-1.0
+2026-09-11,4,Los Angeles Dodgers @ Miami Marlins,大小,小 7.65,小分,0.94,-0.0025,-0.0025,-0.7
+2026-09-11,5,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves -1.125,讓分,0.95,-0.0206,-0.0053,-0.25
+2026-09-11,6,Cincinnati Reds @ Milwaukee Brewers,大小,大 7.7,大分,0.94,-0.0062,-0.0062,0.94
+2026-09-11,7,San Diego Padres @ San Francisco Giants,讓球,San Diego Padres -1,讓分,0.95,-0.020099999999999996,-0.0079,0.95
+2026-09-11,8,Chicago White Sox @ St. Louis Cardinals,大小,大 8,大分,0.94,-0.0083,-0.0083,0.94
+2026-09-11,9,Seattle Mariners @ Athletics,大小,小 10,小分,0.94,-0.0098,-0.0098,-1.0
+2026-09-11,10,Texas Rangers @ Arizona Diamondbacks,讓球,Arizona Diamondbacks -0.725,讓分,0.95,-0.016200000000000003,-0.0108,0.95

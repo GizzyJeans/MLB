@@ -319,3 +319,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-12,8,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves -0.75,讓分,0.95,0.0039000000000000003,0.01,0.95
 2026-09-12,9,San Diego Padres @ San Francisco Giants,大小,小 8,小分,0.94,0.0097,0.0097,-1.0
 2026-09-12,10,Colorado Rockies @ Detroit Tigers,讓球,Colorado Rockies +1.125,受讓,0.95,0.0149,-0.0009,-1.0
+2026-09-13,1,Cincinnati Reds @ Milwaukee Brewers,大小,大 7.85,大分,0.94,0.0058,0.0058,-1.0
+2026-09-13,2,Pittsburgh Pirates @ Chicago Cubs,讓球,Chicago Cubs -0.8,讓分,0.95,-0.0092,-0.0019,-1.0
+2026-09-13,3,San Diego Padres @ San Francisco Giants,讓球,San Diego Padres -0.725,讓分,0.95,-0.0088,-0.0033,0.95
+2026-09-13,4,Houston Astros @ Tampa Bay Rays,讓球,Tampa Bay Rays -0.775,讓分,0.95,-0.0115,-0.0048,0.95
+2026-09-13,5,Los Angeles Dodgers @ Miami Marlins,大小,小 8.35,小分,0.94,-0.005699999999999999,-0.005699999999999999,-1.0
+2026-09-13,6,Pittsburgh Pirates @ Chicago Cubs,大小,小 6.65,小分,0.94,-0.005699999999999999,-0.005699999999999999,-0.7
+2026-09-13,7,Baltimore Orioles @ Toronto Blue Jays,讓球,Toronto Blue Jays -0.875,讓分,0.95,-0.0148,-0.005699999999999999,0.95
+2026-09-13,8,Kansas City Royals @ Boston Red Sox,大小,小 7.35,小分,0.94,-0.0059,-0.0059,0.94
+2026-09-13,9,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves -0.725,讓分,0.95,-0.0128,-0.0074,-1.0
+2026-09-13,10,Houston Astros @ Tampa Bay Rays,大小,小 7.85,小分,0.94,-0.0085,-0.0085,-1.0

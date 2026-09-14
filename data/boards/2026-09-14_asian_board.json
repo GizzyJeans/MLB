@@ -1,0 +1,28 @@
+{
+  "_comment": "Asian board for the 2026-09-14 slate (Taipei 09-15). Fourteenth slate of the prospective test, and the smallest board yet: seven games against a ten-game US card. White Sox at Guardians, Braves at Cubs and Giants at Cardinals are on the card but not this board. No reading conflict: all seven favourites agree with the US moneyline, and the board's own moneyline column, shown in five of the seven, agrees as well. Orioles at Mets has no moneyline column and matches on the market alone at 0.5291 with all fifteen books above even. Mariners at Angels is quoted at a 0 handicap, where laying and receiving are the same wager. Handicaps flat at 0.950, totals flat at 0.940, no split prices. One transcription note: the Dodgers at Reds half-to-full share is 0.481 against a slate median near 0.529, the lowest reading on this board and close to the 0.05 tolerance. Seven games is a thin sample for that check, so it is recorded rather than treated as a failure.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Los Angeles Dodgers", "home": "Cincinnati Reds",
+     "favourite": "Los Angeles Dodgers", "handicap": "2+30", "total": "8+20",
+     "half_total": "4+40"},
+    {"away": "Detroit Tigers", "home": "Toronto Blue Jays",
+     "favourite": "Toronto Blue Jays", "handicap": "1+55", "total": "8+80",
+     "half_total": "4-20"},
+    {"away": "Baltimore Orioles", "home": "New York Mets",
+     "favourite": "New York Mets", "handicap": "1+70", "total": "8+20",
+     "half_total": "4-60"},
+    {"away": "New York Yankees", "home": "Minnesota Twins",
+     "favourite": "New York Yankees", "handicap": "1平", "total": "8.5",
+     "half_total": "4.5"},
+    {"away": "San Diego Padres", "home": "Colorado Rockies",
+     "favourite": "San Diego Padres", "handicap": "2+40", "total": "11-30",
+     "half_total": "6+20"},
+    {"away": "Seattle Mariners", "home": "Los Angeles Angels",
+     "favourite": "Seattle Mariners", "handicap": "0", "total": "8+30",
+     "half_total": "4平"},
+    {"away": "Miami Marlins", "home": "Arizona Diamondbacks",
+     "favourite": "Arizona Diamondbacks", "handicap": "1+40", "total": "8平",
+     "half_total": "4-30"}
+  ]
+}

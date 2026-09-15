@@ -329,3 +329,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-13,8,Kansas City Royals @ Boston Red Sox,大小,小 7.35,小分,0.94,-0.0059,-0.0059,0.94
 2026-09-13,9,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves -0.725,讓分,0.95,-0.0128,-0.0074,-1.0
 2026-09-13,10,Houston Astros @ Tampa Bay Rays,大小,小 7.85,小分,0.94,-0.0085,-0.0085,-1.0
+2026-09-14,1,Los Angeles Dodgers @ Cincinnati Reds,大小,小 7.9,小分,0.94,0.0311,0.0311,0.94
+2026-09-14,2,New York Yankees @ Minnesota Twins,大小,小 8.5,小分,0.94,0.0276,0.0276,-1.0
+2026-09-14,3,Los Angeles Dodgers @ Cincinnati Reds,讓球,Cincinnati Reds +1.85,受讓,0.95,0.0218,0.0143,-1.0
+2026-09-14,4,Seattle Mariners @ Los Angeles Angels,大小,小 7.85,小分,0.94,0.0141,0.0141,-1.0
+2026-09-14,5,San Diego Padres @ Colorado Rockies,大小,小 11.15,小分,0.94,0.0052,0.0052,-1.0
+2026-09-14,6,San Diego Padres @ Colorado Rockies,讓球,Colorado Rockies +1.8,受讓,0.95,0.011000000000000001,0.0011,0.95
+2026-09-14,7,Detroit Tigers @ Toronto Blue Jays,讓球,Toronto Blue Jays -0.725,讓分,0.95,-0.0116,-0.0060999999999999995,-1.0
+2026-09-14,8,Seattle Mariners @ Los Angeles Angels,讓球,Seattle Mariners -0,讓分,0.95,-0.0096,-0.0096,-1.0
+2026-09-14,9,New York Yankees @ Minnesota Twins,讓球,Minnesota Twins +1,受讓,0.95,0.0031,-0.0097,-1.0
+2026-09-14,10,Baltimore Orioles @ New York Mets,大小,小 7.9,小分,0.94,-0.01,-0.01,0.94

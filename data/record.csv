@@ -349,3 +349,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-15,8,Seattle Mariners @ Los Angeles Angels,大小,小 8.2,小分,0.94,-0.0078000000000000005,-0.0078000000000000005,0.94
 2026-09-15,9,Baltimore Orioles @ New York Mets,讓球,New York Mets -0.75,讓分,0.95,-0.015,-0.0089,-1.0
 2026-09-15,10,Philadelphia Phillies @ Washington Nationals,讓球,Washington Nationals +1.8,受讓,0.95,0.0001,-0.009899999999999999,0.95
+2026-09-16,1,Philadelphia Phillies @ Washington Nationals,大小,大 8.5,大分,0.94,0.0394,0.0394,-1.0
+2026-09-16,2,Detroit Tigers @ Toronto Blue Jays,讓球,Toronto Blue Jays -0.675,讓分,0.95,0.0208,0.025,0.95
+2026-09-16,3,Philadelphia Phillies @ Washington Nationals,讓球,Philadelphia Phillies -1.5,讓分,0.95,-0.0192,0.005699999999999999,0.95
+2026-09-16,4,Boston Red Sox @ Texas Rangers,讓球,Texas Rangers +0.575,受讓,0.95,0.0058,0.0039000000000000003,0.95
+2026-09-16,5,Milwaukee Brewers @ Pittsburgh Pirates,讓球,Pittsburgh Pirates +1,受讓,0.95,0.013000000000000001,0.0002,0.0
+2026-09-16,6,Miami Marlins @ Arizona Diamondbacks,大小,大 8.75,大分,0.94,-0.0067,-0.0067,-1.0
+2026-09-16,7,Miami Marlins @ Arizona Diamondbacks,讓球,Arizona Diamondbacks -0.775,讓分,0.95,-0.016,-0.009300000000000001,-1.0
+2026-09-16,8,Seattle Mariners @ Los Angeles Angels,大小,大 7.8,大分,0.94,-0.01,-0.01,0.94
+2026-09-16,9,San Diego Padres @ Colorado Rockies,讓球,Colorado Rockies +1.65,受讓,0.95,0.0073,-0.0102,-1.0
+2026-09-16,10,New York Yankees @ Minnesota Twins,讓球,Minnesota Twins +1.2,受讓,0.95,0.0074,-0.0103,0.95

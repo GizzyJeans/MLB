@@ -369,3 +369,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-17,8,Kansas City Royals @ Houston Astros,讓球,Kansas City Royals +1,受讓,0.95,0.0039000000000000003,-0.0089,-1.0
 2026-09-17,9,Philadelphia Phillies @ New York Mets,讓球,New York Mets -0.725,讓分,0.95,-0.0179,-0.0125,-1.0
 2026-09-17,10,Detroit Tigers @ Chicago White Sox,讓球,Chicago White Sox -0.55,讓分,0.95,-0.0176,-0.016399999999999998,0.95
+2026-09-18,1,Athletics @ Cleveland Guardians,讓球,Athletics +1.6,受讓,0.95,0.0472,0.0273,-0.8
+2026-09-18,2,Boston Red Sox @ Tampa Bay Rays,讓球,Boston Red Sox +0.875,受讓,0.95,0.0191,0.0095,0.95
+2026-09-18,3,Toronto Blue Jays @ Texas Rangers,大小,大 7.35,大分,0.95,0.0055000000000000005,0.0055000000000000005,0.95
+2026-09-18,4,San Francisco Giants @ Los Angeles Dodgers,讓球,San Francisco Giants +1.925,受讓,0.95,0.0077,0.0039000000000000003,-1.0
+2026-09-18,5,Philadelphia Phillies @ New York Mets,讓球,New York Mets -0.525,讓分,0.95,0.0016,0.0022,0.95
+2026-09-18,6,Boston Red Sox @ Tampa Bay Rays,大小,大 7,大分,0.94,-0.0026,-0.0026,-1.0
+2026-09-18,7,New York Yankees @ Arizona Diamondbacks,大小,小 7.975,小分,0.94,-0.0069,-0.0069,-1.0
+2026-09-18,8,Detroit Tigers @ Chicago White Sox,讓球,Chicago White Sox -0.725,讓分,0.95,-0.0138,-0.0083,-1.0
+2026-09-18,9,Washington Nationals @ St. Louis Cardinals,讓球,St. Louis Cardinals +0.55,受讓,0.95,-0.008199999999999999,-0.009399999999999999,-1.0
+2026-09-18,10,Minnesota Twins @ Los Angeles Angels,讓球,Minnesota Twins -0.475,讓分,0.95,-0.0098,-0.0098,0.95

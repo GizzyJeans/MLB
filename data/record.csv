@@ -379,3 +379,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-18,8,Detroit Tigers @ Chicago White Sox,讓球,Chicago White Sox -0.725,讓分,0.95,-0.0138,-0.0083,-1.0
 2026-09-18,9,Washington Nationals @ St. Louis Cardinals,讓球,St. Louis Cardinals +0.55,受讓,0.95,-0.008199999999999999,-0.009399999999999999,-1.0
 2026-09-18,10,Minnesota Twins @ Los Angeles Angels,讓球,Minnesota Twins -0.475,讓分,0.95,-0.0098,-0.0098,0.95
+2026-09-19,1,Miami Marlins @ San Diego Padres,大小,小 8,小分,0.94,0.0542,0.0542,-1.0
+2026-09-19,2,Detroit Tigers @ Chicago White Sox,大小,小 8.35,小分,0.94,0.0521,0.0521,0.94
+2026-09-19,3,New York Yankees @ Arizona Diamondbacks,讓球,Arizona Diamondbacks +1.15,受讓,0.95,0.0418,0.0253,0.95
+2026-09-19,4,Athletics @ Cleveland Guardians,大小,小 8.2,小分,0.94,0.0209,0.0209,-1.0
+2026-09-19,5,Miami Marlins @ San Diego Padres,讓球,Miami Marlins +1.05,受讓,0.95,0.0231,0.0091,0.095
+2026-09-19,6,Washington Nationals @ St. Louis Cardinals,大小,小 8.75,小分,0.94,0.0052,0.0052,-1.0
+2026-09-19,7,Atlanta Braves @ Houston Astros,大小,小 8.5,小分,0.94,0.0006,0.0006,-1.0
+2026-09-19,8,Minnesota Twins @ Los Angeles Angels,大小,小 7.3,小分,0.94,-0.0015,-0.0015,-1.0
+2026-09-19,9,New York Yankees @ Arizona Diamondbacks,大小,小 7.3,小分,0.94,-0.0049,-0.0049,-1.0
+2026-09-19,10,Chicago Cubs @ Cincinnati Reds,大小,小 9.7,小分,0.94,-0.0053,-0.0053,0.94

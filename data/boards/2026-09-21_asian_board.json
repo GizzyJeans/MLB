@@ -1,0 +1,16 @@
+{
+  "_comment": "Asian board for the 2026-09-21 slate (Taipei 09-22). Twenty-first slate of the prospective test, and the smallest board yet: three games, which is the entire US card. No reading conflict. Blue Jays at Orioles is quoted at a 0 handicap where laying and receiving are the same wager; the market there is 0.5043 to Baltimore, which matches the row anyway. Nationals at Tigers shows the board's own moneyline column and it agrees with the market. Twins at Giants has no moneyline column and matches my reading on the market alone at 0.5166 to Minnesota, none of fifteen books above even for San Francisco. That game carries the row mismatch again -- full game on Minnesota's row, first half on San Francisco's -- and this time it points the wrong way, taking the tally to four of six. It remains moot: the moneyline settles these before the mismatch is consulted, so there is nothing to adopt or discard. With only twelve candidates on the board, the top ten covers five sixths of the pool, so the two rankings will overlap almost completely and the slate contributes little paired information to the test -- the same structural caveat as the seven-game board on 09-14. Handicaps flat at 0.950, totals flat at 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Toronto Blue Jays", "home": "Baltimore Orioles",
+     "favourite": "Baltimore Orioles", "handicap": "0", "total": "8+50",
+     "half_total": "4-40"},
+    {"away": "Washington Nationals", "home": "Detroit Tigers",
+     "favourite": "Detroit Tigers", "handicap": "1-10", "total": "8-50",
+     "half_total": "5+50"},
+    {"away": "Minnesota Twins", "home": "San Francisco Giants",
+     "favourite": "Minnesota Twins", "handicap": "1+50", "total": "8-60",
+     "half_total": "5+80"}
+  ]
+}

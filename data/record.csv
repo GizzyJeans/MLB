@@ -399,3 +399,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-20,8,Milwaukee Brewers @ Baltimore Orioles,大小,小 7.7,小分,0.94,-0.0097,-0.0097,0.94
 2026-09-20,9,Toronto Blue Jays @ Texas Rangers,讓球,Texas Rangers -1,讓分,0.95,-0.024399999999999998,-0.012199999999999999,-1.0
 2026-09-20,10,Kansas City Royals @ Pittsburgh Pirates,讓球,Pittsburgh Pirates +0.7,受讓,0.95,-0.0086,-0.0137,0.95
+2026-09-21,1,Washington Nationals @ Detroit Tigers,讓球,Washington Nationals +1.05,受讓,0.95,0.026000000000000002,0.012,-1.0
+2026-09-21,2,Minnesota Twins @ San Francisco Giants,讓球,San Francisco Giants +0.75,受讓,0.95,0.014499999999999999,0.008100000000000001,0.95
+2026-09-21,3,Toronto Blue Jays @ Baltimore Orioles,大小,小 7.75,小分,0.94,-0.0049,-0.0049,0.94
+2026-09-21,4,Minnesota Twins @ San Francisco Giants,大小,小 8.3,小分,0.94,-0.008,-0.008,0.94
+2026-09-21,5,Toronto Blue Jays @ Baltimore Orioles,讓球,Baltimore Orioles -0,讓分,0.95,-0.0128,-0.0128,0.95
+2026-09-21,6,Washington Nationals @ Detroit Tigers,大小,小 8.25,小分,0.94,-0.0227,-0.0227,-1.0
+2026-09-21,7,Washington Nationals @ Detroit Tigers,大小,大 8.25,大分,0.94,-0.0349,-0.0349,0.94
+2026-09-21,8,Toronto Blue Jays @ Baltimore Orioles,讓球,Toronto Blue Jays +0,受讓,0.95,-0.037200000000000004,-0.037200000000000004,-1.0
+2026-09-21,9,Minnesota Twins @ San Francisco Giants,大小,大 8.3,大分,0.94,-0.0501,-0.0501,-1.0
+2026-09-21,10,Toronto Blue Jays @ Baltimore Orioles,大小,大 7.75,大分,0.94,-0.0527,-0.0527,-1.0

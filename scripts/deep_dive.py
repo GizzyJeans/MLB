@@ -183,14 +183,19 @@ def main() -> int:
     cands = []
     for r in rows:
         for is_over, name in ((True, "大"), (False, "小")):
-            ev = total_ev(r["sim"].total, r["tline"], hk_price=hk_t,
+            # A board can split the two sides of a total. price_board reads
+            # the per-side price; this has to match it or the two reports
+            # disagree about the same candidate.
+            price = r["entry"].get(
+                "total_price_over" if is_over else "total_price_under", hk_t)
+            ev = total_ev(r["sim"].total, r["tline"], hk_price=price,
                           over=is_over)
             if ev <= 0:
                 continue
             lo = _as_line(r["tline"].effective - NUDGE)
             hi = _as_line(r["tline"].effective + NUDGE)
-            a = total_ev(r["sim"].total, hi, hk_price=hk_t, over=is_over)
-            b = total_ev(r["sim"].total, lo, hk_price=hk_t, over=is_over)
+            a = total_ev(r["sim"].total, hi, hk_price=price, over=is_over)
+            b = total_ev(r["sim"].total, lo, hk_price=price, over=is_over)
             cands.append((r["shown"], f"{name} {r['tline'].effective:g}",
                           ev, a, b))
         for laying, who in ((True, r["favourite"]), (False, r["underdog"])):

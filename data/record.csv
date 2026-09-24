@@ -418,3 +418,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-22,7,Milwaukee Brewers @ Philadelphia Phillies,大小,小 7.25,小分,0.94,-0.0043,-0.0043,-1.0
 2026-09-22,8,Chicago White Sox @ Kansas City Royals,大小,小 8.3,小分,0.94,-0.005,-0.005,-1.0
 2026-09-22,10,Tampa Bay Rays @ New York Yankees,大小,小 6.75,小分,0.94,-0.005600000000000001,-0.005600000000000001,-0.5
+2026-09-23,1,Tampa Bay Rays @ New York Yankees,大小,小 6.75,小分,0.94,0.0403,0.0403,-1.0
+2026-09-23,2,St. Louis Cardinals @ Pittsburgh Pirates,大小,小 7.5,小分,0.94,0.0231,0.0231,0.94
+2026-09-23,3,Tampa Bay Rays @ New York Yankees,讓球,New York Yankees -0.85,讓分,0.95,0.0004,0.0089,0.95
+2026-09-23,4,Minnesota Twins @ San Francisco Giants,大小,小 8,小分,0.94,0.0085,0.0085,0.94
+2026-09-23,5,Houston Astros @ Seattle Mariners,讓球,Seattle Mariners -0.8,讓分,0.95,-0.0073,0.0,0.38
+2026-09-23,6,Los Angeles Angels @ Athletics,大小,小 9.5,小分,0.94,-0.0017000000000000001,-0.0017000000000000001,-1.0
+2026-09-23,7,Toronto Blue Jays @ Baltimore Orioles,讓球,Baltimore Orioles -0.65,讓分,0.95,-0.0058,-0.0022,0.95
+2026-09-23,8,Washington Nationals @ Detroit Tigers,讓球,Washington Nationals +1.175,受讓,0.95,0.0148,-0.0022,0.95
+2026-09-23,9,Toronto Blue Jays @ Baltimore Orioles,大小,小 7.35,小分,0.94,-0.0027,-0.0027,0.94
+2026-09-23,10,Arizona Diamondbacks @ Colorado Rockies,大小,小 11.15,小分,0.94,-0.0036,-0.0036,0.94

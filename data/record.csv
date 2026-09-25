@@ -428,3 +428,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-23,8,Washington Nationals @ Detroit Tigers,讓球,Washington Nationals +1.175,受讓,0.95,0.0148,-0.0022,0.95
 2026-09-23,9,Toronto Blue Jays @ Baltimore Orioles,大小,小 7.35,小分,0.94,-0.0027,-0.0027,0.94
 2026-09-23,10,Arizona Diamondbacks @ Colorado Rockies,大小,小 11.15,小分,0.94,-0.0036,-0.0036,0.94
+2026-09-24,1,Los Angeles Angels @ Seattle Mariners,讓球,Los Angeles Angels +1.4,受讓,0.95,0.0475,0.025,0.95
+2026-09-24,2,St. Louis Cardinals @ Pittsburgh Pirates,大小,小 7.1,小分,0.95,0.0176,0.0176,0.95
+2026-09-24,3,Miami Marlins @ Chicago Cubs,讓球,Miami Marlins +1.35,受讓,0.95,0.033,0.011699999999999999,0.6649999999999999
+2026-09-24,4,New York Mets @ Texas Rangers,大小,小 8.3,小分,0.94,0.0048,0.0048,0.94
+2026-09-24,5,Arizona Diamondbacks @ Colorado Rockies,讓球,Colorado Rockies +1.825,受讓,0.95,0.0113,0.0026,-1.0
+2026-09-24,6,New York Mets @ Texas Rangers,讓球,Texas Rangers -0.725,讓分,0.95,-0.006,-0.0005,0.95
+2026-09-24,7,Cincinnati Reds @ Atlanta Braves,讓球,Cincinnati Reds +1.4,受讓,0.95,0.0192,-0.0033,0.95
+2026-09-24,8,Chicago White Sox @ Kansas City Royals,大小,小 8.8,小分,0.94,-0.0055000000000000005,-0.0055000000000000005,-1.0
+2026-09-24,9,Miami Marlins @ Chicago Cubs,大小,小 7,小分,0.94,-0.011399999999999999,-0.011399999999999999,0.94
+2026-09-24,10,Milwaukee Brewers @ Philadelphia Phillies,大小,小 7.85,小分,0.94,-0.013300000000000001,-0.013300000000000001,0.94

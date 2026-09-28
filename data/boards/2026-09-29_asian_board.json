@@ -1,0 +1,16 @@
+{
+  "_comment": "Asian board for the 2026-09-29 slate (Taipei 09-30). Twenty-seventh slate of the prospective test and the first of the postseason: the four Wild Card Series openers, which is the whole US card. The regular season ended 09-27; 09-28 was an off day with no games, so there was no board to miss. No reading conflict: all four favourites agree with the US moneyline, 13 or 14 books on the same side in every game. The board's own moneyline column appears in three games and agrees in all three; Cubs at Padres, the one without it, matches on the market alone at 0.5348 to San Diego. Only Phillies at Braves carries first-half lines, so the half-to-full consistency check (which needs four games) will not run. Handicaps flat at 0.950, totals flat at 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Philadelphia Phillies", "home": "Atlanta Braves",
+     "favourite": "Atlanta Braves", "handicap": "1-40", "total": "7+60",
+     "half_total": "3.5"},
+    {"away": "Chicago White Sox", "home": "Houston Astros",
+     "favourite": "Houston Astros", "handicap": "1+35", "total": "8平"},
+    {"away": "Boston Red Sox", "home": "New York Yankees",
+     "favourite": "New York Yankees", "handicap": "1平", "total": "6-70"},
+    {"away": "Chicago Cubs", "home": "San Diego Padres",
+     "favourite": "San Diego Padres", "handicap": "1+65", "total": "7-30"}
+  ]
+}

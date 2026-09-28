@@ -448,3 +448,12 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-25,8,Chicago Cubs @ Boston Red Sox,大小,小 6.5,小分,0.94,-0.0054,-0.0054,0.94
 2026-09-25,9,Tampa Bay Rays @ Philadelphia Phillies,大小,小 6.65,小分,0.94,-0.0066,-0.0066,0.94
 2026-09-25,10,Arizona Diamondbacks @ San Diego Padres,讓球,San Diego Padres -0.75,讓分,0.95,-0.013000000000000001,-0.0069,-1.0
+2026-09-27,1,Cleveland Guardians @ Kansas City Royals,讓球,Kansas City Royals +1,受讓,0.95,0.0909,0.0781,0.95
+2026-09-27,2,St. Louis Cardinals @ Milwaukee Brewers,讓球,St. Louis Cardinals +1.4,受讓,0.95,0.066,0.0435,-1.0
+2026-09-27,3,Texas Rangers @ Minnesota Twins,讓球,Minnesota Twins +0.8,受讓,0.95,0.0348,0.0271,0.95
+2026-09-27,4,Los Angeles Angels @ Seattle Mariners,讓球,Seattle Mariners -0.95,讓分,0.95,-0.0044,0.0066,0.95
+2026-09-27,5,Colorado Rockies @ Chicago White Sox,讓球,Colorado Rockies +1.175,受讓,0.95,0.0218,0.0048,-1.0
+2026-09-27,6,New York Mets @ Washington Nationals,大小,小 8.3,小分,0.94,0.0034000000000000002,0.0034000000000000002,-1.0
+2026-09-27,7,Cleveland Guardians @ Kansas City Royals,大小,小 8.6,小分,0.94,0.0032,0.0032,0.94
+2026-09-27,8,St. Louis Cardinals @ Milwaukee Brewers,大小,大 6.75,大分,0.94,-0.0006,-0.0006,0.94
+2026-09-27,9,Arizona Diamondbacks @ San Diego Padres,大小,小 8,小分,0.94,-0.0034000000000000002,-0.0034000000000000002,-1.0

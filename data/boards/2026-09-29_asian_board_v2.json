@@ -1,0 +1,19 @@
+{
+  "_comment": "Second reading of the 2026-09-29 board (Taipei 09-30), taken after the lines moved and all eight starters were posted, before any first pitch. This is the day's record; the first reading priced nothing at +4% and so does not go into EARLY_BOARDS. Phillies starter now shown as Luzardo, where the first screenshot showed a different name. Moves against the first reading: Phillies-Braves total 7+60 to 7+80 (6.7 to 6.6), handicap unchanged; White Sox-Astros handicap 1+35 to 1+55 (0.825 to 0.775) and total 8平 to 8-40 (8 to 8.2); Red Sox-Yankees handicap 1平 to 1+20 (1.0 to 0.9) and total 6-70 to 6-30 (6.35 to 6.15); Cubs-Padres total 7-30 to 7-20 (7.15 to 7.1), handicap unchanged. The US market moved the same way on both handicap moves: Houston 0.5526 to 0.5348, New York 0.5803 to 0.5545. Favourites unchanged and still agree with the US moneyline (15 books same side in every game); the board's moneyline column now appears in all four and agrees in all four. All four games now carry first-half lines, so the half-to-full check runs. Handicaps flat at 0.950, totals flat at 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Philadelphia Phillies", "home": "Atlanta Braves",
+     "favourite": "Atlanta Braves", "handicap": "1-40", "total": "7+80",
+     "half_total": "3-90"},
+    {"away": "Chicago White Sox", "home": "Houston Astros",
+     "favourite": "Houston Astros", "handicap": "1+55", "total": "8-40",
+     "half_total": "4-80"},
+    {"away": "Boston Red Sox", "home": "New York Yankees",
+     "favourite": "New York Yankees", "handicap": "1+20", "total": "6-30",
+     "half_total": "3-10"},
+    {"away": "Chicago Cubs", "home": "San Diego Padres",
+     "favourite": "San Diego Padres", "handicap": "1+65", "total": "7-20",
+     "half_total": "4+30"}
+  ]
+}

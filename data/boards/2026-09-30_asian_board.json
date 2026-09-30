@@ -1,0 +1,19 @@
+{
+  "_comment": "Asian board for the 2026-09-30 slate (Taipei 10-01). Twenty-eighth slate of the prospective test: Game 2 of all four Wild Card Series, which is the whole US card. Starters posted. No reading conflict: all four favourites agree with the US moneyline, 15 books on the same side in every game. Phillies at Braves is the one where the favourite flipped from Game 1 -- the board hangs 1+90 on the Phillies row, and the market has Philadelphia at 0.5150 with all fifteen books below even for Atlanta; it is also the one game without the board's own moneyline column. The other three show it and agree. All four carry first-half lines. Handicaps flat at 0.950, totals flat at 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Philadelphia Phillies", "home": "Atlanta Braves",
+     "favourite": "Philadelphia Phillies", "handicap": "1+90", "total": "7-20",
+     "half_total": "3-90"},
+    {"away": "Chicago White Sox", "home": "Houston Astros",
+     "favourite": "Houston Astros", "handicap": "1+10", "total": "7.5",
+     "half_total": "4+30"},
+    {"away": "Boston Red Sox", "home": "New York Yankees",
+     "favourite": "New York Yankees", "handicap": "1+35", "total": "7+70",
+     "half_total": "3-70"},
+    {"away": "Chicago Cubs", "home": "San Diego Padres",
+     "favourite": "San Diego Padres", "handicap": "1+35", "total": "7-50",
+     "half_total": "4+20"}
+  ]
+}

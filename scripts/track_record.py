@@ -133,8 +133,9 @@ def settle_slate(date: str, board_stem: str):
     board = json.loads(
         (ROOT / "data" / "boards" / f"{board_stem}.json").read_text("utf-8"))
     hk_h, hk_t = board["handicap_price_hk"], board["total_price_hk"]
+    month = {"08": "aug", "09": "sep", "10": "oct", "11": "nov"}[date[5:7]]
     scores = load_scores(
-        str(ROOT / "data" / "scores" / f"{'aug' if date[5:7] == '08' else 'sep'}{date[-2:]}_scores.json"), date)
+        str(ROOT / "data" / "scores" / f"{month}{date[-2:]}_scores.json"), date)
 
     rows = []
     for entry in board["games"]:

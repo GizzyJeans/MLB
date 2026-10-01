@@ -1,0 +1,10 @@
+{
+  "_comment": "Asian board for the 2026-10-01 slate (Taipei 10-02). Twenty-ninth slate of the prospective test: Phillies at Braves, Wild Card Game 3, the only game left after the other three series ended 2-0. One game means four selections, so the top ten is the whole board and A and B are identical by construction. READING CONFLICT, the fifth under the 09-05 rule: the full-game handicap 1+85 sits on the Braves row, which reads Atlanta laying 0.575, but the US moneyline has Philadelphia the favourite at 0.5055 with 12 of 15 books on that side, and the US run line hangs Philadelphia -1.5. Moneyline decides, so the favourite is recorded as the Phillies. The board's own first-half handicap, 0-35, sits on the Phillies row and agrees with that. No moneyline column and no starters shown on this board. The conflict turns out not to matter: baseball has no draw, so a half-run handicap is the moneyline, and a pick'em market's fair line is about 0.50 -- the board's 0.575 is only 0.075 from it whichever side lays it. Priced both ways, the receiving side is -0.69% (Phillies favourite, the recorded reading) or +0.24% (Braves favourite); nothing on the board reaches +4% under either. Handicap 0.950, total 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Philadelphia Phillies", "home": "Atlanta Braves",
+     "favourite": "Philadelphia Phillies", "handicap": "1+85", "total": "7-80",
+     "half_total": "4-40"}
+  ]
+}

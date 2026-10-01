@@ -467,3 +467,13 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-29,8,Chicago White Sox @ Houston Astros,大小,小 8.2,小分,0.94,-0.0233,-0.0233,-1.0
 2026-09-29,9,Chicago White Sox @ Houston Astros,讓球,Houston Astros -0.725,讓分,0.95,-0.0318,-0.0263,-1.0
 2026-09-29,10,Chicago Cubs @ San Diego Padres,讓球,Chicago Cubs +0.675,受讓,0.95,-0.0287,-0.0332,-1.0
+2026-09-30,1,Chicago White Sox @ Houston Astros,讓球,Chicago White Sox +0.95,受讓,0.95,0.0043,-0.0072,0.95
+2026-09-30,2,Chicago Cubs @ San Diego Padres,讓球,Chicago Cubs +0.825,受讓,0.95,0.0001,-0.008199999999999999,-1.0
+2026-09-30,3,Boston Red Sox @ New York Yankees,讓球,Boston Red Sox +0.825,受讓,0.95,-0.0031,-0.0115,-1.0
+2026-09-30,4,Chicago Cubs @ San Diego Padres,大小,大 7.25,大分,0.94,-0.0123,-0.0123,-1.0
+2026-09-30,5,Philadelphia Phillies @ Atlanta Braves,大小,小 7.1,小分,0.94,-0.0178,-0.0178,0.188
+2026-09-30,6,Philadelphia Phillies @ Atlanta Braves,讓球,Philadelphia Phillies -0.55,讓分,0.95,-0.020499999999999997,-0.019299999999999998,0.855
+2026-09-30,7,Boston Red Sox @ New York Yankees,大小,小 6.65,小分,0.94,-0.0207,-0.0207,-1.0
+2026-09-30,8,Chicago White Sox @ Houston Astros,大小,小 7.5,小分,0.94,-0.0245,-0.0245,-1.0
+2026-09-30,9,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves +0.55,受讓,0.95,-0.0288,-0.0301,-0.9
+2026-09-30,10,Boston Red Sox @ New York Yankees,讓球,New York Yankees -0.825,讓分,0.95,-0.0401,-0.0322,0.95

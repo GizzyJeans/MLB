@@ -477,3 +477,7 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-09-30,8,Chicago White Sox @ Houston Astros,大小,小 7.5,小分,0.94,-0.0245,-0.0245,-1.0
 2026-09-30,9,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves +0.55,受讓,0.95,-0.0288,-0.0301,-0.9
 2026-09-30,10,Boston Red Sox @ New York Yankees,讓球,New York Yankees -0.825,讓分,0.95,-0.0401,-0.0322,0.95
+2026-10-01,1,Philadelphia Phillies @ Atlanta Braves,大小,小 7.4,小分,0.94,0.0023,0.0023,-1.0
+2026-10-01,2,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves +0.575,受讓,0.95,-0.005,-0.0069,0.95
+2026-10-01,3,Philadelphia Phillies @ Atlanta Braves,讓球,Philadelphia Phillies -0.575,讓分,0.95,-0.043899999999999995,-0.0421,-1.0
+2026-10-01,4,Philadelphia Phillies @ Atlanta Braves,大小,大 7.4,大分,0.94,-0.060700000000000004,-0.060700000000000004,0.94

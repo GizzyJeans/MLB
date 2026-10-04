@@ -1,0 +1,12 @@
+{
+  "_comment": "Asian board for the 2026-10-04 slate (Taipei 10-05). Thirtieth and final slate of the prospective test (10-02 was an off day; 10-03, the Division Series openers, had no board sent and is not counted). Two games, both National League Division Series Game 2s, which is the whole US card for the day. Starters posted. No reading conflict: both favourites agree with the US moneyline, 15 books on the same side in each, and the board's own moneyline column, shown in both, agrees in both. Only Padres at Brewers carries first-half lines, so the half-to-full check will not run. Handicaps flat at 0.950, totals flat at 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "San Diego Padres", "home": "Milwaukee Brewers",
+     "favourite": "Milwaukee Brewers", "handicap": "1+25", "total": "7-20",
+     "half_total": "4+40"},
+    {"away": "Atlanta Braves", "home": "Los Angeles Dodgers",
+     "favourite": "Los Angeles Dodgers", "handicap": "1+5", "total": "7平"}
+  ]
+}

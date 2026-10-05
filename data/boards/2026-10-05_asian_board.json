@@ -1,0 +1,11 @@
+{
+  "_comment": "Asian board for the 2026-10-05 slate (Taipei 10-06). First slate after the prospective test's thirty days; recorded and settled on the same terms, the primary within-line endpoint still accumulating. Two games, both American League Division Series Game 2s, the whole US card. Starters posted. No reading conflict: both favourites agree with the US moneyline, 15 books on the same side in each -- Cleveland at home, and the Yankees on the road at 0.5427 -- and the board's own moneyline column, shown in both, agrees in both. No first-half lines on either game. Handicaps flat at 0.950, totals flat at 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Chicago White Sox", "home": "Cleveland Guardians",
+     "favourite": "Cleveland Guardians", "handicap": "1+5", "total": "7+70"},
+    {"away": "New York Yankees", "home": "Tampa Bay Rays",
+     "favourite": "New York Yankees", "handicap": "1+30", "total": "6-90"}
+  ]
+}

@@ -481,3 +481,11 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-10-01,2,Philadelphia Phillies @ Atlanta Braves,讓球,Atlanta Braves +0.575,受讓,0.95,-0.005,-0.0069,0.95
 2026-10-01,3,Philadelphia Phillies @ Atlanta Braves,讓球,Philadelphia Phillies -0.575,讓分,0.95,-0.043899999999999995,-0.0421,-1.0
 2026-10-01,4,Philadelphia Phillies @ Atlanta Braves,大小,大 7.4,大分,0.94,-0.060700000000000004,-0.060700000000000004,0.94
+2026-10-04,1,San Diego Padres @ Milwaukee Brewers,讓球,San Diego Padres +0.875,受讓,0.95,0.0013,-0.0083,-0.25
+2026-10-04,2,Atlanta Braves @ Los Angeles Dodgers,讓球,Atlanta Braves +0.975,受讓,0.95,0.0034000000000000002,-0.0087,0.95
+2026-10-04,3,San Diego Padres @ Milwaukee Brewers,大小,小 7.1,小分,0.94,-0.015,-0.015,0.188
+2026-10-04,4,Atlanta Braves @ Los Angeles Dodgers,大小,小 7,小分,0.94,-0.0226,-0.0226,0.94
+2026-10-04,5,Atlanta Braves @ Los Angeles Dodgers,大小,大 7,大分,0.94,-0.0297,-0.0297,-1.0
+2026-10-04,6,Atlanta Braves @ Los Angeles Dodgers,讓球,Los Angeles Dodgers -0.975,讓分,0.95,-0.0437,-0.0321,-1.0
+2026-10-04,7,San Diego Padres @ Milwaukee Brewers,讓球,Milwaukee Brewers -0.875,讓分,0.95,-0.0437,-0.0346,0.2375
+2026-10-04,8,San Diego Padres @ Milwaukee Brewers,大小,大 7.1,大分,0.94,-0.038900000000000004,-0.038900000000000004,-0.2

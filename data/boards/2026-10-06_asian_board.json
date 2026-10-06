@@ -1,0 +1,13 @@
+{
+  "_comment": "Asian board for the 2026-10-06 slate (Taipei 10-07). Two National League Division Series Game 3s, the whole US card. Starters posted (Yamamoto against Sale; Myers against Pivetta). No reading conflict, but one near-miss: Dodgers at Braves hangs 1+70 on the Dodgers row with no moneyline column, and the US market has Los Angeles at 0.5011 -- 8 books on the Dodgers, 2 on the Braves, 5 dead even. Recorded as the Dodgers. The board's own first-half handicap, 0-20, sits on the Braves row, the same full-game/first-half split seen on 10-01. Brewers at Padres shows the moneyline column and agrees with the market (San Diego 0.5520, 15 books). Handicaps flat at 0.950, totals flat at 0.940, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Los Angeles Dodgers", "home": "Atlanta Braves",
+     "favourite": "Los Angeles Dodgers", "handicap": "1+70", "total": "6-30",
+     "half_total": "3+20"},
+    {"away": "Milwaukee Brewers", "home": "San Diego Padres",
+     "favourite": "San Diego Padres", "handicap": "1+45", "total": "7-30",
+     "half_total": "4+50"}
+  ]
+}

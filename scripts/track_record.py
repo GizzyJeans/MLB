@@ -99,6 +99,7 @@ SLATES = [
     ("2026-09-30", "2026-09-30_asian_board", "2026-09-30_board_pricing"),
     ("2026-10-01", "2026-10-01_asian_board", "2026-10-01_board_pricing"),
     ("2026-10-04", "2026-10-04_asian_board", "2026-10-04_board_pricing"),
+    ("2026-10-05", "2026-10-05_asian_board", "2026-10-05_board_pricing"),
 ]
 
 # Boards that were priced once, then moved before first pitch and re-priced.
@@ -305,6 +306,13 @@ def main() -> int:
                       & {(c["matchup"], c["market"], c["side"]) for c in arms["B"]})
         ab.append((date, means["A"], means["B"], means["B"] - means["A"], overlap))
 
+    # The daily A/B record was declared as thirty slates and reported on the
+    # thirtieth. Freeze it there so later slates do not quietly move a
+    # number that has already been reported; the within-line contrast below
+    # is the one that keeps accumulating.
+    extra = max(len(ab) - TEST_SLATES, 0)
+    ab = ab[:TEST_SLATES]
+
     print(f"\n=== 前瞻測試 A(去偏) vs B(原始)   第 {len(ab)} / {TEST_SLATES} 天 ===")
     if not ab:
         print(f"  尚未開始（第一個測試日為 {TEST_START} 之後的第一張盤）")
@@ -330,6 +338,9 @@ def main() -> int:
                                           / len(diffs) ** 0.5)
             print(f"  t = {t:+.2f}   df = {len(diffs) - 1}   "
                   "（雙尾 α=0.05，臨界值約 ±2.05）")
+            if extra:
+                print(f"  逐日 A/B 記錄已在第 {TEST_SLATES} 天凍結；之後的 {extra} "
+                      "個盤只進入下方的線內配對。")
 
     # Declared primary statistic: the within-line contrast. The correction
     # adds to the laying side and subtracts from the receiving side, so the

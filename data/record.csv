@@ -497,3 +497,11 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-10-05,6,New York Yankees @ Tampa Bay Rays,讓球,New York Yankees -0.85,讓分,0.95,-0.051100000000000007,-0.0426,-1.0
 2026-10-05,7,Chicago White Sox @ Cleveland Guardians,大小,大 6.65,大分,0.94,-0.049800000000000004,-0.049800000000000004,0.6579999999999999
 2026-10-05,8,New York Yankees @ Tampa Bay Rays,大小,小 6.45,小分,0.94,-0.0548,-0.0548,-1.0
+2026-10-06,1,Los Angeles Dodgers @ Atlanta Braves,讓球,Atlanta Braves +0.65,受讓,0.95,0.027200000000000002,0.023399999999999997,-1.0
+2026-10-06,2,Milwaukee Brewers @ San Diego Padres,讓球,San Diego Padres -0.775,讓分,0.95,-0.0236,-0.0169,0.42749999999999994
+2026-10-06,3,Milwaukee Brewers @ San Diego Padres,大小,大 7.15,大分,0.94,-0.0258,-0.0258,-0.3
+2026-10-06,4,Los Angeles Dodgers @ Atlanta Braves,大小,小 6.15,小分,0.94,-0.0269,-0.0269,0.94
+2026-10-06,5,Milwaukee Brewers @ San Diego Padres,讓球,Milwaukee Brewers +0.775,受讓,0.95,-0.021,-0.027999999999999997,-0.44999999999999996
+2026-10-06,6,Milwaukee Brewers @ San Diego Padres,大小,小 7.15,小分,0.94,-0.0288,-0.0288,0.282
+2026-10-06,7,Los Angeles Dodgers @ Atlanta Braves,大小,大 6.15,大分,0.94,-0.0291,-0.0291,-1.0
+2026-10-06,8,Los Angeles Dodgers @ Atlanta Braves,讓球,Los Angeles Dodgers -0.65,讓分,0.95,-0.07490000000000001,-0.0712,0.95

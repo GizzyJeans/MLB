@@ -1,0 +1,15 @@
+{
+  "_comment": "Asian board for the 2026-10-07 slate (Taipei 10-08). Four Division Series games -- Game 4 in the NL series and Game 3 in the AL ones -- the whole US card. NEW LAYOUT: this screenshot is a different board format from every earlier slate -- home team listed on the top row (marked [主]), moneyline / handicap / total in that column order, no first-half lines, no starters. Rows were read by the [主] marker, not by position, and every favourite was checked against the US moneyline. No reading conflict: all four agree, 15 books on the same side in each. White Sox at home lay 1+55 on a 0.5217 market with no moneyline column. Dodgers lay 1-40 at Atlanta; the board's moneyline (ATL 1.18 / LAD 0.66) agrees. Yankees lay 1平 at home; board moneyline (NYY 0.57 / TB 1.35) agrees. Padres-Brewers is a 0 handicap hung on the Padres row, market 0.5089 to San Diego with 15 books above even, recorded as the Padres. Handicaps 0.95, totals 0.94, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Cleveland Guardians", "home": "Chicago White Sox",
+     "favourite": "Chicago White Sox", "handicap": "1+55", "total": "8+40"},
+    {"away": "Los Angeles Dodgers", "home": "Atlanta Braves",
+     "favourite": "Los Angeles Dodgers", "handicap": "1-40", "total": "7-70"},
+    {"away": "Tampa Bay Rays", "home": "New York Yankees",
+     "favourite": "New York Yankees", "handicap": "1平", "total": "7-50"},
+    {"away": "Milwaukee Brewers", "home": "San Diego Padres",
+     "favourite": "San Diego Padres", "handicap": "0", "total": "7-70"}
+  ]
+}

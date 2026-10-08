@@ -1,0 +1,9 @@
+{
+  "_comment": "Asian board for the 2026-10-08 slate (Taipei 10-09). One game: Guardians at White Sox, ALDS Game 4, Chicago up 2-1. The whole US card for the day. Same newer layout as 10-07 (home team on top, no first-half lines, no starters, moneyline column empty for this game). READING CONFLICT, the seventh under the 09-05 rule: the handicap label 1+75 sits in the White Sox row, which reads Chicago laying 0.625, but all fifteen US books have Cleveland the favourite (Chicago 0.4848 after removing the margin, none above even). The rule in docs/board_reading.md applies: with no moneyline column on the board, the US direction is used, so the favourite is recorded as the Guardians laying 0.625, and the literal reading is priced alongside in the report. Worth noting for whoever reviews the rule: its evidence (6 of 6) came from the older layout, where the label could be misplaced between rows. In this layout the label sits inside one team's cell, so a conflict here is more likely a genuine disagreement between the Asian book and the US market than a misread -- the case the rule document itself says the rule will get wrong. The rule is applied unchanged; changing it is not a call to make from inside one slate. Handicap 0.95, total 0.94, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Cleveland Guardians", "home": "Chicago White Sox",
+     "favourite": "Cleveland Guardians", "handicap": "1+75", "total": "7-50"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "_comment": "Second reading of the 2026-10-07 slate (Taipei 10-08), taken about an hour before the Brewers-Padres first pitch (02:00Z), after the other three games had started. Only Brewers at Padres was re-read; the other three keep their first-reading lines, which are the latest readings of them that exist, and are priced against the same pre-game snapshot as before -- data/snapshots/oct07_odds_v2.json is the original pre-game snapshot with only the Brewers-Padres event replaced by a fresh pre-game one. This is the day's record for settlement. The first reading had nothing at +4% and does not go into EARLY_BOARDS. Brewers at Padres moved a long way: handicap from 0 on the Padres row to 1+90 on the Brewers row (Milwaukee laying 0.55), total from 7-70 (7.35) to 8+60 (7.7). The US market moved far less: San Diego 0.5089 to 0.5032 on the moneyline (11 books above even, 4 dead even, none below), over 7.5 from 0.4783 to 0.5092. READING CONFLICT, the sixth under the 09-05 rule: the board now has Milwaukee laying, the moneyline still has San Diego the favourite. Moneyline decides, so the favourite is recorded as the Padres laying 0.55. On a pick'em the fair handicap is about 0.50 either way, so the reading moves the EV only by the 0.05-run gap; both readings are priced in the report. No moneyline column, no starters and no first-half lines on this layout. Handicaps 0.95, totals 0.94, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Cleveland Guardians", "home": "Chicago White Sox",
+     "favourite": "Chicago White Sox", "handicap": "1+55", "total": "8+40"},
+    {"away": "Los Angeles Dodgers", "home": "Atlanta Braves",
+     "favourite": "Los Angeles Dodgers", "handicap": "1-40", "total": "7-70"},
+    {"away": "Tampa Bay Rays", "home": "New York Yankees",
+     "favourite": "New York Yankees", "handicap": "1平", "total": "7-50"},
+    {"away": "Milwaukee Brewers", "home": "San Diego Padres",
+     "favourite": "San Diego Padres", "handicap": "1+90", "total": "8+60"}
+  ]
+}

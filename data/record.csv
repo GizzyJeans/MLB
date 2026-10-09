@@ -515,3 +515,7 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-10-07,8,Cleveland Guardians @ Chicago White Sox,大小,小 7.8,小分,0.94,-0.023700000000000002,-0.023700000000000002,-1.0
 2026-10-07,9,Tampa Bay Rays @ New York Yankees,讓球,Tampa Bay Rays +1,受讓,0.95,-0.0127,-0.0255,0.95
 2026-10-07,10,Cleveland Guardians @ Chicago White Sox,大小,大 7.8,大分,0.94,-0.0334,-0.0334,0.94
+2026-10-08,1,Cleveland Guardians @ Chicago White Sox,讓球,Chicago White Sox +0.625,受讓,0.95,-0.0105,-0.0137,-1.0
+2026-10-08,2,Cleveland Guardians @ Chicago White Sox,大小,小 7.25,小分,0.94,-0.0255,-0.0255,-1.0
+2026-10-08,3,Cleveland Guardians @ Chicago White Sox,大小,大 7.25,大分,0.94,-0.030699999999999998,-0.030699999999999998,0.94
+2026-10-08,4,Cleveland Guardians @ Chicago White Sox,讓球,Cleveland Guardians -0.625,讓分,0.95,-0.0377,-0.0347,0.95

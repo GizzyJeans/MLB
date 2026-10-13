@@ -1,0 +1,9 @@
+{
+  "_comment": "Asian board for the 2026-10-13 slate (Taipei 10-14). One game: Guardians at Rays, American League Championship Series, the whole US card for the day (the NLCS game in the snapshot is on 10-14). Newer layout (home team on top, no first-half lines, no starters). No reading conflict: the handicap label 1+10 sits in the Rays row, the board's own moneyline column (TB 0.71 / CLE 1.15) has Tampa Bay the favourite, and all fourteen US books agree (Tampa Bay 0.5556). Read about eleven and a half hours before first pitch, so lineups were not yet posted. Boards for 10-10, 10-11 and 10-12 were not sent and are not recorded; 10-09 was an off day. Handicap 0.95, total 0.94, no split prices.",
+  "handicap_price_hk": 0.950,
+  "total_price_hk": 0.940,
+  "games": [
+    {"away": "Cleveland Guardians", "home": "Tampa Bay Rays",
+     "favourite": "Tampa Bay Rays", "handicap": "1+10", "total": "7+20"}
+  ]
+}

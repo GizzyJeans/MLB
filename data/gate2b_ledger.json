@@ -1,9 +1,9 @@
 {
  "2026-10-19": {
   "board": "2026-10-19_asian_board",
-  "snapshot": "data/snapshots/oct19_odds.json",
-  "report": "2026-10-19_board_pricing",
-  "recorded_at": "2026-10-19T11:03:00+00:00",
+  "snapshot": "data/snapshots/oct19_odds_v2.json",
+  "report": "2026-10-19_board_pricing_v2",
+  "recorded_at": "2026-10-19T21:32:12+00:00",
   "passed": [
    {
     "matchup": "守護者 @ 光芒",
@@ -12,22 +12,22 @@
     "side_en": "Cleveland Guardians +1.125",
     "line": "1-25",
     "price": 0.95,
-    "model_adj": 0.0663,
+    "model_adj": 0.0475,
     "market_ev": {
-     "multiplicative": 0.07075478050094253,
-     "additive": 0.07953231292516995,
-     "power": 0.08460623370773342,
-     "shin": 0.07075478050098015
+     "multiplicative": 0.04461964250558614,
+     "additive": 0.04995817358509454,
+     "power": 0.051606239355717023,
+     "shin": 0.04461964250561419
     },
-    "market_ev_min": 0.07075478050094253,
+    "market_ev_min": 0.04461964250558614,
     "worst_method": "multiplicative",
-    "win": 0.574468085106383,
-    "two_plus": 0.379746835443038,
-    "n_ml": 13,
-    "n_rl": 13,
+    "win": 0.5846708806301089,
+    "two_plus": 0.3949918020569384,
+    "n_ml": 15,
+    "n_rl": 15,
     "agreement": 1.0,
-    "min_price": 0.8851455345733353,
-    "kelly": 0.09048819644376631,
+    "min_price": 0.9400169560310828,
+    "kelly": 0.05684146099705939,
     "stake": 0.01
    }
   ]

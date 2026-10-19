@@ -126,6 +126,11 @@ TEST_SLATES = 30
 # Declared endpoint for the primary statistic, fixed before any data.
 TEST_PAIRS = 2000
 
+# Gate 2B (docs/gate_2b.md, 2026-10-19): selections that pass are written
+# here by scripts/gate2b.py --record, and judged only after this many.
+GATE_2B_LEDGER = ROOT / "data" / "gate2b_ledger.json"
+GATE_2B_REVIEW = 30
+
 # Both EV columns are captured. The raw figure is what the simulation
 # priced; the de-biased one adds the measured cover-probability correction,
 # which only touches handicaps and only in proportion to each leg's
@@ -386,6 +391,7 @@ def main() -> int:
     print(f"\n=== 通過 +4% 門檻的選擇（含移動前的早盤）: {len(gated)} 筆 ===")
     if not gated:
         print("  無")
+        report_gate_2b()
         return 0
     for c in sorted(gated, key=lambda c: -c["expected"]):
         verdict = ("贏" if c["pnl"] > 0.01
@@ -413,7 +419,64 @@ def main() -> int:
                for k in range(wins, decided + 1))
     print(f"  在真實勝率 53% 的假設下，{decided} 戰至少贏 {wins} 場的機率約 "
           f"{tail * 100:.0f}% — 樣本量還不足以說明任何事")
+    report_gate_2b()
     return 0
+
+
+def report_gate_2b() -> None:
+    """Settle the selections that passed gate 2B, from the ledger.
+
+    Declared in docs/gate_2b.md on 2026-10-19: handicap edges that come from
+    the board's price rather than the model, confirmed from US prices alone.
+    A separate bucket from the +4% gate above, because it is a different
+    policy, and judged only after GATE_2B_REVIEW selections.
+    """
+    ledger = (json.loads(GATE_2B_LEDGER.read_text(encoding="utf-8"))
+              if GATE_2B_LEDGER.exists() else {})
+    stems = {date: board for date, board, _ in SLATES}
+    settled, pending, void = [], [], []
+    for date, day in sorted(ledger.items()):
+        if date in stems and stems[date] != day["board"]:
+            print(f"  （{date} 帳本記的是 {day['board']}，紀錄用的是 "
+                  f"{stems[date]}，請用紀錄那份板面重跑 gate2b.py）")
+            continue
+        rows = settle_slate(date, stems[date]) if date in stems else []
+        for p in day["passed"]:
+            if date not in stems:
+                pending.append({**p, "date": date})
+                continue
+            row = next((r for r in rows if r["matchup"] == p["matchup"]
+                        and r["side_en"] == p["side_en"]), None)
+            if row is None:
+                void.append({**p, "date": date})
+            else:
+                settled.append({**p, "date": date, "pnl": row["pnl"]})
+
+    print(f"\n=== 門檻 2B（市場自證）: 已評估 {len(ledger)} 個盤，"
+          f"通過 {len(settled) + len(pending) + len(void)} 筆 ===")
+    for c in settled:
+        verdict = ("贏" if c["pnl"] > 0.01
+                   else ("輸" if c["pnl"] < -0.01 else "和"))
+        print(f"  {c['date']} {pad(c['matchup'], 20)} {pad(c['side'], 16)} "
+              f"模型 {c['model_adj'] * 100:+6.2f}% 市場 "
+              f"{c['market_ev_min'] * 100:+6.2f}% → {c['pnl'] * 100:+7.2f}%  "
+              f"{verdict}")
+    for c in pending:
+        print(f"  {c['date']} {pad(c['matchup'], 20)} {pad(c['side'], 16)} "
+              f"模型 {c['model_adj'] * 100:+6.2f}% 市場 "
+              f"{c['market_ev_min'] * 100:+6.2f}% → 待結算")
+    for c in void:
+        print(f"  {c['date']} {pad(c['matchup'], 20)} {pad(c['side'], 16)} "
+              "→ 無比分（作廢）")
+    if settled:
+        got = [c["pnl"] for c in settled]
+        wins = sum(1 for p in got if p > 0.01)
+        losses = sum(1 for p in got if p < -0.01)
+        print(f"  合計 {sum(got) * 100:+.2f}%   平均 "
+              f"{statistics.mean(got) * 100:+.2f}% 每注   "
+              f"{wins} 勝 {losses} 敗 {len(got) - wins - losses} 和")
+    print(f"  依宣告，累積 {GATE_2B_REVIEW} 筆之前不做評價，也不改門檻"
+          "（docs/gate_2b.md）")
 
 
 if __name__ == "__main__":

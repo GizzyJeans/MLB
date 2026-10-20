@@ -523,3 +523,7 @@ date,rank,matchup_en,market,side_en,kind,price,raw_ev,expected,pnl
 2026-10-13,2,Cleveland Guardians @ Tampa Bay Rays,大小,小 6.9,小分,0.94,-0.0015,-0.0015,0.94
 2026-10-13,3,Cleveland Guardians @ Tampa Bay Rays,大小,大 6.9,大分,0.94,-0.052300000000000006,-0.052300000000000006,-1.0
 2026-10-13,4,Cleveland Guardians @ Tampa Bay Rays,讓球,Tampa Bay Rays -0.95,讓分,0.95,-0.08810000000000001,-0.07719999999999999,0.95
+2026-10-19,1,Cleveland Guardians @ Tampa Bay Rays,讓球,Cleveland Guardians +1.125,受讓,0.95,0.0634,0.0475,-1.0
+2026-10-19,2,Cleveland Guardians @ Tampa Bay Rays,大小,大 6.65,大分,0.94,0.0052,0.0052,0.94
+2026-10-19,3,Cleveland Guardians @ Tampa Bay Rays,大小,小 6.65,小分,0.94,-0.0629,-0.0629,-1.0
+2026-10-19,4,Cleveland Guardians @ Tampa Bay Rays,讓球,Tampa Bay Rays -1.125,讓分,0.95,-0.10550000000000001,-0.0902,0.95
